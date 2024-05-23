@@ -11,6 +11,6 @@
         public string Street { get; set; }
         public int StreetNumber { get; set; }
         public int UserID { get; set; } = 1;
-        public List<IProductEntity> ListProducts { get; set; }
+        public List<OrderProductEntity> ListProducts { get; set; }
     }
 }

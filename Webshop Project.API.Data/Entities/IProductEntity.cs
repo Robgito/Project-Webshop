@@ -11,5 +11,7 @@
         int BrandID { get; set; }
         CategoryEntity Category { get; set; }
         BrandEntity Brand { get; set; }
+        List<BasketProductEntity> ProductsInBaskets {  get; set; }
+        List<OrderProductEntity> ProductsInOrders { get; set; }
     }
 }
