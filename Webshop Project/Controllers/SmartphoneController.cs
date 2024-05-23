@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Business.Services;
@@ -26,7 +25,7 @@ namespace Webshop_Project.Controllers
             Smartphone smartphone = await _smartphoneService.GetSmartphoneAsync(id);
             SmartphoneDTO smartphoneDTO = _mapper.Map<SmartphoneDTO>(smartphone);
 
-            if(smartphone == null)
+            if (smartphone == null)
             {
                 return NotFound();
             }
@@ -43,13 +42,50 @@ namespace Webshop_Project.Controllers
             IEnumerable<Smartphone> smartphones = await _smartphoneService.GetSmartphonesAsync();
             IEnumerable<SmartphoneDTO> smartphoneDTOs = _mapper.Map<IEnumerable<SmartphoneDTO>>(smartphones);
 
-            if(smartphones == null || smartphones.Count() == 0)
+            if (smartphones == null || smartphones.Count() == 0)
             {
                 return NotFound();
             }
             else
             {
                 return Ok(smartphoneDTOs);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddSmartphoneAsync(AddSmartphoneDTO addSmartphone)
+        {
+            if (ModelState.IsValid)
+            {
+                Smartphone smartphone = _mapper.Map<Smartphone>(addSmartphone);
+                await _smartphoneService.AddSmartphoneAsync(smartphone);
+                return Created();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteSmartphoneAsync(int id)
+        {
+            await _smartphoneService.DeleteSmartphoneAsync(id);
+            return Created();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateSmartphoneAsync(int id, UpdateSmartphoneDTO updateSmartphone)
+        {
+            if (ModelState.IsValid)
+            {
+                Smartphone smartphone = _mapper.Map<Smartphone>(updateSmartphone);
+                await _smartphoneService.UpdateSmartphoneAsync(id, smartphone);
+                return Created();
+            }
+            else
+            {
+                return BadRequest(ModelState);
             }
         }
     }

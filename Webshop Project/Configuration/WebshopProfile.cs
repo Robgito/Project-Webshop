@@ -13,6 +13,8 @@ namespace Webshop_Project.Configuration
             CreateMap<Smartphone, SmartphoneDTO>()
                 .ForMember(x => x.Brand, y => y.MapFrom(z => z.Brand.Name))
                 .ForMember(x => x.Category, y => y.MapFrom(z => z.Category.Name));
+            CreateMap<AddSmartphoneDTO, Smartphone>();
+            CreateMap<UpdateSmartphoneDTO, Smartphone>();
         }
     }
 }

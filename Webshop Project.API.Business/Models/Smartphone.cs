@@ -9,25 +9,30 @@ namespace Webshop_Project.API.Business.Models
 {
     public class Smartphone
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public BrandEntity Brand { get; set; }
 
-        public string? Description { get; set; }
+        public int BrandID { get; set; }
 
-        public double Price { get; set; }
+        public CategoryEntity Category { get; set; }
 
-        public string Image { get; set; }
-
-        public int Stock { get; set; }
-
-        public int MemoryCapacity { get; set; }
+        public int CategoryID { get; set; }
 
         public string Colour { get; set; }
 
+        public string? Description { get; set; }
+
+        public int ID { get; set; }
+
+        public string Image { get; set; }
+
+        public int MemoryCapacity { get; set; }
+
+        public string Name { get; set; }
+
+        public double Price { get; set; }
+
         public double ScreenSize { get; set; }
 
-        public BrandEntity Brand { get; set; }
-
-        public CategoryEntity Category { get; set; }
+        public int Stock { get; set; }
     }
 }
