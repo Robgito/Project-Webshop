@@ -52,6 +52,8 @@ internal class Program
         builder.Services.AddScoped<IOrderRepository, OrderRepository>();
         builder.Services.AddScoped<IUserRepository,  UserRepository>();
         builder.Services.AddScoped<ISmartphoneService, SmartphoneService>();
+        builder.Services.AddScoped<ICategoryService, CategoryService>();
+        builder.Services.AddScoped<IBrandService, BrandService>();
     }
 
     private static void InjectAutoMapper(WebApplicationBuilder builder)

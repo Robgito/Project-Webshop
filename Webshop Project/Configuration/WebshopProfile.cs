@@ -15,6 +15,16 @@ namespace Webshop_Project.Configuration
                 .ForMember(x => x.Category, y => y.MapFrom(z => z.Category.Name));
             CreateMap<AddSmartphoneDTO, Smartphone>();
             CreateMap<UpdateSmartphoneDTO, Smartphone>();
+
+            CreateMap<Category, CategoryEntity>().ReverseMap();
+            CreateMap<Category, CategoryDTO>().ReverseMap();
+            CreateMap<AddCategoryDTO, Category>();
+            CreateMap<UpdateCategoryDTO, Category>();
+
+            CreateMap<Brand, BrandEntity>().ReverseMap();
+            CreateMap<Brand, BrandDTO>().ReverseMap();
+            CreateMap<AddBrandDTO, Brand>();
+            CreateMap<UpdateBrandDTO, Brand>();
         }
     }
 }
