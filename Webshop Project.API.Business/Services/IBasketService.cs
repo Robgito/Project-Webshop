@@ -8,6 +8,7 @@ namespace Webshop_Project.API.Business.Services
         Task DeleteBasketAsync(int id);
         Task<IEnumerable<Basket>> GetAllBasketAsync();
         Task<Basket> GetBasketAsync(int id);
+        int SaveNewBasketID();
         Task UpdateBasketAsync(int id, Basket basket);
     }
 }

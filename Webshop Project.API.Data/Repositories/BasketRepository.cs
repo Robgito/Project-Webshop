@@ -11,6 +11,7 @@ namespace Webshop_Project.API.Data.Repositories
     public class BasketRepository : IBasketRepository
     {
         private WebshopDBContext _dbContext;
+        private int _newBasketID;
         public BasketRepository(WebshopDBContext dbContext)
         {
             _dbContext = dbContext;
@@ -34,6 +35,7 @@ namespace Webshop_Project.API.Data.Repositories
             await _dbContext.Basket
                 .AddAsync(basketEntity);
             await _dbContext.SaveChangesAsync();
+            SaveNewBasketID(basketEntity.ID);
         }
 
         public async Task DeleteBasketByIDAsync(int id)
@@ -53,6 +55,16 @@ namespace Webshop_Project.API.Data.Repositories
             _dbContext.Basket
                 .Update(basketEntity);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public void SaveNewBasketID(int ID)
+        {
+            _newBasketID = ID;
+        }
+
+        public int ReturnNewBasketID()
+        {
+            return _newBasketID;
         }
     }
 }

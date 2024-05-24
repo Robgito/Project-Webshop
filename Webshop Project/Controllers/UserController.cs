@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Business.Services;
+using Webshop_Project.API.Data.Entities;
 using Webshop_Project.DTO;
 
 namespace Webshop_Project.Controllers
@@ -12,12 +13,14 @@ namespace Webshop_Project.Controllers
     public class UserController : ControllerBase
     {
         private IUserService _userService;
+        private IBasketService _basketService;
         private IMapper _mapper;
 
-        public UserController(IUserService userService, IMapper mapper)
+        public UserController(IUserService userService, IMapper mapper, IBasketService basketService)
         {
             _userService = userService;
             _mapper = mapper;
+            _basketService = basketService;
         }
 
         [HttpGet]
@@ -58,8 +61,12 @@ namespace Webshop_Project.Controllers
         {
             if (ModelState.IsValid)
             {
+                Basket basket = new Basket();
+                await _basketService.AddBasketAsync(basket);
+
                 User user = _mapper.Map<User>(addUserDTO);
-                await _userService.AddUserAsync(user);
+                user.BasketID = _basketService.SaveNewBasketID();
+                await _userService.AddUserAsync(user);                
                 return Created();
             }
             else

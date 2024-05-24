@@ -32,7 +32,7 @@ namespace Webshop_Project.API.Data
             List<SmartphoneEntity> smartphones = GetDummySmartphones();
             modelBuilder.Entity<SmartphoneEntity>().HasData(smartphones);
 
-            List<UserEntity> users = new List<UserEntity>();
+            List<UserEntity> users = GetDummyUsers();
             modelBuilder.Entity<UserEntity>().HasData(users);
 
             List<BasketEntity> basket = GetDummyBaskets();
@@ -110,6 +110,23 @@ namespace Webshop_Project.API.Data
             };
         }
 
-
+        private List<UserEntity> GetDummyUsers()
+        {
+            return new List<UserEntity>
+            {
+                new UserEntity()
+                {
+                    ID = 1,
+                    Created = DateTime.Now,
+                    Updated = DateTime.Now,
+                    IsActive = true,
+                    Name = "TestUser",
+                    Role = ["Admin"],
+                    Email = "test@test.be",
+                    Password = "123",
+                    BasketID = 1,
+                },
+            };
+        }
     }
 }

@@ -62,5 +62,10 @@ namespace Webshop_Project.API.Business.Services
 
             await _basketRepository.UpdateBasketAsync(basketDB);
         }
+
+        public int SaveNewBasketID()
+        {
+            return _basketRepository.ReturnNewBasketID();
+        }
     }
 }

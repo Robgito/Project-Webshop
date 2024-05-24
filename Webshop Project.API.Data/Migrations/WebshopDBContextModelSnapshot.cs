@@ -44,7 +44,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Basket");
+                    b.ToTable("Basket", (string)null);
 
                     b.HasData(
                         new
@@ -92,7 +92,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasIndex("SmartphoneEntityID");
 
-                    b.ToTable("BasketProducts");
+                    b.ToTable("BasketProducts", (string)null);
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.BrandEntity", b =>
@@ -118,7 +118,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
 
                     b.HasData(
                         new
@@ -154,7 +154,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -203,7 +203,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.OrderProductEntity", b =>
@@ -241,7 +241,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasIndex("SmartphoneEntityID");
 
-                    b.ToTable("OrderProducts");
+                    b.ToTable("OrderProducts", (string)null);
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.SmartphoneEntity", b =>
@@ -299,7 +299,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("Smartphones");
+                    b.ToTable("Smartphones", (string)null);
 
                     b.HasData(
                         new
@@ -360,7 +360,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasIndex("BasketID");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.BasketProductEntity", b =>
