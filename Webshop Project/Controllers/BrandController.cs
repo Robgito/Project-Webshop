@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Business.Services;
@@ -21,7 +20,7 @@ namespace Webshop_Project.Controllers
         }
 
         [HttpGet]
-        
+
         public async Task<ActionResult> GetSpecificBrandAsync(int id)
         {
             Brand brand = await _brandService.GetBrandAsync(id);

@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Webshop_Project.API.Business.Models;
+using Webshop_Project.API.Business.Services;
+using Webshop_Project.DTO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,36 +12,85 @@ namespace Webshop_Project.Controllers
     [ApiController]
     public class BasketController : ControllerBase
     {
-        // GET: api/<BasketController>
+        private IBasketService _basketService;
+        private IMapper _mapper;
+
+        public BasketController(IBasketService basketService, IMapper mapper)
+        {
+            _basketService = basketService;
+            _mapper = mapper;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult> GetSpecificBasketAsync(int id)
         {
-            return new string[] { "value1", "value2" };
+            Basket basket = await _basketService.GetBasketAsync(id);
+            BasketDTO basketDTO = _mapper.Map<BasketDTO>(basket);
+
+            if (basket == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(basketDTO);
+            }
         }
 
-        // GET api/<BasketController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("GetAllBaskets")]
+        public async Task<ActionResult<BasketDTO>> GetAllBasketsAsync()
         {
-            return "value";
+            IEnumerable<Basket> baskets = await _basketService.GetAllBasketAsync();
+            IEnumerable<BasketDTO> basketDTOs = _mapper.Map<IEnumerable<BasketDTO>>(baskets);
+
+            if (baskets == null || baskets.Count() == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(basketDTOs);
+            }
         }
 
-        // POST api/<BasketController>
         [HttpPost]
-        public void Post()
+        public async Task<ActionResult> AddBasketAsync(AddBasketDTO addBasketDTO)
         {
+            if (ModelState.IsValid)
+            {
+                Basket basket = _mapper.Map<Basket>(addBasketDTO);
+                await _basketService.AddBasketAsync(basket);
+                return Created();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
-        // PUT api/<BasketController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpDelete]
+        public async Task<ActionResult> DeleteBasketAsync(int id)
         {
+            await _basketService.DeleteBasketAsync(id);
+            return Created();
         }
 
-        // DELETE api/<BasketController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPut]
+        public async Task<ActionResult> UpdateBasketAsync(int id, UpdateBasketDTO updateBasketDTO)
         {
+            if (ModelState.IsValid)
+            {
+                Basket basket = _mapper.Map<Basket>(updateBasketDTO);
+
+                await _basketService.UpdateBasketAsync(id, basket);
+                return Created();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
+
     }
 }

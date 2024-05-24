@@ -25,6 +25,16 @@ namespace Webshop_Project.Configuration
             CreateMap<Brand, BrandDTO>().ReverseMap();
             CreateMap<AddBrandDTO, Brand>();
             CreateMap<UpdateBrandDTO, Brand>();
+
+            CreateMap<User, UserEntity>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<AddUserDTO, User>();
+            CreateMap<UpdateUserDTO, User>();
+
+            CreateMap<Basket, BasketEntity>().ReverseMap();
+            CreateMap<Basket, BasketDTO>().ReverseMap();
+            CreateMap<AddBasketDTO, Basket>();
+            CreateMap<UpdateBasketDTO, Basket>();
         }
     }
 }

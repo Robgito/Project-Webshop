@@ -105,7 +105,7 @@ namespace Webshop_Project.API.Data
                     Description = "Lorem Ipsum",
                     MemoryCapacity = 125,
                     Price = 1099.99,
-                    Stock = 5,
+                    Stock = 5
                 },
             };
         }

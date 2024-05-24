@@ -19,12 +19,14 @@ namespace Webshop_Project.API.Data.Repositories
         public async Task<UserEntity> GetUserByIDAsync(int id)
         {
             return await _dbContext.Users
+                .Include(x => x.Basket)
                 .SingleOrDefaultAsync(x => x.ID == id);
         }
 
         public async Task<IEnumerable<UserEntity>> GetAllUsersAsync()
         {
             return await _dbContext.Users
+                .Include(x => x.Basket)
                 .ToArrayAsync();
         }
 

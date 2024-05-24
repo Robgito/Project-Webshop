@@ -54,6 +54,8 @@ internal class Program
         builder.Services.AddScoped<ISmartphoneService, SmartphoneService>();
         builder.Services.AddScoped<ICategoryService, CategoryService>();
         builder.Services.AddScoped<IBrandService, BrandService>();
+        builder.Services.AddScoped<IUserService, UserService>();
+        builder.Services.AddScoped<IBasketService, BasketService>();
     }
 
     private static void InjectAutoMapper(WebApplicationBuilder builder)

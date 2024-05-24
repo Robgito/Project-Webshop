@@ -4,7 +4,7 @@ namespace Webshop_Project.API.Data.Entities
 {
     public class SmartphoneEntity : IProductEntity
     {
-        public BrandEntity Brand { get; set; }
+        public BasketEntity Brand { get; set; }
 
         public int BrandID { get; set; }
 
