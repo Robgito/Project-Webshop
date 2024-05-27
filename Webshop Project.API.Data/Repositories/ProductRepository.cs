@@ -8,7 +8,7 @@ namespace Webshop_Project.API.Data.Repositories
         private WebshopDBContext _dbContext;
         public ProductRepository(WebshopDBContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
+
         }
 
         public async Task<SmartphoneEntity> GetSmartphoneByIDAsync(int id)

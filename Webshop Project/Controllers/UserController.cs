@@ -96,5 +96,15 @@ namespace Webshop_Project.Controllers
                 return BadRequest(ModelState);
             }
         }
+
+        [HttpPatch]
+        public async Task<ActionResult> MakeUserInactiveByIDAsync(int id)
+        {
+            User user = new User();
+            user = await _userService.GetUserAsync(id);
+
+            await _userService.MakeUserInactiveAsync(user);
+            return Created();
+        }
     }
 }

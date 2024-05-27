@@ -9,5 +9,6 @@ namespace Webshop_Project.API.Business.Services
         Task<User> GetUserAsync(int id);
         Task<IEnumerable<User>> GetUsersAsync();
         Task UpdateUserAsync(int id, User user);
+        Task MakeUserInactiveAsync(User user);
     }
 }

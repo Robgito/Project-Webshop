@@ -29,6 +29,5 @@ namespace Webshop_Project.API.Data.Repositories
                 .Include(x => x.Basket)
                 .ToArrayAsync();
         }
-
     }
 }

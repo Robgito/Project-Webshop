@@ -74,5 +74,12 @@ namespace Webshop_Project.API.Business.Services
 
             await _userRepository.UpdateItemAsync(userEntity);
         }
+
+        public async Task MakeUserInactiveAsync(User user)
+        {
+            UserEntity userEntity = _mapper.Map<UserEntity>(user);
+
+            await _userRepository.MakeItemInactiveAsync(userEntity);
+        }
     }
 }

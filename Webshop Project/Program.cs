@@ -57,6 +57,9 @@ internal class Program
         builder.Services.AddScoped<IBrandService, BrandService>();
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IBasketService, BasketService>();
+        builder.Services.AddScoped<IGenericRepo<SmartphoneEntity>, GenericRepo<SmartphoneEntity>>();
+        builder.Services.AddScoped<IGenericRepo<UserEntity>, GenericRepo<UserEntity>>();
+        builder.Services.AddScoped<IGenericRepo<BasketEntity>, GenericRepo<BasketEntity>>();
     }
 
     private static void InjectAutoMapper(WebApplicationBuilder builder)
