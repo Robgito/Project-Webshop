@@ -18,7 +18,7 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task<Basket> GetBasketAsync(int id)
         {
-            BasketEntity basketEntity = await _basketRepository.GetBasketByIDAsync(id);
+            BasketEntity basketEntity = await _basketRepository.GetBasketWithProductsByIDAsync(id);
 
             if (basketEntity == null)
             {
@@ -31,7 +31,7 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task<IEnumerable<Basket>> GetAllBasketAsync()
         {
-            IEnumerable<BasketEntity> basketEntities = await _basketRepository.GetAllBasketAsync();
+            IEnumerable<BasketEntity> basketEntities = await _basketRepository.GetAllItemAsync();
             IEnumerable<Basket> baskets = _mapper.Map<IEnumerable<Basket>>(basketEntities);
             return baskets;
         }
@@ -47,12 +47,16 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task DeleteBasketAsync(int id)
         {
-            await _basketRepository.DeleteBasketByIDAsync(id);
+            BasketEntity basketEntity = new BasketEntity()
+            {
+                ID = id
+            };
+            await _basketRepository.DeleteItemByIDAsync(basketEntity);
         }
 
         public async Task UpdateBasketAsync(int id, Basket basket)
         {
-            BasketEntity basketDB = await _basketRepository.GetBasketByIDAsync(id);
+            BasketEntity basketDB = await _basketRepository.GetBasketWithProductsByIDAsync(id);
 
             BasketEntity updateBasketEntity = _mapper.Map<BasketEntity>(basket);
 
@@ -60,7 +64,7 @@ namespace Webshop_Project.API.Business.Services
             basketDB.ShippingPrice = updateBasketEntity.ShippingPrice;
             basketDB.ListProducts = updateBasketEntity.ListProducts;
 
-            await _basketRepository.UpdateBasketAsync(basketDB);
+            await _basketRepository.UpdateItemAsync(basketDB);
         }
 
         public int SaveNewBasketID()

@@ -7,10 +7,10 @@ namespace Webshop_Project.API.Business.Services
 {
     public class SmartphoneService : ISmartphoneService
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IGenericRepo<SmartphoneEntity> _productRepository;
         private IMapper _mapper;
 
-        public SmartphoneService(IProductRepository productRepository, IMapper mapper)
+        public SmartphoneService(IGenericRepo<SmartphoneEntity> productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;
@@ -19,7 +19,7 @@ namespace Webshop_Project.API.Business.Services
         public async Task<Smartphone> GetSmartphoneAsync(int id)
         {
             Smartphone smartphone = new Smartphone();
-            SmartphoneEntity smartphoneEntity = await _productRepository.GetSmartphoneByIDAsync(id);
+            SmartphoneEntity smartphoneEntity = await _productRepository.GetItemByIDAsync(id);
 
             if (smartphoneEntity == null)
             {
@@ -33,7 +33,7 @@ namespace Webshop_Project.API.Business.Services
         public async Task<IEnumerable<Smartphone>> GetSmartphonesAsync()
         {
             List<Smartphone> smartphones = new List<Smartphone>();
-            IEnumerable<SmartphoneEntity> smartphoneEntities = await _productRepository.GetAllSmartphonesAsync();
+            IEnumerable<SmartphoneEntity> smartphoneEntities = await _productRepository.GetAllItemAsync();
 
             smartphones = _mapper.Map<List<Smartphone>>(smartphoneEntities);
             return smartphones;
@@ -44,17 +44,21 @@ namespace Webshop_Project.API.Business.Services
             SmartphoneEntity smartphoneEntity = _mapper.Map<SmartphoneEntity>(smartphone);
             smartphoneEntity.Created = DateTime.Now;
             smartphoneEntity.Updated = DateTime.Now;
-            await _productRepository.AddSmartphoneAsync(smartphoneEntity);
+            await _productRepository.AddItemAsync(smartphoneEntity);
         }
 
         public async Task DeleteSmartphoneAsync(int id)
         {
-            await _productRepository.DeleteSmartphoneByIDAsync(id);
+            SmartphoneEntity smartphoneEntity = new SmartphoneEntity()
+            {
+                ID = id
+            };
+            await _productRepository.DeleteItemByIDAsync(smartphoneEntity);
         }
 
         public async Task UpdateSmartphoneAsync(int id, Smartphone smartphone)
         {
-            SmartphoneEntity smartphoneEntity = await _productRepository.GetSmartphoneByIDAsync(id);
+            SmartphoneEntity smartphoneEntity = await _productRepository.GetItemByIDAsync(id);
 
             SmartphoneEntity updateSmartphoneEntity = _mapper.Map<SmartphoneEntity>(smartphone);
 
@@ -70,7 +74,7 @@ namespace Webshop_Project.API.Business.Services
             smartphoneEntity.CategoryID = updateSmartphoneEntity.CategoryID;
             smartphoneEntity.Updated = DateTime.Now;
 
-            await _productRepository.UpdateSmartphoneAsync(smartphoneEntity);
+            await _productRepository.UpdateItemAsync(smartphoneEntity);
         }
     }
 }

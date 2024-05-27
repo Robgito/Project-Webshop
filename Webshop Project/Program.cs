@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Webshop_Project.API.Business.Services;
 using Webshop_Project.API.Data;
+using Webshop_Project.API.Data.Entities;
 using Webshop_Project.API.Data.Repositories;
 
 internal class Program
@@ -47,8 +48,8 @@ internal class Program
     {
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
         builder.Services.AddScoped<IBasketRepository,  BasketRepository>();
-        builder.Services.AddScoped<IBrandRepository,  BrandRepository>();
-        builder.Services.AddScoped<ICategoryRepository,  CategoryRepository>();
+        builder.Services.AddScoped<IGenericRepo<BrandEntity>,  GenericRepo<BrandEntity>>();
+        builder.Services.AddScoped<IGenericRepo<CategoryEntity>,  GenericRepo<CategoryEntity>>();
         builder.Services.AddScoped<IOrderRepository, OrderRepository>();
         builder.Services.AddScoped<IUserRepository,  UserRepository>();
         builder.Services.AddScoped<ISmartphoneService, SmartphoneService>();

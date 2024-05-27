@@ -8,18 +8,13 @@ using Webshop_Project.API.Data.Entities;
 
 namespace Webshop_Project.API.Data.Repositories
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository : GenericRepo<OrderEntity>, IOrderRepository
     {
         private WebshopDBContext _dbContext;
-        public OrderRepository(WebshopDBContext dbContext)
+
+        public OrderRepository(WebshopDBContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
-        }
-
-        public async Task<OrderEntity> GetOrderByIDAsync(int id)
-        {
-            return await _dbContext.Orders
-                .SingleOrDefaultAsync(x => x.ID == id);
         }
 
         public async Task<IEnumerable<OrderEntity>> GetAllOrdersAsync()
@@ -29,30 +24,7 @@ namespace Webshop_Project.API.Data.Repositories
                 .ToArrayAsync();
         }
 
-        public async Task AddOrderAsync(OrderEntity orderEntity)
-        {
-            await _dbContext.Orders
-                .AddAsync(orderEntity);
-            await _dbContext.SaveChangesAsync();
-        }
 
-        public async Task DeleteOrderByIDAsync(int id)
-        {
-            OrderEntity orderEntity = new OrderEntity()
-            {
-                ID = id
-            };
 
-            _dbContext.Orders
-                .Remove(orderEntity);
-            await _dbContext.SaveChangesAsync();
-        }
-
-        public async Task UpdateOrderAsync(OrderEntity orderEntity)
-        {
-            _dbContext.Orders
-                .Update(orderEntity);
-            await _dbContext.SaveChangesAsync();
-        }
     }
 }

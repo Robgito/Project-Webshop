@@ -8,10 +8,10 @@ using Webshop_Project.API.Data.Entities;
 
 namespace Webshop_Project.API.Data.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : GenericRepo<UserEntity>, IUserRepository
     {
         private WebshopDBContext _dbContext;
-        public UserRepository(WebshopDBContext dbContext)
+        public UserRepository(WebshopDBContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }
@@ -30,30 +30,5 @@ namespace Webshop_Project.API.Data.Repositories
                 .ToArrayAsync();
         }
 
-        public async Task AddUserAsync(UserEntity userEntity)
-        {
-            await _dbContext.Users
-                .AddAsync(userEntity);
-            await _dbContext.SaveChangesAsync();
-        }
-
-        public async Task DeleteUserByIDAsync(int id)
-        {
-            UserEntity userEntity = new UserEntity()
-            {
-                ID = id
-            };
-
-            _dbContext.Users
-                .Remove(userEntity);
-            await _dbContext.SaveChangesAsync();
-        }
-
-        public async Task UpdateUserAsync(UserEntity userEntity)
-        {
-            _dbContext.Users
-                .Update(userEntity);
-            await _dbContext.SaveChangesAsync();
-        }
     }
 }

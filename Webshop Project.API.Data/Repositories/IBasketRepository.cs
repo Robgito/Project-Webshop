@@ -2,14 +2,11 @@
 
 namespace Webshop_Project.API.Data.Repositories
 {
-    public interface IBasketRepository
+    public interface IBasketRepository : IGenericRepo<BasketEntity>
     {
         Task AddBasketAsync(BasketEntity basketEntity);
-        Task DeleteBasketByIDAsync(int id);
-        Task<IEnumerable<BasketEntity>> GetAllBasketAsync();
-        Task<BasketEntity> GetBasketByIDAsync(int id);
+        Task<BasketEntity> GetBasketWithProductsByIDAsync(int id);
         int ReturnNewBasketID();
         void SaveNewBasketID(int ID);
-        Task UpdateBasketAsync(BasketEntity basketEntity);
     }
 }

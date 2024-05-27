@@ -12,10 +12,10 @@ namespace Webshop_Project.API.Business.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IGenericRepo<UserEntity> _userRepository;
         private IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
+        public UserService(IGenericRepo<UserEntity> userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
@@ -24,7 +24,7 @@ namespace Webshop_Project.API.Business.Services
         public async Task<User> GetUserAsync(int id)
         {
             User user = new User();
-            UserEntity userEntity = await _userRepository.GetUserByIDAsync(id);
+            UserEntity userEntity = await _userRepository.GetItemByIDAsync(id);
 
             if (userEntity == null)
             {
@@ -37,7 +37,7 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            IEnumerable<UserEntity> userEntities = await _userRepository.GetAllUsersAsync();
+            IEnumerable<UserEntity> userEntities = await _userRepository.GetAllItemAsync();
             IEnumerable<User> users = _mapper.Map<IEnumerable<User>>(userEntities);
 
             return users;
@@ -49,17 +49,21 @@ namespace Webshop_Project.API.Business.Services
             userEntity.Created = DateTime.Now;
             userEntity.Updated = DateTime.Now;
 
-            await _userRepository.AddUserAsync(userEntity);
+            await _userRepository.AddItemAsync(userEntity);
         }
 
         public async Task DeleteUserAsync(int id)
         {
-            await _userRepository.DeleteUserByIDAsync(id);
+            UserEntity userEntity = new UserEntity()
+            {
+                ID = id
+            };
+            await _userRepository.DeleteItemByIDAsync(userEntity);
         }
 
         public async Task UpdateUserAsync(int id, User user)
         {
-            UserEntity userEntity = await _userRepository.GetUserByIDAsync(id);
+            UserEntity userEntity = await _userRepository.GetItemByIDAsync(id);
             UserEntity updateUserEntity = _mapper.Map<UserEntity>(user);
 
             userEntity.Name = updateUserEntity.Name;
@@ -68,7 +72,7 @@ namespace Webshop_Project.API.Business.Services
             userEntity.Password = updateUserEntity.Password;
             userEntity.Updated = DateTime.Now;
 
-            await _userRepository.UpdateUserAsync(userEntity);
+            await _userRepository.UpdateItemAsync(userEntity);
         }
     }
 }

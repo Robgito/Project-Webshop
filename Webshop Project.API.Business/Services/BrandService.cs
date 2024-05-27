@@ -1,16 +1,17 @@
 ﻿using AutoMapper;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Data.Entities;
+using Webshop_Project.API.Data.Migrations;
 using Webshop_Project.API.Data.Repositories;
 
 namespace Webshop_Project.API.Business.Services
 {
     public class BrandService : IBrandService
     {
-        private IBrandRepository _brandRepository;
+        private IGenericRepo<BrandEntity> _brandRepository;
         private IMapper _mapper;
 
-        public BrandService(IBrandRepository brandRepository, IMapper mapper)
+        public BrandService(IGenericRepo<BrandEntity> brandRepository, IMapper mapper)
         {
             _brandRepository = brandRepository;
             _mapper = mapper;
@@ -18,7 +19,7 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task<Brand> GetBrandAsync(int id)
         {
-            BrandEntity brandEntity = await _brandRepository.GetBrandByIDAsync(id);
+            BrandEntity brandEntity = await _brandRepository.GetItemByIDAsync(id);
 
             if (brandEntity == null)
             {
@@ -31,7 +32,7 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task<IEnumerable<Brand>> GetAllBrandsAsync()
         {
-            IEnumerable<BrandEntity> brandEntities = await _brandRepository.GetAllBrandsAsync();
+            IEnumerable<BrandEntity> brandEntities = await _brandRepository.GetAllItemAsync();
             IEnumerable<Brand> brands = _mapper.Map<IEnumerable<Brand>>(brandEntities);
             return brands;
         }
@@ -42,24 +43,28 @@ namespace Webshop_Project.API.Business.Services
             brandEntity.Created = DateTime.Now;
             brandEntity.Updated = DateTime.Now;
 
-            await _brandRepository.AddBrandAsync(brandEntity);
+            await _brandRepository.AddItemAsync(brandEntity);
         }
 
         public async Task DeleteBrandAsync(int id)
         {
-            await _brandRepository.DeleteBrandAsync(id);
+            BrandEntity item = new BrandEntity()
+            {
+                ID = id
+            };
+            await _brandRepository.DeleteItemByIDAsync(item);
         }
 
         public async Task UpdateBrandAsync(int id, Brand brand)
         {
-            BrandEntity brandDB = await _brandRepository.GetBrandByIDAsync(id);
+            BrandEntity brandDB = await _brandRepository.GetItemByIDAsync(id);
 
             BrandEntity updatebrandEntity = _mapper.Map<BrandEntity>(brand);
 
             brandDB.Name = updatebrandEntity.Name;
             brandDB.Updated = DateTime.Now;
 
-            await _brandRepository.UpdateBrandAsync(brandDB);
+            await _brandRepository.UpdateItemAsync(brandDB);
         }
 
     }

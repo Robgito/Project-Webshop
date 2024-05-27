@@ -7,10 +7,10 @@ namespace Webshop_Project.API.Business.Services
 {
     public class CategoryService : ICategoryService
     {
-        private ICategoryRepository _categoryRepository;
+        private IGenericRepo<CategoryEntity> _categoryRepository;
         private IMapper _mapper;
 
-        public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
+        public CategoryService(IGenericRepo<CategoryEntity> categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;
@@ -18,7 +18,7 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task<Category> GetCategoryAsync(int id)
         {
-            CategoryEntity categoryEntity = await _categoryRepository.GetCategoryByIDAsync(id);
+            CategoryEntity categoryEntity = await _categoryRepository.GetItemByIDAsync(id);
 
             if (categoryEntity == null)
             {
@@ -31,7 +31,7 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
         {
-            IEnumerable<CategoryEntity> categoryEntities = await _categoryRepository.GetAllCategoriesAsync();
+            IEnumerable<CategoryEntity> categoryEntities = await _categoryRepository.GetAllItemAsync();
             IEnumerable<Category> categories = _mapper.Map<IEnumerable<Category>>(categoryEntities);
             return categories;
         }
@@ -42,24 +42,28 @@ namespace Webshop_Project.API.Business.Services
             categoryEntity.Created = DateTime.Now;
             categoryEntity.Updated = DateTime.Now;
 
-            await _categoryRepository.AddCategoryAsync(categoryEntity);
+            await _categoryRepository.AddItemAsync(categoryEntity);
         }
 
         public async Task DeleteCategoryAsync(int id)
         {
-            await _categoryRepository.DeleteCategoryByIDAsync(id);
+            CategoryEntity categoryEntity = new CategoryEntity()
+            {
+                ID = id
+            };
+            await _categoryRepository.DeleteItemByIDAsync(categoryEntity);
         }
 
         public async Task UpdateCategoryAsync(int id, Category category)
         {
-            CategoryEntity categoryDB = await _categoryRepository.GetCategoryByIDAsync(id);
+            CategoryEntity categoryDB = await _categoryRepository.GetItemByIDAsync(id);
 
             CategoryEntity updatecategoryEntity = _mapper.Map<CategoryEntity>(category);
 
             categoryDB.Name = updatecategoryEntity.Name;
             categoryDB.Updated = DateTime.Now;
 
-            await _categoryRepository.UpdateCategoryAsync(categoryDB);
+            await _categoryRepository.UpdateItemAsync(categoryDB);
         }
     }
 }
