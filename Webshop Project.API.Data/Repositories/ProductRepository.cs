@@ -5,13 +5,12 @@ namespace Webshop_Project.API.Data.Repositories
 {
     public class ProductRepository : GenericRepo<SmartphoneEntity>, IProductRepository
     {
-        private WebshopDBContext _dbContext;
         public ProductRepository(WebshopDBContext dbContext) : base(dbContext)
         {
 
         }
 
-        public async Task<SmartphoneEntity> GetSmartphoneByIDAsync(int id)
+        public override async Task<SmartphoneEntity> GetItemByIDAsync(int id)
         {
             return await _dbContext.Smartphones
                 .Include(x => x.Category)
@@ -19,7 +18,7 @@ namespace Webshop_Project.API.Data.Repositories
                 .SingleOrDefaultAsync(x => x.ID == id);
         }
 
-        public async Task<IEnumerable<SmartphoneEntity>> GetAllSmartphonesAsync()
+        public override async Task<IEnumerable<SmartphoneEntity>> GetAllItemAsync()
         {
             return await _dbContext.Smartphones
                 .Include(x => x.Category)

@@ -8,7 +8,7 @@ using Webshop_Project.API.Data.Entities;
 
 namespace Webshop_Project.API.Data.Repositories
 {
-    public class UserRepository : GenericRepo<UserEntity>
+    public class UserRepository : GenericRepo<UserEntity>, IUserRepository
     {
         public UserRepository(WebshopDBContext dbContext) : base(dbContext)
         {
@@ -18,6 +18,7 @@ namespace Webshop_Project.API.Data.Repositories
         {
             return await _dbContext.Users
                 .Include(x => x.Basket)
+                .ThenInclude(x => x.ListProducts)
                 .SingleOrDefaultAsync(x => x.ID == id);
         }
 
@@ -25,6 +26,7 @@ namespace Webshop_Project.API.Data.Repositories
         {
             return await _dbContext.Users
                 .Include(x => x.Basket)
+                .ThenInclude(x => x.ListProducts)
                 .ToArrayAsync();
         }
     }
