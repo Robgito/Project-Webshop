@@ -51,7 +51,6 @@ internal class Program
         builder.Services.AddScoped<IGenericRepo<BrandEntity>,  GenericRepo<BrandEntity>>();
         builder.Services.AddScoped<IGenericRepo<CategoryEntity>,  GenericRepo<CategoryEntity>>();
         builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-        builder.Services.AddScoped<IUserRepository,  UserRepository>();
         builder.Services.AddScoped<ISmartphoneService, SmartphoneService>();
         builder.Services.AddScoped<ICategoryService, CategoryService>();
         builder.Services.AddScoped<IBrandService, BrandService>();

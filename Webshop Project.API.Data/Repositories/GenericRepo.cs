@@ -14,12 +14,12 @@ namespace Webshop_Project.API.Data.Repositories
             _dbSet = _dbContext.Set<T>();
         }
 
-        public async Task<T> GetItemByIDAsync(int id)
+        public virtual async Task<T> GetItemByIDAsync(int id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAllItemAsync()
+        public virtual async Task<IEnumerable<T>> GetAllItemAsync()
         {
             return await _dbSet.ToArrayAsync();
         }

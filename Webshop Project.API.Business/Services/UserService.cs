@@ -13,12 +13,14 @@ namespace Webshop_Project.API.Business.Services
     public class UserService : IUserService
     {
         private readonly IGenericRepo<UserEntity> _userRepository;
+        private readonly IGenericRepo<BasketEntity> _basketRepository;
         private IMapper _mapper;
 
-        public UserService(IGenericRepo<UserEntity> userRepository, IMapper mapper)
+        public UserService(IGenericRepo<UserEntity> userRepository, IMapper mapper, IGenericRepo<BasketEntity> basketRepository)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _basketRepository = basketRepository;
         }
 
         public async Task<User> GetUserAsync(int id)
@@ -75,11 +77,12 @@ namespace Webshop_Project.API.Business.Services
             await _userRepository.UpdateItemAsync(userEntity);
         }
 
-        public async Task MakeUserInactiveAsync(User user)
+        public async Task MakeUserInactiveAsync(int id)
         {
-            UserEntity userEntity = _mapper.Map<UserEntity>(user);
+            UserEntity userEntity = await _userRepository.GetItemByIDAsync(id);
 
             await _userRepository.MakeItemInactiveAsync(userEntity);
+            //await _basketRepository.MakeItemInactiveAsync(userEntity.BasketID);
         }
     }
 }

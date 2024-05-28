@@ -44,16 +44,16 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Basket", (string)null);
+                    b.ToTable("Basket");
 
                     b.HasData(
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(1054),
+                            Created = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9982),
                             IsActive = true,
                             ShippingPrice = 25.0,
-                            Updated = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(1058)
+                            Updated = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9983)
                         });
                 });
 
@@ -92,7 +92,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasIndex("SmartphoneEntityID");
 
-                    b.ToTable("BasketProducts", (string)null);
+                    b.ToTable("BasketProducts");
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.BrandEntity", b =>
@@ -118,16 +118,16 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Brands", (string)null);
+                    b.ToTable("Brands");
 
                     b.HasData(
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(880),
+                            Created = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9915),
                             IsActive = true,
                             Name = "Samsung",
-                            Updated = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(886)
+                            Updated = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9917)
                         });
                 });
 
@@ -154,16 +154,16 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(538),
+                            Created = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9809),
                             IsActive = true,
                             Name = "Test",
-                            Updated = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(610)
+                            Updated = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9855)
                         });
                 });
 
@@ -203,7 +203,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.OrderProductEntity", b =>
@@ -241,7 +241,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasIndex("SmartphoneEntityID");
 
-                    b.ToTable("OrderProducts", (string)null);
+                    b.ToTable("OrderProducts");
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.SmartphoneEntity", b =>
@@ -299,7 +299,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("Smartphones", (string)null);
+                    b.ToTable("Smartphones");
 
                     b.HasData(
                         new
@@ -308,7 +308,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Red",
-                            Created = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(954),
+                            Created = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9940),
                             Description = "Lorem Ipsum",
                             Image = "LoremPicsum",
                             IsActive = true,
@@ -316,7 +316,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Name = "Samsung",
                             Price = 1099.99,
                             Stock = 5,
-                            Updated = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(959)
+                            Updated = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9941)
                         });
                 });
 
@@ -360,7 +360,21 @@ namespace Webshop_Project.API.Data.Migrations
 
                     b.HasIndex("BasketID");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            BasketID = 1,
+                            Created = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9960),
+                            Email = "test@test.be",
+                            IsActive = true,
+                            Name = "TestUser",
+                            Password = "123",
+                            Role = "[\"Admin\"]",
+                            Updated = new DateTime(2024, 5, 28, 11, 36, 44, 722, DateTimeKind.Local).AddTicks(9961)
+                        });
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.BasketProductEntity", b =>
@@ -387,7 +401,7 @@ namespace Webshop_Project.API.Data.Migrations
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.SmartphoneEntity", b =>
                 {
-                    b.HasOne("Webshop_Project.API.Data.Entities.BrandEntity", "Brand")
+                    b.HasOne("Webshop_Project.API.Data.Entities.BasketEntity", "Brand")
                         .WithMany()
                         .HasForeignKey("BrandID")
                         .OnDelete(DeleteBehavior.Cascade)
