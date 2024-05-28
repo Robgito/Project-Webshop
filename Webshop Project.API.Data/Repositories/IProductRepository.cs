@@ -2,9 +2,9 @@
 
 namespace Webshop_Project.API.Data.Repositories
 {
-    public interface IProductRepository : IGenericRepo<SmartphoneEntity>
+    public interface IProductRepository
     {
-        Task<IEnumerable<SmartphoneEntity>> GetAllItemAsync();
-        Task<SmartphoneEntity> GetItemByIDAsync(int id);
+        Task<IEnumerable<SmartphoneEntity>> GetAllSmartphonesAsync();
+        Task<SmartphoneEntity> GetSmartphoneByIDAsync(int id);
     }
 }

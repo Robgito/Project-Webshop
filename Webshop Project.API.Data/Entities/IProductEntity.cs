@@ -10,7 +10,7 @@
         int CategoryID { get; set; }
         int BrandID { get; set; }
         CategoryEntity Category { get; set; }
-        BrandEntity Brand { get; set; }
+        BasketEntity Brand { get; set; }
         List<BasketProductEntity> ProductsInBaskets {  get; set; }
         List<OrderProductEntity> ProductsInOrders { get; set; }
     }
