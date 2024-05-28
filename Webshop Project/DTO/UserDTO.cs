@@ -9,6 +9,6 @@ namespace Webshop_Project.DTO
         public string[] Role { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public BasketEntity Basket { get; set; }
+        public BasketDTO Basket { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace Webshop_Project.DTO
     {
         public int ID { get; set; }
         public double ShippingPrice { get; set; }
-        public List<BasketProductEntity> ListProducts { get; set; }
+        public List<BasketProductDTO> ListProducts { get; set; }
     }
 }

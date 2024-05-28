@@ -7,10 +7,10 @@ namespace Webshop_Project.API.Business.Services
 {
     public class SmartphoneService : ISmartphoneService
     {
-        private readonly IGenericRepo<SmartphoneEntity> _productRepository;
+        private readonly IProductRepository _productRepository;
         private IMapper _mapper;
 
-        public SmartphoneService(IGenericRepo<SmartphoneEntity> productRepository, IMapper mapper)
+        public SmartphoneService(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;
@@ -32,10 +32,10 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task<IEnumerable<Smartphone>> GetSmartphonesAsync()
         {
-            List<Smartphone> smartphones = new List<Smartphone>();
+            IEnumerable<Smartphone> smartphones = new List<Smartphone>();
             IEnumerable<SmartphoneEntity> smartphoneEntities = await _productRepository.GetAllItemAsync();
 
-            smartphones = _mapper.Map<List<Smartphone>>(smartphoneEntities);
+            smartphones = _mapper.Map<IEnumerable<Smartphone>>(smartphoneEntities);
             return smartphones;
         }
 

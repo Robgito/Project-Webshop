@@ -12,11 +12,11 @@ namespace Webshop_Project.API.Business.Services
 {
     public class UserService : IUserService
     {
-        private readonly IGenericRepo<UserEntity> _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IGenericRepo<BasketEntity> _basketRepository;
         private IMapper _mapper;
 
-        public UserService(IGenericRepo<UserEntity> userRepository, IMapper mapper, IGenericRepo<BasketEntity> basketRepository)
+        public UserService(IUserRepository userRepository, IMapper mapper, IGenericRepo<BasketEntity> basketRepository)
         {
             _userRepository = userRepository;
             _mapper = mapper;
@@ -80,9 +80,10 @@ namespace Webshop_Project.API.Business.Services
         public async Task MakeUserInactiveAsync(int id)
         {
             UserEntity userEntity = await _userRepository.GetItemByIDAsync(id);
+            BasketEntity basketEntity = await _basketRepository.GetItemByIDAsync(userEntity.BasketID);
 
             await _userRepository.MakeItemInactiveAsync(userEntity);
-            //await _basketRepository.MakeItemInactiveAsync(userEntity.BasketID);
+            await _basketRepository.MakeItemInactiveAsync(basketEntity);
         }
     }
 }
