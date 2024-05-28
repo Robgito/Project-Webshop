@@ -16,6 +16,6 @@ namespace Webshop_Project.API.Business.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public int BasketID { get; set; }
-        public BasketEntity Basket { get; set; }
+        public Basket Basket { get; set; }
     }
 }
