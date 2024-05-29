@@ -12,8 +12,8 @@ using Webshop_Project.API.Data;
 namespace Webshop_Project.API.Data.Migrations
 {
     [DbContext(typeof(WebshopDBContext))]
-    [Migration("20240523083346_AddSeedData")]
-    partial class AddSeedData
+    [Migration("20240529094440_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,10 +53,10 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(1054),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(5004),
                             IsActive = true,
                             ShippingPrice = 25.0,
-                            Updated = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(1058)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(5082)
                         });
                 });
 
@@ -127,10 +127,10 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(880),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4722),
                             IsActive = true,
                             Name = "Samsung",
-                            Updated = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(886)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4727)
                         });
                 });
 
@@ -163,10 +163,10 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(538),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4410),
                             IsActive = true,
                             Name = "Test",
-                            Updated = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(610)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4484)
                         });
                 });
 
@@ -311,7 +311,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Red",
-                            Created = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(954),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4864),
                             Description = "Lorem Ipsum",
                             Image = "LoremPicsum",
                             IsActive = true,
@@ -319,7 +319,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Name = "Samsung",
                             Price = 1099.99,
                             Stock = 5,
-                            Updated = new DateTime(2024, 5, 23, 10, 33, 44, 76, DateTimeKind.Local).AddTicks(959)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4870)
                         });
                 });
 
@@ -364,6 +364,20 @@ namespace Webshop_Project.API.Data.Migrations
                     b.HasIndex("BasketID");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            BasketID = 1,
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4941),
+                            Email = "test@test.be",
+                            IsActive = true,
+                            Name = "TestUser",
+                            Password = "123",
+                            Role = "[\"Admin\"]",
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4945)
+                        });
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.BasketProductEntity", b =>

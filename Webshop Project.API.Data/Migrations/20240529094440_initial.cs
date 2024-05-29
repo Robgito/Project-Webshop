@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Webshop_Project.API.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class ManyToMany : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -111,19 +111,19 @@ namespace Webshop_Project.API.Data.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Updated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Stock = table.Column<int>(type: "int", nullable: false),
-                    MemoryCapacity = table.Column<int>(type: "int", nullable: false),
-                    Colour = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ScreenSize = table.Column<double>(type: "float", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     BrandID = table.Column<int>(type: "int", nullable: false),
-                    CategoryID = table.Column<int>(type: "int", nullable: false)
+                    CategoryID = table.Column<int>(type: "int", nullable: false),
+                    Colour = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    MemoryCapacity = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    ScreenSize = table.Column<double>(type: "float", nullable: true),
+                    Stock = table.Column<int>(type: "int", nullable: false),
+                    Updated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -199,6 +199,31 @@ namespace Webshop_Project.API.Data.Migrations
                         principalTable: "Smartphones",
                         principalColumn: "ID");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Basket",
+                columns: new[] { "ID", "Created", "IsActive", "ShippingPrice", "Updated" },
+                values: new object[] { 1, new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(5004), true, 25.0, new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(5082) });
+
+            migrationBuilder.InsertData(
+                table: "Brands",
+                columns: new[] { "ID", "Created", "IsActive", "Name", "Updated" },
+                values: new object[] { 1, new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4722), true, "Samsung", new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4727) });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "ID", "Created", "IsActive", "Name", "Updated" },
+                values: new object[] { 1, new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4410), true, "Test", new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4484) });
+
+            migrationBuilder.InsertData(
+                table: "Smartphones",
+                columns: new[] { "ID", "BrandID", "CategoryID", "Colour", "Created", "Description", "Image", "IsActive", "MemoryCapacity", "Name", "Price", "ScreenSize", "Stock", "Updated" },
+                values: new object[] { 1, 1, 1, "Red", new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4864), "Lorem Ipsum", "LoremPicsum", true, 125, "Samsung", 1099.99, null, 5, new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4870) });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "ID", "BasketID", "Created", "Email", "IsActive", "Name", "Password", "Role", "Updated" },
+                values: new object[] { 1, 1, new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4941), "test@test.be", true, "TestUser", "123", "[\"Admin\"]", new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4945) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BasketProducts_BasketEntityID",

@@ -2,8 +2,8 @@
 
 namespace Webshop_Project.API.Data.Repositories
 {
-    public interface IOrderRepository
+    public interface IOrderRepository : IGenericRepo<OrderEntity>
     {
-        Task<IEnumerable<OrderEntity>> GetAllOrdersAsync();
+        Task<IEnumerable<OrderEntity>> GetAllItemAsync();
     }
 }

@@ -50,10 +50,10 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1276),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(5004),
                             IsActive = true,
                             ShippingPrice = 25.0,
-                            Updated = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1277)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(5082)
                         });
                 });
 
@@ -124,10 +124,10 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1196),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4722),
                             IsActive = true,
                             Name = "Samsung",
-                            Updated = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1198)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4727)
                         });
                 });
 
@@ -160,10 +160,10 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1079),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4410),
                             IsActive = true,
                             Name = "Test",
-                            Updated = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1130)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4484)
                         });
                 });
 
@@ -308,7 +308,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Red",
-                            Created = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1226),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4864),
                             Description = "Lorem Ipsum",
                             Image = "LoremPicsum",
                             IsActive = true,
@@ -316,7 +316,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Name = "Samsung",
                             Price = 1099.99,
                             Stock = 5,
-                            Updated = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1227)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4870)
                         });
                 });
 
@@ -367,13 +367,13 @@ namespace Webshop_Project.API.Data.Migrations
                         {
                             ID = 1,
                             BasketID = 1,
-                            Created = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1251),
+                            Created = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4941),
                             Email = "test@test.be",
                             IsActive = true,
                             Name = "TestUser",
                             Password = "123",
                             Role = "[\"Admin\"]",
-                            Updated = new DateTime(2024, 5, 28, 14, 2, 16, 391, DateTimeKind.Local).AddTicks(1252)
+                            Updated = new DateTime(2024, 5, 29, 11, 44, 37, 594, DateTimeKind.Local).AddTicks(4945)
                         });
                 });
 
@@ -401,7 +401,7 @@ namespace Webshop_Project.API.Data.Migrations
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.SmartphoneEntity", b =>
                 {
-                    b.HasOne("Webshop_Project.API.Data.Entities.BasketEntity", "Brand")
+                    b.HasOne("Webshop_Project.API.Data.Entities.BrandEntity", "Brand")
                         .WithMany()
                         .HasForeignKey("BrandID")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -10,21 +10,16 @@ namespace Webshop_Project.API.Data.Repositories
 {
     public class OrderRepository : GenericRepo<OrderEntity>, IOrderRepository
     {
-        private WebshopDBContext _dbContext;
-
         public OrderRepository(WebshopDBContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<OrderEntity>> GetAllOrdersAsync()
+        public override async Task<IEnumerable<OrderEntity>> GetAllItemAsync()
         {
             return await _dbContext.Orders
                 .Include(x => x.ListProducts)
                 .ToArrayAsync();
         }
-
-
 
     }
 }

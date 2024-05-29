@@ -47,10 +47,11 @@ internal class Program
     private static void InjectServices(WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
-        builder.Services.AddScoped<IBasketRepository,  BasketRepository>();
-        builder.Services.AddScoped<IGenericRepo<BrandEntity>,  GenericRepo<BrandEntity>>();
-        builder.Services.AddScoped<IGenericRepo<CategoryEntity>,  GenericRepo<CategoryEntity>>();
+        builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+        builder.Services.AddScoped<IGenericRepo<BrandEntity>, GenericRepo<BrandEntity>>();
+        builder.Services.AddScoped<IGenericRepo<CategoryEntity>, GenericRepo<CategoryEntity>>();
         builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+        builder.Services.AddScoped<IGenericRepo<OrderEntity>, GenericRepo<OrderEntity>>();
         builder.Services.AddScoped<ISmartphoneService, SmartphoneService>();
         builder.Services.AddScoped<ICategoryService, CategoryService>();
         builder.Services.AddScoped<IBrandService, BrandService>();
