@@ -1,5 +1,12 @@
-<ul>
-    <li *ngFor="let smartphone of smartphones">
-    {{smartphone.name}}
-    </li>
-</ul>
+<div class="container">
+    @for (smartphone of smartphones; track smartphone) {
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{smartphone.name}}</h5>
+              <p class="card-text">{{smartphone.description}}</p>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+          </div>
+    }
+</div>
