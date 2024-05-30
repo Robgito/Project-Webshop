@@ -44,7 +44,7 @@ internal class Program
 
         app.UseAuthorization();
 
-        app.UseCors();
+        app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
         app.MapControllers();
 
