@@ -2,11 +2,11 @@
     @for (smartphone of smartphones; track smartphone) {
         <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body">              
               <h5 class="card-title">{{smartphone.name}}</h5>
               <p class="card-text">{{smartphone.description}}</p>
               <a href="#" class="btn btn-primary">Add to cart</a>
-              <a routerLink="smartphone-details" class="btn btn-primary">View details</a>
+              <a [routerLink]="'/smartphones/' + smartphone.id" class="btn btn-primary">View details</a>
             </div>
           </div>
     }
