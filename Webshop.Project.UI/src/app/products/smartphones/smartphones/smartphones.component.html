@@ -1,5 +1,22 @@
-<ul>
-    <li *ngFor="let smartphone of smartphones">
-    {{smartphone.name}}
-    </li>
-</ul>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+                @for (smartphone of smartphones; track smartphone) {
+                    <div class="col-12 col-md-6 col-lg-4 text-center">
+                        <div class="row">
+                            <div class="card my-2" style="width: 18rem;">
+                                <img [src]="smartphone.image" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{smartphone.name}}</h5>
+                                    <p class="card-text">{{smartphone.description}}</p>
+                                    <a href="#" class="btn btn-primary mx-1">Add to cart</a>
+                                    <a routerLink="smartphone-details" class="btn btn-primary">View details</a>                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+</div>
+
