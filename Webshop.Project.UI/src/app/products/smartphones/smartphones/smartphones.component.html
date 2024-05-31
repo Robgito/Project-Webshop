@@ -1,6 +1,73 @@
 <div class="container-fluid">
     <div class="container">
         <div class="row">
+            <div class="col-12">
+                <!-- Filter form -->              
+                <form>
+                    <div class="form-row align-items-center">
+
+                        <div class="col-auto my-3 mx-1">
+                            <div class="dropend">
+                                <button class="btn btn-secondary dropdown-toggle" id="btnFilter" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Filters
+                                  </button>
+                                  <ul class="dropdown-menu px-2 mx-1">
+                            <!-- Brands filter start -->
+                            <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Brands:</label>
+                            <select class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
+                                <option selected>Choose...</option>
+                                <option value="1">Samsung</option>
+                                <option value="2">Apple</option>
+                                <option value="3">Google</option>
+                                <option value="3">Huawei</option>
+                                <option value="3">OnePlus</option>
+                            </select>
+                            <!-- Brands filter end -->
+                            <!-- Category filter start -->
+                            <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Category:</label>
+                            <select class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
+                                <option selected>Choose...</option>
+                                <option value="1">Smartphone</option>
+                                <option value="2">Tablet</option>
+                            </select>
+                            <!-- Category filter end -->
+                            <!-- Memory capacity filter start -->
+                            <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Memory:</label>
+                            <select class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
+                                <option selected>Choose...</option>
+                                <option value="1">64GB</option>
+                                <option value="2">128GB</option>
+                                <option value="2">254GB</option>
+                            </select>
+                            <!-- Memory capacity filter end -->
+                            <!-- Price range filter start -->
+                            <label for="exampleInputEmail1" class="form-label mx-1">Min. Price</label>
+                            <input style="width: 6rem;" class="mr-sm-2 sr-only mx-1" id="minPrice">
+                            <label for="exampleInputEmail1" class="form-label mx-1">Max. Price</label>
+                            <input style="width: 6rem;" class="mr-sm-2 sr-only mx-1" id="minPrice">
+                            <!-- Price range filter end -->
+                            <button type="submit" class="btn btn-secondary mx-1">Submit</button>
+                                  </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+            <div class="col-12">
+                <h3>Smartphones</h3>
+                <div class="col-auto my-3">
+                    <!-- Sorting start -->
+                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Sort by</label>
+                    <select class="custom-select mr-sm-2 mx-2" id="inlineFormCustomSelect">
+                        <option selected>Choose...</option>
+                        <option value="1">alphabetical</option>
+                        <option value="2">Price low-high</option>
+                        <option value="3">Price high-low</option>
+                    </select>
+                </div>
+                    <!-- Sorting end -->
+            </div>
                 @for (smartphone of smartphones; track smartphone) {
                     <div class="col-12 col-md-6 col-lg-4 text-center">
                         <div class="row">
@@ -16,7 +83,7 @@
                         </div>
                     </div>
                 }
+                <app-pagination></app-pagination>
         </div>
     </div>
 </div>
-
