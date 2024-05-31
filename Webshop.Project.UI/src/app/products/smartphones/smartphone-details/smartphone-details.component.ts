@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SmartphoneService } from '../../../services/smartphone.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-smartphone-details',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './smartphone-details.component.css'
 })
 export class SmartphoneDetailsComponent {
+smartphone: any;
 
+constructor(private smartservice: SmartphoneService, private route: ActivatedRoute) {
+  this.route.params.subscribe(params => {
+    const phoneId = params['smartphoneId']
+    this.smartservice.getDetailedSmartphoneByName(phoneId).subscribe(data => {
+      this.smartphone = data;
+      console.log(data)
+    })
+})
+
+}
 }

@@ -6,13 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SmartphoneService {
+  
 
   private API_URL = 'https://localhost:7129/api/Smartphone/GetAllSmartphones';
 
+  constructor(private httpClient : HttpClient) { }
 
   getSmartphones() : Observable<any>{
     return this.httpClient.get(this.API_URL);
   }
 
-  constructor(private httpClient : HttpClient) { }
+
+  getDetailedSmartphoneByName(id: number) {
+    
+    return this.httpClient.get(`https://localhost:7129/api/Smartphone?id=${id}`);
+
+  }
+
+
+  
 }

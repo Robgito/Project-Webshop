@@ -4,8 +4,9 @@ import { SmartphonesComponent } from './products/smartphones/smartphones/smartph
 import { SmartphoneDetailsComponent } from './products/smartphones/smartphone-details/smartphone-details.component';
 
 const routes: Routes = [
+  { path: '', component: SmartphonesComponent },
   { path: 'smartphones', component: SmartphonesComponent },
-  { path: 'smartphone-details', component: SmartphoneDetailsComponent },
+  { path: 'smartphones/:smartphoneId', component: SmartphoneDetailsComponent },
 ];
 
 @NgModule({
