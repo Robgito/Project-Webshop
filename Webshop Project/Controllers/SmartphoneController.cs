@@ -20,6 +20,7 @@ namespace Webshop_Project.Controllers
         }
 
         [HttpGet]
+
         public async Task<ActionResult<SmartphoneDTO>> GetSpecificSmartphoneAsync(int id)
         {
             Smartphone smartphone = await _smartphoneService.GetSmartphoneAsync(id);

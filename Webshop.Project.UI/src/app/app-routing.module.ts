@@ -5,6 +5,7 @@ import { SmartphoneDetailsComponent } from './products/smartphones/smartphone-de
 import { BasketComponent } from './basket/basket.component';
 
 const routes: Routes = [
+  { path: '', component: SmartphonesComponent },
   { path: 'smartphones', component: SmartphonesComponent },
   { path: 'smartphones/:smartphoneId', component: SmartphoneDetailsComponent },
   { path: 'basket', component: BasketComponent}
