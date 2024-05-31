@@ -8,6 +8,7 @@ import { SmartphonesComponent } from './products/smartphones/smartphones/smartph
 import { NavbarComponent } from './ui/navbar/navbar.component';
 import { BasketComponent } from './basket/basket.component';
 import { SmartphoneDetailsComponent } from './products/smartphones/smartphone-details/smartphone-details.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SmartphoneDetailsComponent } from './products/smartphones/smartphone-de
     SmartphonesComponent,
     NavbarComponent,
     BasketComponent,
-    SmartphoneDetailsComponent
+    SmartphoneDetailsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
