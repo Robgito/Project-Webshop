@@ -46,7 +46,7 @@ namespace Webshop_Project.API.Data
         {
             return new List<BasketEntity>
             {
-                new BasketEntity
+                new BasketEntity()
                 {
                     ID = 1,
                     Created = DateTime.Now,
@@ -69,7 +69,7 @@ namespace Webshop_Project.API.Data
                     IsActive = true,
                     Name = "Samsung"
                     },
-                    new BrandEntity
+                    new BrandEntity()
                     {
                         ID = 2,
                         Created = DateTime.Now,
@@ -77,7 +77,7 @@ namespace Webshop_Project.API.Data
                         IsActive = true,
                         Name = "Apple"
                     },
-                    new BrandEntity
+                    new BrandEntity()
                     {
                         ID = 3,
                         Created = DateTime.Now,
@@ -85,7 +85,7 @@ namespace Webshop_Project.API.Data
                         IsActive = true,
                         Name = "Google"
                     },
-                    new BrandEntity
+                    new BrandEntity()
                     {
                         ID = 4,
                         Created = DateTime.Now,
@@ -93,7 +93,7 @@ namespace Webshop_Project.API.Data
                         IsActive = true,
                         Name = "Huawei"
                     },
-                    new BrandEntity
+                    new BrandEntity()
                     {
                         ID = 5,
                         Created = DateTime.Now,
@@ -116,7 +116,7 @@ namespace Webshop_Project.API.Data
                     IsActive = true,
                     Name = "Smartphones"
                     },
-                    new CategoryEntity
+                    new CategoryEntity()
                     {
                         ID = 2,
                         Created = DateTime.Now,
@@ -124,7 +124,7 @@ namespace Webshop_Project.API.Data
                         IsActive = true,
                         Name = "Accessories"
                     },
-                    new CategoryEntity
+                    new CategoryEntity()
                     {
                         ID = 3,
                         Created = DateTime.Now,
@@ -132,7 +132,7 @@ namespace Webshop_Project.API.Data
                         IsActive = true,
                         Name = "Tablets"
                     },
-                    new CategoryEntity
+                    new CategoryEntity()
                     {
                         ID = 4,
                         Created = DateTime.Now,
@@ -154,7 +154,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Samsung Galaxy S21",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/181",
             BrandID = 1,
             CategoryID = 1,
             Colour = "Phantom Gray",
@@ -170,7 +170,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Apple iPhone 13",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/182",
             BrandID = 2,
             CategoryID = 1,
             Colour = "Midnight",
@@ -186,7 +186,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Google Pixel 6",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/183",
             BrandID = 3,
             CategoryID = 1,
             Colour = "Stormy Black",
@@ -202,7 +202,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Huawei P50",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/184",
             BrandID = 4,
             CategoryID = 1,
             Colour = "Golden Black",
@@ -218,7 +218,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "OnePlus 9",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/185",
             BrandID = 5,
             CategoryID = 1,
             Colour = "Winter Mist",
@@ -234,7 +234,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Samsung Galaxy Note 20",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/186",
             BrandID = 1,
             CategoryID = 1,
             Colour = "Mystic Bronze",
@@ -250,7 +250,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Apple iPhone 12",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/187",
             BrandID = 2,
             CategoryID = 1,
             Colour = "Blue",
@@ -266,7 +266,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Google Pixel 5",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/188",
             BrandID = 3,
             CategoryID = 1,
             Colour = "Just Black",
@@ -282,7 +282,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Huawei Mate 40",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/189",
             BrandID = 4,
             CategoryID = 1,
             Colour = "Space Silver",
@@ -298,7 +298,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "OnePlus 8T",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/190",
             BrandID = 5,
             CategoryID = 1,
             Colour = "Aquamarine Green",
@@ -314,7 +314,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Samsung Galaxy Z Fold 3",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/191",
             BrandID = 1,
             CategoryID = 1,
             Colour = "Phantom Black",
@@ -330,7 +330,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Apple iPhone SE",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/192",
             BrandID = 2,
             CategoryID = 1,
             Colour = "Red",
@@ -346,7 +346,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Google Pixel 4a",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/193",
             BrandID = 3,
             CategoryID = 1,
             Colour = "Barely Blue",
@@ -362,7 +362,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Huawei Y9s",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/194",
             BrandID = 4,
             CategoryID = 1,
             Colour = "Midnight Black",
@@ -378,7 +378,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "OnePlus Nord",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/195",
             BrandID = 5,
             CategoryID = 1,
             Colour = "Gray Onyx",
@@ -394,7 +394,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Samsung Galaxy A52",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/196",
             BrandID = 1,
             CategoryID = 1,
             Colour = "Awesome Blue",
@@ -410,7 +410,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Apple iPhone 11",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/197",
             BrandID = 2,
             CategoryID = 1,
             Colour = "Green",
@@ -426,7 +426,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Google Pixel 3 XL",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/198",
             BrandID = 3,
             CategoryID = 1,
             Colour = "Not Pink",
@@ -442,7 +442,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "Huawei Nova 7i",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/199",
             BrandID = 4,
             CategoryID = 1,
             Colour = "Crush Green",
@@ -458,7 +458,7 @@ namespace Webshop_Project.API.Data
             Updated = DateTime.Now,
             IsActive = true,
             Name = "OnePlus 7 Pro",
-            Image = "LoremPicsum",
+            Image = "https://picsum.photos/200",
             BrandID = 5,
             CategoryID = 1,
             Colour = "Nebula Blue",
@@ -466,6 +466,124 @@ namespace Webshop_Project.API.Data
             MemoryCapacity = 256,
             Price = 599.99,
             Stock = 20
+        },
+        new SmartphoneEntity()
+        {
+            ID = 21,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+            IsActive = true,
+            Name = "Samsung Galaxy S20",
+            Image = "https://picsum.photos/201",
+            BrandID = 1,
+            CategoryID = 1,
+            Colour = "Cosmic Gray",
+            Description = "Flagship Samsung smartphone with advanced camera features.",
+            MemoryCapacity = 128,
+            Price = 999.99,
+            Stock = 15
+        },
+
+        new SmartphoneEntity()
+        {
+            ID = 22,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+            IsActive = true,
+            Name = "Apple iPhone 11",
+            Image = "https://picsum.photos/202",
+            BrandID = 2,
+            CategoryID = 1,
+            Colour = "Black",
+            Description = "Latest Apple iPhone with dual camera system.",
+            MemoryCapacity = 64,
+            Price = 699.99,
+            Stock = 30
+        },
+
+        new SmartphoneEntity()
+        {
+            ID = 23,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+            IsActive = true,
+            Name = "Google Pixel 4",
+            Image = "https://picsum.photos/203",
+            BrandID = 3,
+            CategoryID = 1,
+            Colour = "Just Black",
+            Description = "Google's smartphone with excellent camera and Google Assistant integration.",
+            MemoryCapacity = 128,
+            Price = 799.99,
+            Stock = 25
+        },
+
+        new SmartphoneEntity()
+        {
+            ID = 24,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+            IsActive = true,
+            Name = "Huawei P30 Pro",
+            Image = "https://picsum.photos/204",
+            BrandID = 4,
+            CategoryID = 1,
+            Colour = "Aurora",
+            Description = "High-end Huawei device with superior zoom camera capabilities.",
+            MemoryCapacity = 256,
+            Price = 899.99,
+            Stock = 10
+        },
+
+        new SmartphoneEntity()
+        {
+            ID = 25,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+            IsActive = true,
+            Name = "Iphone 15 Pro Max",
+            Image = "https://picsum.photos/205",
+            BrandID = 2,
+            CategoryID = 1,
+            Colour = "Black",
+            Description = "New iphone flagship!",
+            MemoryCapacity = 128,
+            Price = 949.99,
+            Stock = 12
+        },
+
+        new SmartphoneEntity()
+        {
+            ID = 26,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+            IsActive = true,
+            Name = "Samsung Galaxy S24 Ultra",
+            Image = "https://picsum.photos/206",
+            BrandID = 1,
+            CategoryID = 1,
+            Colour = "Black",
+            Description = "New camera's, new design.",
+            MemoryCapacity = 128,
+            Price = 499.99,
+            Stock = 50
+        },
+
+        new SmartphoneEntity()
+        {
+            ID = 27,
+            Created = DateTime.Now,
+            Updated = DateTime.Now,
+            IsActive = true,
+            Name = "OnePlus 8 Pro",
+            Image = "https://picsum.photos/207",
+            BrandID = 5,
+            CategoryID = 1,
+            Colour = "Onyx Black",
+            Description = "Next-gen OnePlus device with fluid display and wireless charging.",
+            MemoryCapacity = 256,
+            Price = 799.99,
+            Stock = 18
         }
     };
         }
