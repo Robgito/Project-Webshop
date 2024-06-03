@@ -3,6 +3,7 @@ import { Smartphone } from '../model/smartphone.model';
 import { NgForm } from '@angular/forms';
 import { SmartphoneService } from '../services/smartphone.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-smartphone',
@@ -22,12 +23,13 @@ export class AddSmartphoneComponent implements OnInit {
     screenSize: 0,
     brandID: 1,
     categoryID: 1
+  };
 
-  }
-
-  constructor(private smartphoneservice: SmartphoneService) { }
+  constructor(private smartphoneservice: SmartphoneService, private activatedRoute: ActivatedRoute) { }
+  
+  
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+   this.phone = this.activatedRoute.snapshot.data['phone'];
   }
 
   addSmartphone(smartphoneForm: NgForm) {

@@ -3,6 +3,7 @@ import { Smartphone } from '../model/smartphone.model';
 import { NgForm } from '@angular/forms';
 import { SmartphoneService } from '../services/smartphone.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-products',
@@ -12,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ShowProductsComponent implements OnInit {
 
   smartphones: any;
-  constructor(private smartphoneservice: SmartphoneService) { }
+  constructor(private smartphoneservice: SmartphoneService, private router: Router) { }
 
   ngOnInit(): void {
     this.smartphoneservice.getSmartphones().subscribe(
@@ -38,7 +39,7 @@ export class ShowProductsComponent implements OnInit {
     }
 
     updateSmartPhoneById(smartphoneId: number) {
-      
+      this.router.navigate(['/add-smartphone', {smartphoneId: smartphoneId}]);
     }
 
 }

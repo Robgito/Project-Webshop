@@ -18,8 +18,8 @@ export class SmartphoneService {
   }
 
 
-  getDetailedSmartphoneById(id: number) {
-    return this.httpClient.get(`https://localhost:7129/api/Smartphone?id=${id}`);
+  getDetailedSmartphoneById(id: any) {
+    return this.httpClient.get<Smartphone>(`https://localhost:7129/api/Smartphone?id=${id}`);
   }
 
   addSmartphone(smartphone: Smartphone) {

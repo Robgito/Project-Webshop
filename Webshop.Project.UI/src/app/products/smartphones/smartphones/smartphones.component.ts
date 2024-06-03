@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SmartphoneService } from '../../../services/smartphone.service';
 
+
 @Component({
   selector: 'app-smartphones',
   templateUrl: './smartphones.component.html',
