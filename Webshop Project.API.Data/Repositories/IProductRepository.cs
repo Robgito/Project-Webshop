@@ -4,7 +4,7 @@ namespace Webshop_Project.API.Data.Repositories
 {
     public interface IProductRepository : IGenericRepo<SmartphoneEntity>
     {
-        Task<IEnumerable<SmartphoneEntity>> GetAllItemAsync(int skip, int take, int enterBrandID, int enterCategoryID, int enterMemoryCapacity, int enterMinPrice, int enterMaxPrice);
+        Task<IEnumerable<SmartphoneEntity>> GetAllItemAsync(int skip, int take, int? enterBrandID, int? enterCategoryID, int? enterMemoryCapacity, int? enterMinPrice, int? enterMaxPrice);
         Task<SmartphoneEntity> GetItemByIDAsync(int id);
     }
 }

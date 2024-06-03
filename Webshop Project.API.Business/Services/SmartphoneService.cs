@@ -30,7 +30,7 @@ namespace Webshop_Project.API.Business.Services
             return smartphone;
         }
 
-        public async Task<IEnumerable<Smartphone>> GetSmartphonesAsync(int page, int take, int enterBrandID, int enterCategoryID, int enterMemoryCapacity, int enterMinPrice, int enterMaxPrice)
+        public async Task<IEnumerable<Smartphone>> GetSmartphonesAsync(int page, int take, int? enterBrandID, int? enterCategoryID, int? enterMemoryCapacity, int? enterMinPrice, int? enterMaxPrice)
         {
             int skip = (page - 1) * take;
 
