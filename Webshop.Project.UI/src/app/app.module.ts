@@ -9,6 +9,10 @@ import { NavbarComponent } from './ui/navbar/navbar.component';
 import { BasketComponent } from './basket/basket.component';
 import { SmartphoneDetailsComponent } from './products/smartphones/smartphone-details/smartphone-details.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { SignInComponent } from './sign/sign-in/sign-in.component';
+import { SignUpComponent } from './sign/sign-up/sign-up.component';
+import { FooterComponent } from './ui/footer/footer.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { PaginationComponent } from './pagination/pagination.component';
     NavbarComponent,
     BasketComponent,
     SmartphoneDetailsComponent,
-    PaginationComponent
+    PaginationComponent,
+    SignInComponent,
+    SignUpComponent,
+    FooterComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

@@ -3,12 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { SmartphonesComponent } from './products/smartphones/smartphones/smartphones.component';
 import { SmartphoneDetailsComponent } from './products/smartphones/smartphone-details/smartphone-details.component';
 import { BasketComponent } from './basket/basket.component';
+import { SignInComponent } from './sign/sign-in/sign-in.component';
+import { SignUpComponent } from './sign/sign-up/sign-up.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: SmartphonesComponent },
   { path: 'smartphones', component: SmartphonesComponent },
   { path: 'smartphones/:smartphoneId', component: SmartphoneDetailsComponent },
-  { path: 'basket', component: BasketComponent}
+  { path: 'basket', component: BasketComponent},
+  { path: 'signin', component: SignInComponent},
+  { path: 'signup', component: SignUpComponent},
+  { path: 'checkout', component: CheckoutComponent}
 ];
 
 @NgModule({
