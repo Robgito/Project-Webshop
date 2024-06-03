@@ -18,6 +18,7 @@ import { SignInComponent } from './sign/sign-in/sign-in.component';
 import { SignUpComponent } from './sign/sign-up/sign-up.component';
 import { FooterComponent } from './ui/footer/footer.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UpdateSmartphoneComponent } from './update-smartphone/update-smartphone.component';
 
 
 @NgModule({
@@ -31,10 +32,11 @@ import { CheckoutComponent } from './checkout/checkout.component';
     SignInComponent,
     SignUpComponent,
     FooterComponent,
-    CheckoutComponent
+    CheckoutComponent,
     AdminComponent,
     AddSmartphoneComponent,
     ShowProductsComponent,
+    UpdateSmartphoneComponent,
   
 
   ],

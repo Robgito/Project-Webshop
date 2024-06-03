@@ -30,11 +30,10 @@ export class SmartphoneService {
     return this.httpClient.delete(`https://localhost:7129/api/Smartphone?id=${id}`);
   }
 
-  
+  updatesmartphone(id: number, smartphone: Smartphone) {
+    return this.httpClient.put(`https://localhost:7129/api/Smartphone?id=${id}`, smartphone);
+
+  }
 
  
-
-
-
-  
 }

@@ -10,6 +10,7 @@ import { SignInComponent } from './sign/sign-in/sign-in.component';
 import { SignUpComponent } from './sign/sign-up/sign-up.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SmartphoneResolveService } from './services/smartphone-resolve.service';
+import { UpdateSmartphoneComponent } from './update-smartphone/update-smartphone.component';
 
 
 const routes: Routes = [
@@ -20,9 +21,10 @@ const routes: Routes = [
   { path: 'basket', component: BasketComponent},
   { path: 'signin', component: SignInComponent},
   { path: 'signup', component: SignUpComponent},
-  { path: 'checkout', component: CheckoutComponent}
-  {path: 'add-smartphone', component: AddSmartphoneComponent, resolve: {phone: SmartphoneResolveService}},
+  { path: 'checkout', component: CheckoutComponent},
+  {path: 'add-smartphone', component: AddSmartphoneComponent },
   {path: 'show-products', component: ShowProductsComponent},
+  {path: 'update-smartphone', component: UpdateSmartphoneComponent,resolve: {phone: SmartphoneResolveService}}
 
 ];
 

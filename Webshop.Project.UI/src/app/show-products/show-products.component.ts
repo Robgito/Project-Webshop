@@ -30,16 +30,19 @@ export class ShowProductsComponent implements OnInit {
   deleteSmartPhoneById(smartphoneId: number) {
     this.smartphoneservice.deleteSmartphoneById(smartphoneId).subscribe(
       (response) => {
-        this.ngOnInit();
+        alert("Smartphone successfully deleted!!");
+        this.ngOnInit();       
       },
-      (error: HttpErrorResponse) => {
+      (error) => {
+        alert("An error has occurred when deleting the product");
         console.log(error);
+        
       }
     );
     }
 
     updateSmartPhoneById(smartphoneId: number) {
-      this.router.navigate(['/add-smartphone', {smartphoneId: smartphoneId}]);
+      this.router.navigate(['/update-smartphone', {smartphoneId: smartphoneId}]);
     }
 
 }
