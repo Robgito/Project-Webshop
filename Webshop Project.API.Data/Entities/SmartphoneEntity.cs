@@ -12,7 +12,7 @@ namespace Webshop_Project.API.Data.Entities
 
         public int CategoryID { get; set; }
 
-        public string? Colour { get; set; }
+        public string Colour { get; set; }
 
         public DateTime Created { get; set; }
 
@@ -21,11 +21,14 @@ namespace Webshop_Project.API.Data.Entities
 
         [Key] //Primary Key
         public int ID { get; set; }
+
         public string? Image { get; set; }
+
         [Required]
         public bool IsActive { get; set; }
 
-        public int? MemoryCapacity { get; set; }
+        public int MemoryCapacity { get; set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -34,7 +37,8 @@ namespace Webshop_Project.API.Data.Entities
 
         public List<BasketProductEntity> ProductsInBaskets { get; set; }
         public List<OrderProductEntity> ProductsInOrders { get; set; }
-        public double? ScreenSize { get; set; }
+        public double ScreenSize { get; set; }
+
         //real code decimal
         [Required]
         public int Stock { get; set; }
