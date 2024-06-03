@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Smartphone } from '../model/smartphone.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,22 @@ export class SmartphoneService {
   }
 
 
-  getDetailedSmartphoneByName(id: number) {
-    
+  getDetailedSmartphoneById(id: number) {
     return this.httpClient.get(`https://localhost:7129/api/Smartphone?id=${id}`);
-
   }
+
+  addSmartphone(smartphone: Smartphone) {
+    return this.httpClient.post<Smartphone>("https://localhost:7129/api/Smartphone", smartphone);
+  }
+
+  deleteSmartphoneById(id: number) {
+    return this.httpClient.delete(`https://localhost:7129/api/Smartphone?id=${id}`);
+  }
+
+  
+
+ 
+
 
 
   
