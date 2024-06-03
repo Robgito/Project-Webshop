@@ -1,0 +1,72 @@
+<!--Add Product-->
+<div class="container mt-5">
+    <div class="card p-2">
+      <div class="row">
+        <div class="col-6">
+          <form #smartphoneForm="ngForm" (ngSubmit)="addSmartphone(smartphoneForm)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" class="form-control" placeholder="Enter product name" [(ngModel)]="phone.name" name="name">
+            </div>
+  
+            <div class="form-group">
+              <label for="descreption">Description</label>
+              <input id="descreption" class="form-control" placeholder="Enter product description"
+                [(ngModel)]="phone.description" name="description">
+            </div>
+  
+            <div class="form-group">
+              <label for="colour">Colour</label>
+              <input id="colour" class="form-control" placeholder="Enter product colour" [(ngModel)]="phone.colour"
+                name="colour">
+            </div>
+  
+            <div class="form-group">
+              <label for="screen">Screen Size</label>
+              <input id="screen" class="form-control" placeholder="Enter screen size" [(ngModel)]="phone.screenSize"
+                name="screenSize">
+            </div>
+  
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input id="price" class="form-control" placeholder="Enter price" [(ngModel)]="phone.price" name="Price">
+            </div>
+  
+            <div class="form-group">
+              <label for="memoryCapacity">Memory Capacity</label>
+              <input id="memoryCapacity" class="form-control" placeholder="Enter memory capacity"
+                [(ngModel)]="phone.memoryCapacity" name="memoryCapacity">
+            </div>
+  
+            <div class="form-group">
+              <label for="stock">Stock</label>
+              <input id="stock" class="form-control" placeholder="Enter stock" [(ngModel)]="phone.stock" name="stock">
+            </div>
+  
+            <div class="form-group">
+              <label for="brandID">Brand</label>
+              <input id="brandID" class="form-control" placeholder="Enter brand ID" [(ngModel)]="phone.brandID"
+                name="brandID">
+            </div>
+  
+            <div class="form-group">
+              <label for="categoryID">Category</label>
+              <input id="categoryID" class="form-control" placeholder="Enter category ID" [(ngModel)]="phone.categoryID"
+                name="categoryID">
+            </div>
+  
+            <div align="end">
+              <button type="reset" class="btn btn-primary mr-3">Clear</button>
+              <button type="submit" class="btn btn-primary">Add Product</button>
+  
+            </div>
+  
+          </form>
+  
+        </div>
+        <div class="col-6">
+  
+        </div>
+      </div>
+    </div>
+  </div>

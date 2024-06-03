@@ -8,16 +8,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './smartphone-details.component.css'
 })
 export class SmartphoneDetailsComponent {
-smartphone: any;
 
-constructor(private smartservice: SmartphoneService, private route: ActivatedRoute) {
-  this.route.params.subscribe(params => {
-    const phoneId = params['smartphoneId']
-    this.smartservice.getDetailedSmartphoneByName(phoneId).subscribe(data => {
-      this.smartphone = data;
-      console.log(data)
+  smartphone: any;
+
+  constructor(private smartservice: SmartphoneService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      const phoneId = params['smartphoneId']
+      this.smartservice.getDetailedSmartphoneById(phoneId).subscribe(data => {
+        this.smartphone = data;
+        console.log(data)
+      })
     })
-})
+  }
 
-}
+  AddToCart(productId: any) {
+   console.log(productId);
+  }
 }
