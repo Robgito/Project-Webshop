@@ -14,6 +14,10 @@ import { FormsModule } from '@angular/forms';
 import { AddSmartphoneComponent } from './add-smartphone/add-smartphone.component';
 import { ShowProductsComponent } from './show-products/show-products.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { SignInComponent } from './sign/sign-in/sign-in.component';
+import { SignUpComponent } from './sign/sign-up/sign-up.component';
+import { FooterComponent } from './ui/footer/footer.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -23,10 +27,16 @@ import { PaginationComponent } from './pagination/pagination.component';
     NavbarComponent,
     BasketComponent,
     SmartphoneDetailsComponent,
+    PaginationComponent,
+    SignInComponent,
+    SignUpComponent,
+    FooterComponent,
+    CheckoutComponent
     AdminComponent,
     AddSmartphoneComponent,
     ShowProductsComponent,
-    PaginationComponent
+  
+
   ],
   imports: [
     BrowserModule,
