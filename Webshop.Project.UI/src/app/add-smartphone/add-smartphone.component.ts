@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Smartphone } from '../model/smartphone.model';
 import { NgForm } from '@angular/forms';
 import { SmartphoneService } from '../services/smartphone.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { MessageTypes } from 'jest-editor-support';
 
 @Component({
   selector: 'app-add-smartphone',

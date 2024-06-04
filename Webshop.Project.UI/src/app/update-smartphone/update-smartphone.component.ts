@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SmartphoneService } from '../services/smartphone.service';
-import { Smartphone } from '../model/smartphone.model';
-import { SmartphoneResolveService } from '../services/smartphone-resolve.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,9 +9,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './update-smartphone.component.css'
 })
 export class UpdateSmartphoneComponent implements OnInit {
-  [x: string]: any;
 
   phone: any;
+  
   constructor(private smartphoneservice: SmartphoneService, private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
     this.phone = this.activatedRoute.snapshot.data['phone'];
