@@ -13,6 +13,7 @@ import { SignInComponent } from './sign/sign-in/sign-in.component';
 import { SignUpComponent } from './sign/sign-up/sign-up.component';
 import { FooterComponent } from './ui/footer/footer.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     SignInComponent,
     SignUpComponent,
     FooterComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

@@ -6,9 +6,10 @@ import { BasketComponent } from './basket/basket.component';
 import { SignInComponent } from './sign/sign-in/sign-in.component';
 import { SignUpComponent } from './sign/sign-up/sign-up.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', component: SmartphonesComponent },
+  { path: '', component: HomePageComponent },
   { path: 'smartphones', component: SmartphonesComponent },
   { path: 'smartphones/:smartphoneId', component: SmartphoneDetailsComponent },
   { path: 'basket', component: BasketComponent},

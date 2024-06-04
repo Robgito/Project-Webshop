@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class SmartphoneService {
   
 
-  private API_URL = 'https://localhost:7129/api/Smartphone/GetAllSmartphones';
+  private readonly API_URL = 'https://localhost:7129/api/Smartphone/GetAllSmartphones';
 
   constructor(private httpClient : HttpClient) { }
 
