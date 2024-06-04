@@ -6,6 +6,7 @@ namespace Webshop_Project.API.Data.Repositories
     {
         Task AddBasketAsync(BasketEntity basketEntity);
         Task<BasketEntity> GetBasketWithProductsByIDAsync(int id);
+        Task<List<SmartphoneEntity>> GetProductsInBasket(int basketID);
         int ReturnNewBasketID();
         void SaveNewBasketID(int ID);
     }
