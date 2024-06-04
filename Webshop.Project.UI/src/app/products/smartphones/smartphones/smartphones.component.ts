@@ -13,7 +13,7 @@ export class SmartphonesComponent implements OnInit {
   smartphones : any[] = []
   brands : any[] = []
   categories : any[] = []
-
+  
   /**
    *
    */
@@ -53,5 +53,69 @@ export class SmartphonesComponent implements OnInit {
         console.error('Error fetching categories:', error);
       }
     );
+  }
+
+  getSmartphonesByFilter(selectedBrand: number|string, selectedCategory: number|string, selectedMemory: number|string, selectedMinPrice: number|string, selectedMaxPrice: number|string){
+    this.smartphoneService.getSmartphonesByFilter(selectedBrand, selectedCategory, selectedMemory, selectedMinPrice, selectedMaxPrice).subscribe(
+      (data) => {
+        this.smartphones = data; // Handle the response data as needed
+        console.log(this.smartphones);
+      },
+      (error) => {
+        console.error('Error fetching smartphones:', error);
+      }
+  )}
+
+  selectedBrand: number|string = "";
+  selectedCategory: number|string = "";
+  selectedMemory: number|string = "";
+  selectedMinPrice: number|string = "";
+  selectedMaxPrice: number|string = "";
+
+	onSelectedBrand(value: string): void {
+    if(value === "0"){
+      this.selectedBrand = "";
+    }
+    else{
+      this.selectedBrand = Number(value);
+    }
+
+	}
+
+  onSelectedCategory(value: string): void {
+    if(value === "0"){
+      this.selectedCategory = "";
+    }
+    else{
+      this.selectedCategory = Number(value);
+    }
+
+  }
+
+  onSelectedMemory(value: string): void {
+    if(value === "0"){
+      this.selectedMemory = "";
+    }
+    else{
+      this.selectedMemory = Number(value);
+    }
+  }
+
+  onSelectedMinPrice(value: string): void {
+    if(value === "0"){
+      this.selectedMinPrice = "";
+    }
+    else{
+      this.selectedMinPrice = Number(value);
+    }
+  }
+
+  onSelectedMaxPrice(value: string): void {
+    if(value === "0"){
+      this.selectedMaxPrice = "";
+    }
+    else{
+      this.selectedMaxPrice = Number(value);
+    }
   }
 }

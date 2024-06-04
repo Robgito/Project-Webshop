@@ -14,6 +14,7 @@ import { SignUpComponent } from './sign/sign-up/sign-up.component';
 import { FooterComponent } from './ui/footer/footer.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,14 @@ import { HomePageComponent } from './home-page/home-page.component';
     SignUpComponent,
     FooterComponent,
     CheckoutComponent,
-    HomePageComponent
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
