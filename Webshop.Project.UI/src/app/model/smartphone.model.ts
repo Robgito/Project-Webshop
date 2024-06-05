@@ -19,9 +19,12 @@ export interface Brand {
 export interface Category {
   name: string;
 }
+<<<<<<< main
 
 export interface BasketProduct {
   productID: number;
   basketId: number;
   amount: number;
 }
+=======
+>>>>>>> Robin-BasketSummary
