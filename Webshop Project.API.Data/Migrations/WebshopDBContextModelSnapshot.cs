@@ -50,10 +50,10 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(595),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7517),
                             IsActive = true,
                             ShippingPrice = 25.0,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(596)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7519)
                         });
                 });
 
@@ -65,7 +65,7 @@ namespace Webshop_Project.API.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int?>("BasketEntityID")
+                    b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<int>("BasketID")
@@ -80,17 +80,14 @@ namespace Webshop_Project.API.Data.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SmartphoneEntityID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Updated")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("BasketEntityID");
+                    b.HasIndex("BasketID");
 
-                    b.HasIndex("SmartphoneEntityID");
+                    b.HasIndex("ProductID");
 
                     b.ToTable("BasketProducts");
                 });
@@ -124,42 +121,42 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(373),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7283),
                             IsActive = true,
                             Name = "Samsung",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(375)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7284)
                         },
                         new
                         {
                             ID = 2,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(378),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7289),
                             IsActive = true,
                             Name = "Apple",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(379)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7289)
                         },
                         new
                         {
                             ID = 3,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(380),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7291),
                             IsActive = true,
                             Name = "Google",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(381)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7292)
                         },
                         new
                         {
                             ID = 4,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(382),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7293),
                             IsActive = true,
                             Name = "Huawei",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(383)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7294)
                         },
                         new
                         {
                             ID = 5,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(385),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7295),
                             IsActive = true,
                             Name = "OnePlus",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(386)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7296)
                         });
                 });
 
@@ -192,34 +189,34 @@ namespace Webshop_Project.API.Data.Migrations
                         new
                         {
                             ID = 1,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(237),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7139),
                             IsActive = true,
                             Name = "Smartphones",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(286)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7202)
                         },
                         new
                         {
                             ID = 2,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(290),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7206),
                             IsActive = true,
                             Name = "Accessories",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(291)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7207)
                         },
                         new
                         {
                             ID = 3,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(293),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7209),
                             IsActive = true,
                             Name = "Tablets",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(294)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7210)
                         },
                         new
                         {
                             ID = 4,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(295),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7211),
                             IsActive = true,
                             Name = "Wearables",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(296)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7213)
                         });
                 });
 
@@ -365,7 +362,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Phantom Gray",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(423),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7331),
                             Description = "Latest Samsung smartphone with high-end specs.",
                             Image = "https://picsum.photos/181",
                             IsActive = true,
@@ -374,7 +371,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 799.99000000000001,
                             ScreenSize = 6.2000000000000002,
                             Stock = 25,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(424)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7333)
                         },
                         new
                         {
@@ -382,7 +379,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 2,
                             CategoryID = 1,
                             Colour = "Midnight",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(431),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7343),
                             Description = "New iPhone with advanced features.",
                             Image = "https://picsum.photos/182",
                             IsActive = true,
@@ -391,7 +388,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 999.99000000000001,
                             ScreenSize = 6.0999999999999996,
                             Stock = 30,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(432)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7344)
                         },
                         new
                         {
@@ -399,7 +396,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 3,
                             CategoryID = 1,
                             Colour = "Stormy Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(434),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7346),
                             Description = "Google's latest smartphone with clean Android experience.",
                             Image = "https://picsum.photos/183",
                             IsActive = true,
@@ -408,7 +405,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 699.99000000000001,
                             ScreenSize = 6.4000000000000004,
                             Stock = 20,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(435)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7347)
                         },
                         new
                         {
@@ -416,7 +413,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 4,
                             CategoryID = 1,
                             Colour = "Golden Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(437),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7349),
                             Description = "High-end smartphone from Huawei.",
                             Image = "https://picsum.photos/184",
                             IsActive = true,
@@ -425,7 +422,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 899.99000000000001,
                             ScreenSize = 6.5999999999999996,
                             Stock = 15,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(438)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7350)
                         },
                         new
                         {
@@ -433,7 +430,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 5,
                             CategoryID = 1,
                             Colour = "Winter Mist",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(440),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7352),
                             Description = "Flagship killer from OnePlus.",
                             Image = "https://picsum.photos/185",
                             IsActive = true,
@@ -442,7 +439,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 729.99000000000001,
                             ScreenSize = 6.5,
                             Stock = 18,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(441)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7353)
                         },
                         new
                         {
@@ -450,7 +447,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Mystic Bronze",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(443),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7356),
                             Description = "Samsung's premium phone with S-Pen.",
                             Image = "https://picsum.photos/186",
                             IsActive = true,
@@ -459,7 +456,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 949.99000000000001,
                             ScreenSize = 6.7000000000000002,
                             Stock = 10,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(444)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7357)
                         },
                         new
                         {
@@ -467,7 +464,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 2,
                             CategoryID = 1,
                             Colour = "Blue",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(447),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7359),
                             Description = "Previous generation iPhone with great performance.",
                             Image = "https://picsum.photos/187",
                             IsActive = true,
@@ -476,7 +473,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 799.99000000000001,
                             ScreenSize = 6.0999999999999996,
                             Stock = 22,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(448)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7360)
                         },
                         new
                         {
@@ -484,7 +481,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 3,
                             CategoryID = 1,
                             Colour = "Just Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(450),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7362),
                             Description = "Compact and powerful Google phone.",
                             Image = "https://picsum.photos/188",
                             IsActive = true,
@@ -493,7 +490,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 599.99000000000001,
                             ScreenSize = 6.0,
                             Stock = 25,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(451)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7363)
                         },
                         new
                         {
@@ -501,7 +498,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 4,
                             CategoryID = 1,
                             Colour = "Space Silver",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(452),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7365),
                             Description = "Top-tier Huawei device with excellent camera.",
                             Image = "https://picsum.photos/189",
                             IsActive = true,
@@ -510,7 +507,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 1099.99,
                             ScreenSize = 6.7999999999999998,
                             Stock = 12,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(453)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7366)
                         },
                         new
                         {
@@ -518,7 +515,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 5,
                             CategoryID = 1,
                             Colour = "Aquamarine Green",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(490),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7368),
                             Description = "Fast and fluid experience from OnePlus.",
                             Image = "https://picsum.photos/190",
                             IsActive = true,
@@ -527,7 +524,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 649.99000000000001,
                             ScreenSize = 6.5,
                             Stock = 17,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(492)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7369)
                         },
                         new
                         {
@@ -535,7 +532,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Phantom Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(494),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7371),
                             Description = "Folding phone with a large display.",
                             Image = "https://picsum.photos/191",
                             IsActive = true,
@@ -544,7 +541,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 1799.99,
                             ScreenSize = 7.5999999999999996,
                             Stock = 5,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(495)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7372)
                         },
                         new
                         {
@@ -552,7 +549,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 2,
                             CategoryID = 1,
                             Colour = "Red",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(497),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7374),
                             Description = "Compact iPhone with powerful internals.",
                             Image = "https://picsum.photos/192",
                             IsActive = true,
@@ -561,7 +558,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 399.99000000000001,
                             ScreenSize = 4.7000000000000002,
                             Stock = 40,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(497)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7375)
                         },
                         new
                         {
@@ -569,7 +566,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 3,
                             CategoryID = 1,
                             Colour = "Barely Blue",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(499),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7377),
                             Description = "Affordable Google phone with great camera.",
                             Image = "https://picsum.photos/193",
                             IsActive = true,
@@ -578,7 +575,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 349.99000000000001,
                             ScreenSize = 5.7999999999999998,
                             Stock = 33,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(500)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7378)
                         },
                         new
                         {
@@ -586,7 +583,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 4,
                             CategoryID = 1,
                             Colour = "Midnight Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(503),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7380),
                             Description = "Budget-friendly Huawei device.",
                             Image = "https://picsum.photos/194",
                             IsActive = true,
@@ -595,7 +592,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 249.99000000000001,
                             ScreenSize = 6.5,
                             Stock = 19,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(504)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7381)
                         },
                         new
                         {
@@ -603,7 +600,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 5,
                             CategoryID = 1,
                             Colour = "Gray Onyx",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(506),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7383),
                             Description = "Mid-range OnePlus phone with great value.",
                             Image = "https://picsum.photos/195",
                             IsActive = true,
@@ -612,7 +609,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 399.99000000000001,
                             ScreenSize = 6.4000000000000004,
                             Stock = 24,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(507)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7384)
                         },
                         new
                         {
@@ -620,7 +617,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Awesome Blue",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(509),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7386),
                             Description = "Solid mid-range Samsung device.",
                             Image = "https://picsum.photos/196",
                             IsActive = true,
@@ -629,7 +626,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 349.99000000000001,
                             ScreenSize = 6.5,
                             Stock = 35,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(510)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7387)
                         },
                         new
                         {
@@ -637,7 +634,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 2,
                             CategoryID = 1,
                             Colour = "Green",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(512),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7389),
                             Description = "Previous generation iPhone with great performance.",
                             Image = "https://picsum.photos/197",
                             IsActive = true,
@@ -646,7 +643,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 599.99000000000001,
                             ScreenSize = 6.0999999999999996,
                             Stock = 28,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(512)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7390)
                         },
                         new
                         {
@@ -654,7 +651,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 3,
                             CategoryID = 1,
                             Colour = "Not Pink",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(515),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7392),
                             Description = "Older Google phone with excellent camera.",
                             Image = "https://picsum.photos/198",
                             IsActive = true,
@@ -663,7 +660,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 299.99000000000001,
                             ScreenSize = 6.2999999999999998,
                             Stock = 12,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(516)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7393)
                         },
                         new
                         {
@@ -671,7 +668,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 4,
                             CategoryID = 1,
                             Colour = "Space Silver",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(518),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7395),
                             Description = "Huawei flagship with powerful specs.",
                             Image = "https://picsum.photos/199",
                             IsActive = true,
@@ -680,7 +677,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 1099.99,
                             ScreenSize = 6.5,
                             Stock = 10,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(519)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7396)
                         },
                         new
                         {
@@ -688,7 +685,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 5,
                             CategoryID = 1,
                             Colour = "Nebula Blue",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(521),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7398),
                             Description = "Previous generation OnePlus flagship.",
                             Image = "https://picsum.photos/200",
                             IsActive = true,
@@ -697,7 +694,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 499.99000000000001,
                             ScreenSize = 6.7000000000000002,
                             Stock = 15,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(522)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7399)
                         },
                         new
                         {
@@ -705,7 +702,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Cosmic Gray",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(524),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7401),
                             Description = "Flagship Samsung smartphone with advanced camera features.",
                             Image = "https://picsum.photos/201",
                             IsActive = true,
@@ -714,7 +711,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 999.99000000000001,
                             ScreenSize = 6.2000000000000002,
                             Stock = 15,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(525)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7402)
                         },
                         new
                         {
@@ -722,7 +719,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 2,
                             CategoryID = 1,
                             Colour = "Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(527),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7404),
                             Description = "Latest Apple iPhone with dual camera system.",
                             Image = "https://picsum.photos/202",
                             IsActive = true,
@@ -731,7 +728,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 699.99000000000001,
                             ScreenSize = 6.0999999999999996,
                             Stock = 30,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(527)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7405)
                         },
                         new
                         {
@@ -739,7 +736,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 3,
                             CategoryID = 1,
                             Colour = "Just Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(529),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7427),
                             Description = "Google's smartphone with excellent camera and Google Assistant integration.",
                             Image = "https://picsum.photos/203",
                             IsActive = true,
@@ -748,7 +745,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 799.99000000000001,
                             ScreenSize = 5.7000000000000002,
                             Stock = 25,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(530)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7428)
                         },
                         new
                         {
@@ -756,7 +753,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 4,
                             CategoryID = 1,
                             Colour = "Aurora",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(532),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7430),
                             Description = "High-end Huawei device with superior zoom camera capabilities.",
                             Image = "https://picsum.photos/204",
                             IsActive = true,
@@ -765,7 +762,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 899.99000000000001,
                             ScreenSize = 6.5,
                             Stock = 10,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(533)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7431)
                         },
                         new
                         {
@@ -773,7 +770,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 2,
                             CategoryID = 1,
                             Colour = "Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(535),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7433),
                             Description = "New iphone flagship!",
                             Image = "https://picsum.photos/205",
                             IsActive = true,
@@ -782,7 +779,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 949.99000000000001,
                             ScreenSize = 6.7000000000000002,
                             Stock = 12,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(536)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7434)
                         },
                         new
                         {
@@ -790,7 +787,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             Colour = "Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(538),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7436),
                             Description = "New camera's, new design.",
                             Image = "https://picsum.photos/206",
                             IsActive = true,
@@ -799,7 +796,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 499.99000000000001,
                             ScreenSize = 6.7999999999999998,
                             Stock = 50,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(539)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7437)
                         },
                         new
                         {
@@ -807,7 +804,7 @@ namespace Webshop_Project.API.Data.Migrations
                             BrandID = 5,
                             CategoryID = 1,
                             Colour = "Onyx Black",
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(541),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7439),
                             Description = "Next-gen OnePlus device with fluid display and wireless charging.",
                             Image = "https://picsum.photos/207",
                             IsActive = true,
@@ -816,7 +813,7 @@ namespace Webshop_Project.API.Data.Migrations
                             Price = 799.99000000000001,
                             ScreenSize = 6.5,
                             Stock = 18,
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(542)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7440)
                         });
                 });
 
@@ -867,25 +864,33 @@ namespace Webshop_Project.API.Data.Migrations
                         {
                             ID = 1,
                             BasketID = 1,
-                            Created = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(572),
+                            Created = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7487),
                             Email = "test@test.be",
                             IsActive = true,
                             Name = "TestUser",
                             Password = "123",
                             Role = "[\"Admin\"]",
-                            Updated = new DateTime(2024, 6, 3, 12, 5, 14, 904, DateTimeKind.Local).AddTicks(573)
+                            Updated = new DateTime(2024, 6, 5, 9, 55, 44, 122, DateTimeKind.Local).AddTicks(7488)
                         });
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.BasketProductEntity", b =>
                 {
-                    b.HasOne("Webshop_Project.API.Data.Entities.BasketEntity", null)
+                    b.HasOne("Webshop_Project.API.Data.Entities.BasketEntity", "Basket")
                         .WithMany("ListProducts")
-                        .HasForeignKey("BasketEntityID");
+                        .HasForeignKey("BasketID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Webshop_Project.API.Data.Entities.SmartphoneEntity", null)
+                    b.HasOne("Webshop_Project.API.Data.Entities.SmartphoneEntity", "Product")
                         .WithMany("ProductsInBaskets")
-                        .HasForeignKey("SmartphoneEntityID");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Webshop_Project.API.Data.Entities.OrderProductEntity", b =>

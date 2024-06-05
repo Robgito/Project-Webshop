@@ -58,7 +58,8 @@ namespace Webshop_Project.Controllers
             if (ModelState.IsValid)
             {
                 Order order = _mapper.Map<Order>(addOrder);
-                await _orderService.AddOrderAsync(order);
+                order = await _orderService.GenerateOrderAsync(addOrder.BasketID);
+                _orderService.FinalizeOrder(order);
                 return Created();
             }
             else

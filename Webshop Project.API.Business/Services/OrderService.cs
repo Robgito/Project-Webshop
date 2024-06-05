@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Data.Entities;
 using Webshop_Project.API.Data.Repositories;
@@ -13,11 +8,13 @@ namespace Webshop_Project.API.Business.Services
     public class OrderService : IOrderService
     {
         private IOrderRepository _orderRepository;
+        private IBasketRepository _basketRepository;
         private IMapper _mapper;
 
-        public OrderService(IOrderRepository orderRepository, IMapper mapper)
+        public OrderService(IOrderRepository orderRepository, IBasketRepository basketRepository, IMapper mapper)
         {
             _orderRepository = orderRepository;
+            _basketRepository = basketRepository;
             _mapper = mapper;
         }
 
@@ -41,13 +38,20 @@ namespace Webshop_Project.API.Business.Services
             return orders;
         }
 
-        public async Task AddOrderAsync(Order order)
+        public async Task<Order> GenerateOrderAsync(int basketID)
         {
-            OrderEntity orderEntity = _mapper.Map<OrderEntity>(order);
-            orderEntity.Created = DateTime.Now;
-            orderEntity.Updated = DateTime.Now;
+            List<SmartphoneEntity> smartphonesInCart = await _basketRepository.GetProductsInBasket(basketID);
 
-            await _orderRepository.AddItemAsync(orderEntity);
+            double totalPrice = smartphonesInCart.Sum(x => x.Price);
+            double shippingPrice = 25;
+
+            // TODO: Complete method
+            Order order = new Order
+            {
+                TotalPrice = totalPrice + shippingPrice,
+            };
+
+            return order;
         }
 
         public async Task DeleteOrderAsync(int id)
@@ -71,6 +75,11 @@ namespace Webshop_Project.API.Business.Services
             orderDB.ListProducts = updateOrderEntity.ListProducts;
 
             await _orderRepository.UpdateItemAsync(orderDB);
+        }
+
+        public void FinalizeOrder(Order order)
+        {
+            throw new NotImplementedException();
         }
     }
 }

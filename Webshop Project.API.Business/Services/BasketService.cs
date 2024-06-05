@@ -67,6 +67,15 @@ namespace Webshop_Project.API.Business.Services
             await _basketRepository.UpdateItemAsync(basketDB);
         }
 
+        public async Task AddBasketProductAsync(BasketProduct basketProduct)
+        {
+            BasketProductEntity basketProductEntity = _mapper.Map<BasketProductEntity>(basketProduct);
+            basketProductEntity.Created = DateTime.Now;
+            basketProductEntity.Updated = DateTime.Now;
+
+            await _basketRepository.AddBasketProductAsync(basketProductEntity);
+        }
+
         public int SaveNewBasketID()
         {
             return _basketRepository.ReturnNewBasketID();
