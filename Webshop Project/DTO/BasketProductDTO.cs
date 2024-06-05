@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Webshop_Project.DTO
+﻿namespace Webshop_Project.DTO
 {
     public class BasketProductDTO
     {

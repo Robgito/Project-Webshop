@@ -38,6 +38,9 @@ namespace Webshop_Project.Configuration
 
             CreateMap<BasketProduct, BasketProductEntity>().ReverseMap();
             CreateMap<BasketProduct, BasketProductDTO>().ReverseMap();
+            CreateMap<BasketProductDTO, BasketProductEntity>().ReverseMap();
+
+            CreateMap<AddBasketProductDTO, BasketProduct>();
         }
     }
 }
