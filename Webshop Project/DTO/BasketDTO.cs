@@ -11,8 +11,10 @@ namespace Webshop_Project.DTO
 
         [Required(ErrorMessage = "This field is required.")]
         public List<BasketProductDTO> ListProducts { get; set; }
+
         public double TotalPrice { get; set; }
         public double ShippingPrice { get; set; }
         public DateTime ExpectedShippingDate { get; set; }
+        public double PriceWithShipping { get; set; }
     }
 }
