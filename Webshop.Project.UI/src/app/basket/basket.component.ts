@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BasketService } from '../services/basket.service';
 import { CurrencyPipe } from '@angular/common';
+import { Basket } from '../model/basket';
+import { DatePipe } from '@angular/common';
+import { BasketProduct } from '../model/smartphone.model';
 
 @Component({
   selector: 'app-basket',
@@ -10,6 +13,7 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class BasketComponent {
   productsInBasket: any[] = [];
+  basket: Basket[] = [];
 
   constructor(private basketService: BasketService) {}
 
@@ -23,5 +27,19 @@ export class BasketComponent {
         console.error('Error fetching basket products:', error);
       }
     );
+
+    this.basketService.GetFullBasket(1).subscribe(
+      (data) => {
+        this.basket[0] = data;
+        console.log(this.basket);
+      },
+      (error) => {
+        console.error('Error fetching basket:', error);
+      }
+    );
+  }
+
+  DeleteBasketProduct(basketProduct: BasketProduct) {
+    //this.basketService.DeleteBasketProduct(basketProduct);
   }
 }

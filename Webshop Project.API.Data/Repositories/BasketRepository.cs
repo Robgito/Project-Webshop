@@ -72,6 +72,13 @@ namespace Webshop_Project.API.Data.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task DeleteBasketProductAsync(BasketProductEntity basketProductEntity)
+        {
+            _dbContext.BasketProducts
+                .Remove(basketProductEntity);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task<BasketProductEntity> GetBasketProductByBasketAndProductIDAsync(int productID, int basketID)
         {
             return await _dbContext.BasketProducts

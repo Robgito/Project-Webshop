@@ -60,7 +60,7 @@ namespace Webshop_Project.API.Business.Services
             {
                 ID = id
             };
-            await _orderRepository.DeleteItemByIDAsync(orderEntity);
+            await _orderRepository.DeleteItemAsync(orderEntity);
         }
 
         public async Task UpdateOrderAsync(int id, Order order)

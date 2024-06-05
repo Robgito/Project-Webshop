@@ -124,5 +124,13 @@ namespace Webshop_Project.Controllers
                 return BadRequest(ModelState);
             }
         }
+
+        [HttpDelete]
+        [Route("DeleteBasketProduct")]
+        public async Task<ActionResult> DeleteBasketProductAsync(int id)
+        {
+            await _basketService.DeleteBasketProductAsync(id);
+            return Created();
+        }
     }
 }

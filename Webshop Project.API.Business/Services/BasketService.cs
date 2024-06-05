@@ -53,7 +53,7 @@ namespace Webshop_Project.API.Business.Services
             {
                 ID = id
             };
-            await _basketRepository.DeleteItemByIDAsync(basketEntity);
+            await _basketRepository.DeleteItemAsync(basketEntity);
         }
 
         public async Task UpdateBasketAsync(int id, Basket basket)
@@ -124,7 +124,6 @@ namespace Webshop_Project.API.Business.Services
             return _basketRepository.ReturnNewBasketID();
         }
 
-<<<<<<< main
         public bool CheckIfProductIsAlreadyInBasket(List<BasketProductEntity> basketProducts, BasketProductEntity product)
         {
             bool isInBasket = false;
@@ -139,12 +138,13 @@ namespace Webshop_Project.API.Business.Services
             }
 
             return isInBasket;
-=======
+        }
+
         public async Task AddPriceAndShippingToBasket(Basket basket)
         {
-            List<SmartphoneEntity> smartphoneEntities = await _basketRepository.GetProductsInBasket(basket.ID);
+            List<BasketProductEntity> BasketProductEntities = await _basketRepository.GetBasketProductsInBasket(basket.ID);
 
-            basket.TotalPrice = smartphoneEntities.Sum(x => x.Price);
+            basket.TotalPrice = BasketProductEntities.Sum(x => x.Product.Price * x.Amount);
 
             if (basket.TotalPrice >= 700)
             {
@@ -156,7 +156,16 @@ namespace Webshop_Project.API.Business.Services
             }
 
             basket.ExpectedShippingDate = DateTime.Now.AddDays(2);
->>>>>>> Robin-BasketSummary
+        }
+
+        public async Task DeleteBasketProductAsync(int id)
+        {
+            BasketProductEntity basketProductEntity = new BasketProductEntity()
+            {
+                ID = id
+            };
+
+            await _basketRepository.DeleteBasketProductAsync(basketProductEntity);
         }
     }
 }

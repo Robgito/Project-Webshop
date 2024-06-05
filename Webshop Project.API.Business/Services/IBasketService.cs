@@ -21,5 +21,7 @@ namespace Webshop_Project.API.Business.Services
         Task<List<Smartphone>> GetAllProductsInBasketAsync(int basketID);
 
         Task<List<BasketProduct>> GetAllBasketProductsInBasketAsync(int basketID);
+
+        Task DeleteBasketProductAsync(int id);
     }
 }
