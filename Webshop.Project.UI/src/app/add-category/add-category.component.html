@@ -6,8 +6,11 @@
                 <form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input id="name" class="form-control" placeholder="Enter Category name" [(ngModel)]="category.name"
-                            name="name">
+                        <input id="name" class="form-control" placeholder="Enter Category name"
+                            [(ngModel)]="category.name" name="name" minlength="1" maxlength="100" required>
+                        <div *ngIf="categoryForm.submitted && !category.name" class="text-danger">
+                            Name is required min. one letter & max. 100 letters!!
+                        </div>
                     </div>
                     <div class="p-2" align="end">
                         <button type="reset" class="btn btn-primary mr-3">Clear</button>

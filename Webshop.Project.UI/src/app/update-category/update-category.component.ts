@@ -17,6 +17,10 @@ export class UpdateCategoryComponent implements OnInit {
   }
 
   updateCategory(categoryForm: NgForm) {
+
+    if (categoryForm.invalid) {
+      return;
+    }
     this.categoryservice.updateCategory(this.category.id, this.category).subscribe(
       (response) => {
         console.log(response);

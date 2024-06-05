@@ -6,61 +6,98 @@
         <form #smartphoneForm="ngForm" (ngSubmit)="updateSmartphone(smartphoneForm)">
           <div class="form-group">
             <label for="name">Name</label>
-            <input id="name" class="form-control" placeholder="Enter product name" [(ngModel)]="phone.name" name="name">
+
+            <input id="name" class="form-control" placeholder="Enter product name" [(ngModel)]="phone.name" name="name" required>
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['name'].invalid" class="text-danger">
+              Name is required.
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="descreption">Description</label>
-            <input id="descreption" class="form-control" placeholder="Enter product description" [(ngModel)]="phone.description" name="description">
+            <label for="description">Description</label>
+            <input id="description" class="form-control" placeholder="Enter product description" [(ngModel)]="phone.description" name="description" required>
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['description'].invalid" class="text-danger">
+              Description is required.
+            </div>
           </div>
 
           <div class="form-group">
             <label for="colour">Colour</label>
-            <input id="colour" class="form-control" placeholder="Enter product colour" [(ngModel)]="phone.colour" name="colour">
+            <input id="colour" class="form-control" placeholder="Enter product colour" [(ngModel)]="phone.colour" name="colour" required>
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['colour'].invalid" class="text-danger">
+              Colour is required.
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="screen">Screen Size</label>
-            <input id="screen" class="form-control" placeholder="Enter screen size" [(ngModel)]="phone.screenSize" name="screenSize">
+            <label for="screenSize">Screen Size</label>
+            <input id="screenSize" class="form-control" placeholder="Enter screen size" [(ngModel)]="phone.screenSize" name="screenSize" required type="number" min="1">
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['screenSize'].invalid" class="text-danger">
+              Valid screen size is required.
+            </div>
           </div>
 
           <div class="form-group">
             <label for="price">Price</label>
-            <input id="price" class="form-control" placeholder="Enter price" [(ngModel)]="phone.price" name="Price">
+            <input id="price" class="form-control" placeholder="Enter price" [(ngModel)]="phone.price" name="price"  type="number" min="0" required>
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['price'].invalid" class="text-danger">
+              Valid price is required.
+            </div>
           </div>
 
           <div class="form-group">
             <label for="memoryCapacity">Memory Capacity</label>
-            <input id="memoryCapacity" class="form-control" placeholder="Enter memory capacity" [(ngModel)]="phone.memoryCapacity" name="memoryCapacity">
+
+            <input id="memoryCapacity" class="form-control" placeholder="Enter memory capacity" [(ngModel)]="phone.memoryCapacity" name="memoryCapacity" type="number" min="64" required >
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['memoryCapacity'].invalid" class="text-danger">
+              Valid memory capacity is required.Memory capacity can't go below 64GB!
+            </div>
           </div>
 
           <div class="form-group">
             <label for="stock">Stock</label>
-            <input id="stock" class="form-control" placeholder="Enter stock" [(ngModel)]="phone.stock" name="stock">
+
+            <input id="stock" class="form-control" placeholder="Enter stock" [(ngModel)]="phone.stock" name="stock" required type="number" min="0">
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['stock'].invalid" class="text-danger">
+              Valid stock is required.
+            </div>
+
           </div>
 
           <div class="form-group">
             <label for="brandID">Brand</label>
-            <input id="brandID" class="form-control" placeholder="Enter brand ID" [(ngModel)]="phone.brandID" name="brandID">
+
+            <select [(ngModel)]="phone.brandID" name="brandID" class="mx-2" required>
+              <option [ngValue]="phone.brandID">{{phone.brand}}</option>
+              <option *ngFor="let brand of brands" [ngValue]="brand.id">{{brand.name}}</option>
+            </select>
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['brandID'].invalid" class="text-danger">
+              Brand is required.
+            </div>
+
           </div>
 
           <div class="form-group">
             <label for="categoryID">Category</label>
-            <input id="categoryID" class="form-control" placeholder="Enter category ID" [(ngModel)]="phone.categoryID" name="categoryID">
+            <select [(ngModel)]="phone.categoryID" name="categoryID" class="mx-2" required>
+              <option [ngValue]="phone.categoryID">{{phone.category}}</option>
+              <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+            </select>
+            <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['categoryID'].invalid" class="text-danger">
+              Category is required.
+            </div>
           </div>
 
-          <div align="end">
+          <div align="end" class="p-2">
             <button type="reset" class="btn btn-primary mr-3">Clear</button>
             <button type="submit" class="btn btn-primary">Update Product</button>
-
           </div>
-
         </form>
-
       </div>
       <div class="col-6">
-
+        <!-- Optional content -->
       </div>
     </div>
   </div>
 </div>
+

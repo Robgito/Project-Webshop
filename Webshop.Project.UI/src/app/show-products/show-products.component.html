@@ -15,8 +15,8 @@
         <th scope="col">Delete</th>
       </tr>
     </thead>
-    <tbody>
-      @for (smartphone of smartphones; track smartphone) {
+    <tbody *ngFor="let phone of smartphones">
+      
       <tr>
         <th scope="row">{{smartphone.id}}</th>
         <td>{{smartphone.name}}</td>
@@ -42,7 +42,7 @@
           </button>
         <td>
       </tr>
-      }
+      
     </tbody>
   </table>
   <div>
@@ -57,3 +57,4 @@
     </nav>
   </div>
 </div>
+

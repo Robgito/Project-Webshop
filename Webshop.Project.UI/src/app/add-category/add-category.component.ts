@@ -19,6 +19,11 @@ constructor(private categoryservice: CategoryService) {}
 ngOnInit(): void { };
 
 addCategory(categoryForm: NgForm) {
+
+  if (categoryForm.invalid) {
+    return;
+  }
+
   this.categoryservice.addCategory(this.category).subscribe(
     (data: Category) => {
       categoryForm.reset();

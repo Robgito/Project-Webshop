@@ -6,10 +6,14 @@
                 <form #categoryForm="ngForm" (ngSubmit)="updateCategory(categoryForm)">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input id="name" class="form-control" placeholder="Enter category name" [(ngModel)]="category.name"
-                            name="name">
+                        <input id="name" class="form-control" placeholder="Enter category name"
+                            [(ngModel)]="category.name" name="name" required>
+                        <div *ngIf="categoryForm.submitted && categoryForm.controls['name'].invalid"
+                            class="text-danger">
+                            Name is required.
+                        </div>
                     </div>
-                    <div align="end">
+                    <div align="end" class="p-2">
                         <button type="reset" class="btn btn-primary mr-3">Clear</button>
                         <button type="submit" class="btn btn-primary">Update Category</button>
 
@@ -23,4 +27,3 @@
         </div>
     </div>
 </div>
-
