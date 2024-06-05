@@ -40,10 +40,15 @@
                             </select>
                             <!-- Memory capacity filter end -->
                             <!-- Price range filter start -->
+
                             <label for="exampleInputEmail1" class="form-label mx-1">Min. Price</label>
                             <input #minPrice (change)="onSelectedMinPrice(minPrice.value)" style="width: 6rem;" class="mr-sm-2 sr-only mx-1" id="minPrice">
                             <label for="exampleInputEmail1" class="form-label mx-1">Max. Price</label>
                             <input #maxPrice (change)="onSelectedMaxPrice(maxPrice.value)" style="width: 6rem;" class="mr-sm-2 sr-only mx-1" id="maxPrice">
+                            <label for="minPrice" class="form-label mx-1">Min. Price</label>
+                            <input style="width: 6rem;" class="mr-sm-2 sr-only mx-1" id="minPrice">
+                            <label for="maxPrice" class="form-label mx-1">Max. Price</label>
+                            <input style="width: 6rem;" class="mr-sm-2 sr-only mx-1" id="maxPrice">
                             <!-- Price range filter end -->
                             <button type="submit" (click)="getSmartphonesByFilter(selectedBrand, selectedCategory, selectedMemory, selectedMinPrice, selectedMaxPrice)" class="btn btn-secondary mx-1">Submit</button>
                                   </ul>

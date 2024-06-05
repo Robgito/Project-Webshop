@@ -4,6 +4,7 @@ import { BrandService } from '../../../services/brand.service';
 import { CategoryService } from '../../../services/category.service';
 import { RouterLink } from '@angular/router';
 
+
 @Component({
   selector: 'app-smartphones',
   templateUrl: './smartphones.component.html',

@@ -30,12 +30,12 @@ namespace Webshop_Project.API.Business.Services
             return smartphone;
         }
 
-        public async Task<IEnumerable<Smartphone>> GetSmartphonesAsync(int page, int take, int? enterBrandID, int? enterCategoryID, int? enterMemoryCapacity, int? enterMinPrice, int? enterMaxPrice)
+        public async Task<IEnumerable<Smartphone>> GetSmartphonesAsync(int page, int take, int? enterBrandID, int? enterCategoryID, int? enterMemoryCapacity, int? enterMinPrice, int? enterMaxPrice, string? userSearch)
         {
             int skip = (page - 1) * take;
 
             IEnumerable<Smartphone> smartphones = new List<Smartphone>();
-            IEnumerable<SmartphoneEntity> smartphoneEntities = await _productRepository.GetAllItemAsync(skip, take, enterBrandID, enterCategoryID, enterMemoryCapacity, enterMinPrice, enterMaxPrice);
+            IEnumerable<SmartphoneEntity> smartphoneEntities = await _productRepository.GetAllItemAsync(skip, take, enterBrandID, enterCategoryID, enterMemoryCapacity, enterMinPrice, enterMaxPrice, userSearch);
 
             smartphones = _mapper.Map<IEnumerable<Smartphone>>(smartphoneEntities);
             return smartphones;
