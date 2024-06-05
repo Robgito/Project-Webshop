@@ -86,5 +86,12 @@ namespace Webshop_Project.API.Data.Repositories
                 .Where(x => x.ProductID == productID)
                 .SingleOrDefaultAsync();
         }
+
+        public async Task<BasketProductEntity> GetBasketProductByID(int basketProductID)
+        {
+            return await _dbContext.BasketProducts
+                .Where(x => x.ID == basketProductID)
+                .SingleOrDefaultAsync();
+        }
     }
 }
