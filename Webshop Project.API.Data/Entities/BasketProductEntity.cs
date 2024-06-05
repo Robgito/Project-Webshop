@@ -9,7 +9,7 @@
         public int ProductID { get; set; }
         public SmartphoneEntity Product { get; set; }
         public int BasketID { get; set; }
-        public BasketEntity BasketEntity { get; set; }
+        public BasketEntity Basket { get; set; }
         public int Amount { get; set; }
     }
 }

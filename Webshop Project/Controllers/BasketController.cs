@@ -92,5 +92,20 @@ namespace Webshop_Project.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("AddBasketProduct")]
+        public async Task<ActionResult> AddBasketProductAsync(BasketProductDTO basketProductDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                BasketProduct basketProduct = _mapper.Map<BasketProduct>(basketProductDTO);
+                await _basketService.AddBasketProductAsync(basketProduct);
+                return Created();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
     }
 }

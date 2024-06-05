@@ -26,7 +26,7 @@ namespace Webshop_Project.API.Data.Repositories
             SaveNewBasketID(basketEntity.ID);
         }
 
-        public async Task AddBasketProduct(BasketProductEntity basketProductEntity)
+        public async Task AddBasketProductAsync(BasketProductEntity basketProductEntity)
         {
             await _dbContext.BasketProducts
                 .AddAsync(basketProductEntity);
