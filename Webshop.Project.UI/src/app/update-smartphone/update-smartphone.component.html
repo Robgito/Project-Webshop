@@ -1,9 +1,9 @@
-<!--Add Product-->
+<!--Update Product-->
 <div class="container mt-5">
     <div class="card p-2">
       <div class="row">
         <div class="col-6">
-          <form #smartphoneForm="ngForm" (ngSubmit)="addSmartphone(smartphoneForm)">
+          <form #smartphoneForm="ngForm" (ngSubmit)="updateSmartphone(smartphoneForm)">
             <div class="form-group">
               <label for="name">Name</label>
               <input id="name" class="form-control" placeholder="Enter product name" [(ngModel)]="phone.name" name="name">
@@ -55,9 +55,9 @@
                 name="categoryID">
             </div>
   
-            <div align="end" class="p-2">
+            <div align="end">
               <button type="reset" class="btn btn-primary mr-3">Clear</button>
-              <button type="submit" class="btn btn-primary">Add Product</button>
+              <button type="submit" class="btn btn-primary">Update Product</button>
   
             </div>
   
@@ -70,3 +70,4 @@
       </div>
     </div>
   </div>
+

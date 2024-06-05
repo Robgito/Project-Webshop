@@ -10,3 +10,11 @@ export interface Smartphone {
     brandID: number,
     categoryID: number
 }
+
+export interface Brand {
+    name: string,
+}
+
+export interface Category {
+    name: string,
+}
