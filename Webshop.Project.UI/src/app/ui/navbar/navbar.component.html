@@ -19,17 +19,7 @@
               <a class="nav-link" routerLink="admin">Admin</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" routerLink="basket"><i class='bx bx-cart'></i></a>
-            </li>
-
-
           </ul>
-          <form class="d-flex mx-auto">
-            <input #userSearch (change)="onSelectedSearch(userSearch.value)" class="form-control mr-2" style="width: 24rem;" type="search" placeholder="Search"
-              aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">Search</button>
-          </form>
           <div class="navbar-nav ms-auto">
             <a routerLink="basket" class="nav-item nav-link"><i class='bx bx-cart'></i></a>
             <button class="btn btn-primary mx-1" routerLink="signin">Sign In</button>

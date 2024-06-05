@@ -2,6 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <!-- Search form -->
+                <form class="d-flex mx-auto my-3">
+                    <input #userSearch (change)="onSelectedSearch(userSearch.value)" class="form-control mr-2" style="width: 24rem;" type="search" id="userSearch" placeholder="Search"
+                      aria-label="Search">
+                    <button (click)="getSmartphonesBySearch(selectedUserSearch)" class="btn btn-outline-primary" type="submit">Search</button>
+                  </form>
                 <!-- Filter form -->              
                 <form>
                     <div class="form-row align-items-center">
@@ -50,7 +56,7 @@
                             <label for="maxPrice" class="form-label mx-1">Max. Price</label>
                             <input style="width: 6rem;" class="mr-sm-2 sr-only mx-1" id="maxPrice">
                             <!-- Price range filter end -->
-                            <button type="submit" (click)="getSmartphonesByFilter(selectedBrand, selectedCategory, selectedMemory, selectedMinPrice, selectedMaxPrice)" class="btn btn-secondary mx-1">Submit</button>
+                            <button type="submit" (click)="getSmartphonesByFilter(selectedBrand, selectedCategory, selectedMemory, selectedMinPrice, selectedMaxPrice, selectedUserSearch)" class="btn btn-secondary mx-1">Submit</button>
                                   </ul>
                             </div>
                         </div>
@@ -63,8 +69,8 @@
                 <div class="col-auto my-3">
                     <!-- Sorting start -->
                     <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Sort by</label>
-                    <select class="custom-select mr-sm-2 mx-2" id="inlineFormCustomSelect">
-                        <option selected>Choose...</option>
+                    <select class="custom-select mr-sm-2 mx-2" id="inlineFormCustomSelect" (change)="onSortChange($event)">
+                        <option value="0" selected>Choose...</option>
                         <option value="1">alphabetical</option>
                         <option value="2">Price low-high</option>
                         <option value="3">Price high-low</option>

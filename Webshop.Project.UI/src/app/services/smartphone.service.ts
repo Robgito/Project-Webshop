@@ -19,13 +19,14 @@ export class SmartphoneService {
 
   }
 
-  getSmartphonesByFilter(brandId: number|string, categoryId: number|string, memoryCapacity: number|string, minPrice: number|string, maxPrice: number|string) : Observable<any>{
 
-    return this.httpClient.get(this.API_URL  + `?enterBrandID=${brandId}&enterCategoryID=${categoryId}&enterMemoryCapacity=${memoryCapacity}&enterMinPrice=${minPrice}&enterMaxPrice=${maxPrice}&page=1&items=20`);
+  getSmartphonesByFilter(brandId: number|string, categoryId: number|string, memoryCapacity: number|string, minPrice: number|string, maxPrice: number|string, userSearch: string) : Observable<any>{
+
+    return this.httpClient.get(this.API_URL  + `?enterBrandID=${brandId}&enterCategoryID=${categoryId}&enterMemoryCapacity=${memoryCapacity}&enterMinPrice=${minPrice}0&enterMaxPrice=${maxPrice}&userSearch=${userSearch}&page=1&items=20`);
 
   }
 
-  getSmartphoneBySearch(userSearch: number|string) : Observable<any>{
+  getSmartphonesBySearch(userSearch: string) : Observable<any>{
     return this.httpClient.get(this.API_URL  + `?userSearch=${userSearch}&page=1&items=20`);
   }
 
@@ -37,9 +38,6 @@ export class SmartphoneService {
     return this.httpClient.post<Smartphone>("https://localhost:7129/api/Smartphone", smartphone);
   }
 
-
-
-
   deleteSmartphoneById(id: number) {
     return this.httpClient.delete(`https://localhost:7129/api/Smartphone?id=${id}`);
   }
@@ -48,7 +46,4 @@ export class SmartphoneService {
     return this.httpClient.put(`https://localhost:7129/api/Smartphone?id=${id}`, smartphone);
 
   }
-
- 
 }
-

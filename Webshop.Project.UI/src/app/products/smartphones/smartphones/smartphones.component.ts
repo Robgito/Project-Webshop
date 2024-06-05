@@ -15,9 +15,6 @@ export class SmartphonesComponent implements OnInit {
   brands : any[] = []
   categories : any[] = []
   
-  /**
-   *
-   */
   constructor(
     private smartphoneService : SmartphoneService,
     private brandService : BrandService, 
@@ -56,8 +53,8 @@ export class SmartphonesComponent implements OnInit {
     );
   }
 
-  getSmartphonesByFilter(selectedBrand: number|string, selectedCategory: number|string, selectedMemory: number|string, selectedMinPrice: number|string, selectedMaxPrice: number|string){
-    this.smartphoneService.getSmartphonesByFilter(selectedBrand, selectedCategory, selectedMemory, selectedMinPrice, selectedMaxPrice).subscribe(
+  getSmartphonesByFilter(selectedBrand: number|string, selectedCategory: number|string, selectedMemory: number|string, selectedMinPrice: number|string, selectedMaxPrice: number|string, selectedUserSearch: string){
+    this.smartphoneService.getSmartphonesByFilter(selectedBrand, selectedCategory, selectedMemory, selectedMinPrice, selectedMaxPrice, selectedUserSearch).subscribe(
       (data) => {
         this.smartphones = data; // Handle the response data as needed
         console.log(this.smartphones);
@@ -72,6 +69,7 @@ export class SmartphonesComponent implements OnInit {
   selectedMemory: number|string = "";
   selectedMinPrice: number|string = "";
   selectedMaxPrice: number|string = "";
+  selectedUserSearch: string = "";
 
 	onSelectedBrand(value: string): void {
     if(value === "0"){
@@ -117,6 +115,51 @@ export class SmartphonesComponent implements OnInit {
     }
     else{
       this.selectedMaxPrice = Number(value);
+    }
+  }
+
+  getSmartphonesBySearch(selectedUserSearch : string){
+    this.smartphoneService.getSmartphonesBySearch(selectedUserSearch).subscribe(
+      (data) => {
+        this.smartphones = data; // Handle the response data as needed
+        console.log(this.smartphones);
+      },
+      (error) => {
+        console.error('Error fetching smartphones:', error);
+      }
+  )}
+
+  onSelectedSearch(value: string): void {
+    if(value === ""){
+      this.selectedUserSearch = "";
+    }
+    else{
+      this.selectedUserSearch = value;
+    }
+
+	}
+
+////Sorting Logic
+//_______________
+  sortOption: string = "";
+
+  sortSmartphones() {
+    if (this.sortOption === '1') { // Alphabetical sort
+      this.smartphones.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    else if (this.sortOption === '2') { // Sort price low-high
+    this.smartphones.sort((a, b) => a.price - b.price);
+    } 
+    else if (this.sortOption === '3') { // Sort price high-low
+    this.smartphones.sort((a, b) => b.price - a.price);
+  }
+  }
+
+  onSortChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    if (target) {
+      this.sortOption = target.value;
+      this.sortSmartphones();
     }
   }
 }
