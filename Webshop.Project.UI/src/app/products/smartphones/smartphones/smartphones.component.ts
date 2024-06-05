@@ -26,9 +26,7 @@ export class SmartphonesComponent implements OnInit {
     private smartphoneService: SmartphoneService,
     private brandService: BrandService,
     private categoryService: CategoryService
-
-
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.smartphoneService.getSmartphones(this.currentPage).subscribe(
@@ -40,8 +38,6 @@ export class SmartphonesComponent implements OnInit {
         console.error('Error fetching smartphones:', error);
       }
     );
-
-
 
     this.brandService.getBrands().subscribe(
       (data) => {
@@ -63,7 +59,7 @@ export class SmartphonesComponent implements OnInit {
       }
     );
   }
-  
+
   loadSmartPhonesInarray(currentpage: number) {
     this.smartphoneService.getSmartphones(currentpage).subscribe(
       (data) => {
@@ -76,7 +72,6 @@ export class SmartphonesComponent implements OnInit {
     );
     this.checkHasMorePages();
   }
-
 
   getSmartphonesByFilter(
     selectedBrand: number | string,
@@ -165,7 +160,6 @@ export class SmartphonesComponent implements OnInit {
       this.currentPage++;
       this.loadSmartPhonesInarray(this.currentPage);
     }
-
   }
 
   previousPage(): void {
@@ -174,12 +168,20 @@ export class SmartphonesComponent implements OnInit {
       this.loadSmartPhonesInarray(this.currentPage);
     }
   }
-  checkHasMorePages(): void {
-    this.smartphoneService.getSmartphones(this.currentPage + 1).subscribe(response => {
-      this.hasMorePages = response.length > 0;
-    }, error => {
-      this.hasMorePages = false;
-    });
+
+  goToPage(page: number): void {
+    this.currentPage = page;
+    this.loadSmartPhonesInarray(this.currentPage);
   }
 
+  checkHasMorePages(): void {
+    this.smartphoneService.getSmartphones(this.currentPage + 1).subscribe(
+      (response) => {
+        this.hasMorePages = response.length > 0;
+      },
+      (error) => {
+        this.hasMorePages = false;
+      }
+    );
+  }
 }

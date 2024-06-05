@@ -29,7 +29,6 @@ namespace Webshop_Project.API.Data.Repositories
                 .Take(take)
                 .Include(x => x.Category)
                 .Include(x => x.Brand)
-                .OrderByDescending(x => x.ID)
                 .ToArrayAsync();
         }
     }
