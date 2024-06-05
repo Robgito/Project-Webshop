@@ -17,6 +17,17 @@ export class SmartphoneService {
     return this.httpClient.get(this.API_URL + `?page=${page}&items=9`);
   }
 
+
+
+  getSmartphonesByFilter(brandId: number|string, categoryId: number|string, memoryCapacity: number|string, minPrice: number|string, maxPrice: number|string, userSearch: string) : Observable<any>{
+
+    return this.httpClient.get(this.API_URL  + `?enterBrandID=${brandId}&enterCategoryID=${categoryId}&enterMemoryCapacity=${memoryCapacity}&enterMinPrice=${minPrice}0&enterMaxPrice=${maxPrice}&userSearch=${userSearch}&page=1&items=20`);
+
+  }
+
+  getSmartphonesBySearch(userSearch: string) : Observable<any>{
+    return this.httpClient.get(this.API_URL  + `?userSearch=${userSearch}&page=1&items=20`);
+
   getSmartphonesByFilter(
     brandId: number | string,
     categoryId: number | string,
@@ -49,6 +60,7 @@ export class SmartphoneService {
     );
   }
 
+
   addSmartphoneToBasket(basketProduct: BasketProduct) {
     return this.httpClient.post<BasketProduct>(
       `https://localhost:7129/api/Basket/AddBasketProduct`,
@@ -69,3 +81,5 @@ export class SmartphoneService {
     );
   }
 }
+
+
