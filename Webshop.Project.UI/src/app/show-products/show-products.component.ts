@@ -9,14 +9,22 @@ import { Router } from '@angular/router';
 })
 export class ShowProductsComponent implements OnInit {
 
-  smartphones: any;
-  constructor(private smartphoneservice: SmartphoneService, private router: Router) { }
+  smartphones: any[] = [];
+  phones: any[] = [];
+  totalPages: number = 0;
+  currentPage: number = 1;
+  itemsPerPage: number = 9;
+  constructor(private smartphoneservice: SmartphoneService, private router: Router) {  }
 
   ngOnInit(): void {
-    this.smartphoneservice.getSmartphones().subscribe(
-      (data) => {
-        this.smartphones = data; // Handle the response data as needed
-        console.log(this.smartphones);
+    this.loadSmartphones();
+  }
+
+  loadSmartphones(): void {
+    this.smartphoneservice.getSmartphonesPerpage(this.currentPage, this.itemsPerPage).subscribe(
+      (data: any) => {
+        this.smartphones = data;
+        this.totalPages = Math.ceil(data.totalItems / this.itemsPerPage);
       },
       (error) => {
         console.error('Error fetching smartphones:', error);
@@ -40,6 +48,18 @@ export class ShowProductsComponent implements OnInit {
 
     updateSmartPhoneById(smartphoneId: number) {
       this.router.navigate(['/update-smartphone', {smartphoneId: smartphoneId}]);
+    }
+
+    onPageChanged(page: number): void {
+      this.currentPage = page;
+      this.loadSmartphones();
+    }
+
+    getAllphones():void {
+      this.smartphoneservice.getSmartphones().subscribe(
+        (data: any) => {
+          this.phones = data;}
+      )
     }
 
 }

@@ -15,19 +15,19 @@
         <th scope="col">Delete</th>
       </tr>
     </thead>
-    <tbody>
-      @for (smartphone of smartphones; track smartphone) {
+    <tbody *ngFor="let phone of smartphones">
+      
       <tr>
-        <th scope="row">{{smartphone.id}}</th>
-        <td>{{smartphone.name}}</td>
-        <td>{{smartphone.colour}}</td>
-        <td>{{smartphone.screenSize}}</td>
-        <td>{{smartphone.memoryCapacity}}</td>
-        <td>{{smartphone.price | currency}}</td>
-        <td>{{smartphone.stock}}</td>
+        <th scope="row">{{phone.id}}</th>
+        <td>{{phone.name}}</td>
+        <td>{{phone.colour}}</td>
+        <td>{{phone.screenSize}}</td>
+        <td>{{phone.memoryCapacity}}</td>
+        <td>{{phone.price | currency}}</td>
+        <td>{{phone.stock}}</td>
   
         <td>
-          <button type="button" (click)="updateSmartPhoneById(smartphone.id)">
+          <button type="button" (click)="updateSmartPhoneById(phone.id)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
               viewBox="0 0 16 16">
               <path
@@ -36,7 +36,7 @@
           </button>
         <td>
         <td>
-          <button type="button" (click)="deleteSmartPhoneById(smartphone.id)">
+          <button type="button" (click)="deleteSmartPhoneById(phone.id)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
               viewBox="0 0 16 16">
               <path
@@ -47,8 +47,8 @@
           </button>
         <td>
       </tr>
-      }
+      
     </tbody>
   </table>
-  <app-pagination></app-pagination>
+  <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" (pageChanged)="onPageChanged($event)"></app-pagination>
 </div>

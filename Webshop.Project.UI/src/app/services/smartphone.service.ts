@@ -19,6 +19,14 @@ export class SmartphoneService {
 
   }
 
+  private baseUrl = 'https://localhost:7129/api/Smartphone';
+
+  
+
+  getSmartphonesPerpage(page: number, itemsPerPage: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/GetAllSmartphones?page=${page}&items=${itemsPerPage}`);
+  }
+
   getSmartphonesByFilter(brandId: number|string, categoryId: number|string, memoryCapacity: number|string, minPrice: number|string, maxPrice: number|string) : Observable<any>{
 
     return this.httpClient.get(this.API_URL  + `?enterBrandID=${brandId}&enterCategoryID=${categoryId}&enterMemoryCapacity=${memoryCapacity}&enterMinPrice=${minPrice}&enterMaxPrice=${maxPrice}&page=1&items=20`);
