@@ -15,6 +15,9 @@ export class SmartphonesComponent implements OnInit {
   smartphones: any[] = [];
   brands: any[] = [];
   categories: any[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 9;
+  hasMorePages: boolean = true;
 
   /**
    *
@@ -23,10 +26,12 @@ export class SmartphonesComponent implements OnInit {
     private smartphoneService: SmartphoneService,
     private brandService: BrandService,
     private categoryService: CategoryService
-  ) {}
+
+
+  ) { }
 
   ngOnInit(): void {
-    this.smartphoneService.getSmartphones().subscribe(
+    this.smartphoneService.getSmartphones(this.currentPage).subscribe(
       (data) => {
         this.smartphones = data; // Handle the response data as needed
         console.log(this.smartphones);
@@ -35,6 +40,8 @@ export class SmartphonesComponent implements OnInit {
         console.error('Error fetching smartphones:', error);
       }
     );
+
+
 
     this.brandService.getBrands().subscribe(
       (data) => {
@@ -56,6 +63,20 @@ export class SmartphonesComponent implements OnInit {
       }
     );
   }
+  
+  loadSmartPhonesInarray(currentpage: number) {
+    this.smartphoneService.getSmartphones(currentpage).subscribe(
+      (data) => {
+        this.smartphones = data; // Handle the response data as needed
+        console.log(this.smartphones);
+      },
+      (error) => {
+        console.error('Error fetching smartphones:', error);
+      }
+    );
+    this.checkHasMorePages();
+  }
+
 
   getSmartphonesByFilter(
     selectedBrand: number | string,
@@ -138,4 +159,27 @@ export class SmartphonesComponent implements OnInit {
       this.selectedMaxPrice = Number(value);
     }
   }
+
+  nextPage(): void {
+    if (this.hasMorePages) {
+      this.currentPage++;
+      this.loadSmartPhonesInarray(this.currentPage);
+    }
+
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadSmartPhonesInarray(this.currentPage);
+    }
+  }
+  checkHasMorePages(): void {
+    this.smartphoneService.getSmartphones(this.currentPage + 1).subscribe(response => {
+      this.hasMorePages = response.length > 0;
+    }, error => {
+      this.hasMorePages = false;
+    });
+  }
+
 }
