@@ -27,8 +27,6 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { ShowCategoriesComponent } from './show-categories/show-categories.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,20 +50,15 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
     AddCategoryComponent,
     ShowCategoriesComponent,
     UpdateCategoryComponent,
-  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
-   
+    FormsModule,
   ],
-  providers: [
-    provideAnimationsAsync()
-
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideAnimationsAsync()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

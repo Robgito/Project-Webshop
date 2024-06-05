@@ -35,6 +35,25 @@ namespace Webshop_Project.Configuration
             CreateMap<Basket, BasketDTO>().ReverseMap();
             CreateMap<AddBasketDTO, Basket>();
             CreateMap<UpdateBasketDTO, Basket>();
+
+            CreateMap<BasketProduct, BasketProductEntity>().ReverseMap();
+            CreateMap<BasketProduct, BasketProductDTO>().ReverseMap();
+            CreateMap<BasketProductDTO, BasketProductEntity>().ReverseMap();
+
+            CreateMap<AddBasketProductDTO, BasketProduct>();
+
+            CreateMap<BasketProduct, SmartphoneDTO>()
+                .ForMember(x => x.Brand, y => y.MapFrom(z => z.Product.Brand.Name))
+                .ForMember(x => x.Category, y => y.MapFrom(z => z.Product.Category.Name))
+                .ForMember(x => x.Colour, y => y.MapFrom(z => z.Product.Colour))
+                .ForMember(x => x.Price, y => y.MapFrom(z => z.Product.Price))
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Product.Name))
+                .ForMember(x => x.Image, y => y.MapFrom(z => z.Product.Image))
+                .ForMember(x => x.Image, y => y.MapFrom(z => z.Product.Image))
+                .ForMember(x => x.Stock, y => y.MapFrom(z => z.Product.Stock))
+                .ForMember(x => x.MemoryCapacity, y => y.MapFrom(z => z.Product.MemoryCapacity))
+                .ForMember(x => x.ScreenSize, y => y.MapFrom(z => z.Product.ScreenSize))
+                .ForMember(x => x.Description, y => y.MapFrom(z => z.Product.Description));
         }
     }
 }

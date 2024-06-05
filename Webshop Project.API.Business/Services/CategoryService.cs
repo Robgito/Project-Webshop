@@ -51,7 +51,7 @@ namespace Webshop_Project.API.Business.Services
             {
                 ID = id
             };
-            await _categoryRepository.DeleteItemByIDAsync(categoryEntity);
+            await _categoryRepository.DeleteItemAsync(categoryEntity);
         }
 
         public async Task UpdateCategoryAsync(int id, Category category)

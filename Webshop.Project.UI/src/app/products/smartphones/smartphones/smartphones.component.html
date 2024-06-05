@@ -16,36 +16,36 @@
                             <div class="dropend">
                                 <button class="btn btn-secondary dropdown-toggle" id="btnFilter" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Filters
-                                  </button>
-                                  <ul class="dropdown-menu px-2 mx-1">
-                            <!-- Brands filter start -->
-                            <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Brands:</label>
-                            <select #brand (change)="onSelectedBrand(brand.value)" class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
-                                <option value="0" selected>Choose...</option>
-                                @for (brand of brands; track brand) {
-                                    <option id="brandFilter" [value]="brand.id">{{brand.name}}</option>
-                                }
-                            </select>
-                            <!-- Brands filter end -->
-                            <!-- Category filter start -->
-                            <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Category:</label>
-                            <select #category (change)="onSelectedCategory(category.value)" class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
-                                <option value="0" selected>Choose...</option>
-                                @for (category of categories; track category) {
-                                    <option [value]="category.id">{{category.name}}</option>
-                                }
-                            </select>
-                            <!-- Category filter end -->
-                            <!-- Memory capacity filter start -->
-                            <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Memory:</label>
-                            <select #memory (change)="onSelectedMemory(memory.value)" class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
-                                <option value="0" selected>Choose...</option>
-                                <option value="64">64GB</option>
-                                <option value="128">128GB</option>
-                                <option value="256">256GB</option>
-                            </select>
-                            <!-- Memory capacity filter end -->
-                            <!-- Price range filter start -->
+                                </button>
+                                <ul class="dropdown-menu px-2 mx-1">
+                                    <!-- Brands filter start -->
+                                    <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Brands:</label>
+                                    <select #brand (change)="onSelectedBrand(brand.value)" class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
+                                        <option value="0" selected>Choose...</option>
+                                        @for (brand of brands; track brand) {
+                                        <option id="brandFilter" [value]="brand.id">{{brand.name}}</option>
+                                        }
+                                    </select>
+                                    <!-- Brands filter end -->
+                                    <!-- Category filter start -->
+                                    <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Category:</label>
+                                    <select #category (change)="onSelectedCategory(category.value)" class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
+                                        <option value="0" selected>Choose...</option>
+                                        @for (category of categories; track category) {
+                                        <option [value]="category.id">{{category.name}}</option>
+                                        }
+                                    </select>
+                                    <!-- Category filter end -->
+                                    <!-- Memory capacity filter start -->
+                                    <label class="mr-sm-2 sr-only mx-1" for="inlineFormCustomSelect">Memory:</label>
+                                    <select #memory (change)="onSelectedMemory(memory.value)" class="custom-select mr-sm-2 mx-1" id="inlineFormCustomSelect">
+                                        <option value="0" selected>Choose...</option>
+                                        <option value="64">64GB</option>
+                                        <option value="128">128GB</option>
+                                        <option value="256">256GB</option>
+                                    </select>
+                                    <!-- Memory capacity filter end -->
+                                    <!-- Price range filter start -->
 
                             <label for="exampleInputEmail1" class="form-label mx-1">Min. Price</label>
                             <input #minPrice (change)="onSelectedMinPrice(minPrice.value)" style="width: 6rem;" class="mr-sm-2 sr-only mx-1" id="minPrice">
@@ -60,7 +60,7 @@
                                   </ul>
                             </div>
                         </div>
-                        
+
                     </div>
                 </form>
             </div>
@@ -76,24 +76,28 @@
                         <option value="3">Price high-low</option>
                     </select>
                 </div>
-                    <!-- Sorting end -->
+                <!-- Sorting end -->
             </div>
-                @for (smartphone of smartphones; track smartphone) {
-                    <div class="col-12 col-md-6 col-lg-4 text-center">
-                        <div class="row">
-                            <div class="card my-2" style="width: 18rem;">
-                                <img [src]="smartphone.image" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{smartphone.name}}</h5>
-                                    <p class="card-text">{{smartphone.description}}</p>
-                                    <a href="#" class="btn btn-primary mx-1"><i class='bx bx-cart-add' ></i></a>
-                                    <a [routerLink]="'/smartphones/' + smartphone.id" class="btn btn-secondary"><i class='bx bx-search' ></i></a>                    
-                                </div>
-                            </div>
+            @for (smartphone of smartphones; track smartphone) {
+            <div class="col-12 col-md-6 col-lg-4 text-center">
+                <div class="row">
+                    <div class="card my-2" style="width: 18rem;">
+                        <img [src]="smartphone.image" class="card-img-top" style="height:300px" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{smartphone.name}}</h5>
+                            <p class="card-text">{{smartphone.description}}</p>
+                            <button class="btn btn-primary mx-1" (click)="addSmartphoneToCart(smartphone)"><i class='bx bx-cart-add'></i></button>
+                            <a [routerLink]="'/smartphones/' + smartphone.id" class="btn btn-secondary"><i class='bx bx-search'></i></a>
                         </div>
                     </div>
-                }
-                <app-pagination></app-pagination>
+                </div>
+            </div>
+
+            }
+            <div class="container d-flex justify-content-center align-items-center">
+                <button class="btn btn-primary btn-lg mx-2" (click)="previousPage()" [disabled]="currentPage === 1">Back</button>
+                <button class="btn btn-primary btn-lg mx-2" (click)="nextPage()" [disabled]="!hasMorePages">Next</button>
+            </div>
         </div>
     </div>
 </div>

@@ -54,6 +54,23 @@ namespace Webshop_Project.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetAllProductsInBasket")]
+        public async Task<ActionResult<SmartphoneDTO>> GetAllProductsInBasketAsync(int basketID)
+        {
+            IEnumerable<BasketProduct> basketProducts = await _basketService.GetAllBasketProductsInBasketAsync(basketID);
+            IEnumerable<SmartphoneDTO> smartphoneDTOs = _mapper.Map<IEnumerable<SmartphoneDTO>>(basketProducts);
+
+            if (basketProducts == null || basketProducts.Count() == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(smartphoneDTOs);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> AddBasketAsync(AddBasketDTO addBasketDTO)
         {
@@ -92,5 +109,61 @@ namespace Webshop_Project.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("AddBasketProduct")]
+        public async Task<ActionResult> AddBasketProductAsync(AddBasketProductDTO addBasketProductDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                BasketProduct basketProduct = _mapper.Map<BasketProduct>(addBasketProductDTO);
+                await _basketService.AddBasketProductAsync(basketProduct);
+                return Created();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+
+        [HttpDelete]
+        [Route("DeleteBasketProduct")]
+        public async Task<ActionResult> DeleteBasketProductAsync(int id)
+        {
+            await _basketService.DeleteBasketProductAsync(id);
+            return Created();
+        }
+
+        [HttpGet]
+        [Route("GetBasketProductByProductAndBasketID")]
+        public async Task<ActionResult<BasketProductDTO>> GetBasketProductByProductIDAndBasketID(int productID, int basketID)
+        {
+            BasketProduct basketProduct = await _basketService.GetBasketProductByBasketAndProductIDAsync(productID, basketID);
+            BasketProductDTO basketProductDTO = _mapper.Map<BasketProductDTO>(basketProduct);
+
+            if (basketProduct == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(basketProductDTO);
+            }
+        }
+
+        [HttpPatch]
+        [Route("AddAmountToBasketProduct")]
+        public async Task<ActionResult> AddAmountToBasketProduct(int id)
+        {
+            await _basketService.AddAmountInBasketByID(id);
+            return Created();
+        }
+
+        [HttpPatch]
+        [Route("DecreaseAmountToBasketProduct")]
+        public async Task<ActionResult> DecreaseAmountToBasketProduct(int id)
+        {
+            await _basketService.DecreaseAmountInBasketByID(id);
+            return Created();
+        }
     }
 }

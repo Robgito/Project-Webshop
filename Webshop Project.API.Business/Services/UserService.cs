@@ -60,7 +60,7 @@ namespace Webshop_Project.API.Business.Services
             {
                 ID = id
             };
-            await _userRepository.DeleteItemByIDAsync(userEntity);
+            await _userRepository.DeleteItemAsync(userEntity);
         }
 
         public async Task UpdateUserAsync(int id, User user)
