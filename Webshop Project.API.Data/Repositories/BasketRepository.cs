@@ -5,12 +5,10 @@ namespace Webshop_Project.API.Data.Repositories
 {
     public class BasketRepository : GenericRepo<BasketEntity>, IBasketRepository
     {
-
         private int _newBasketID;
 
         public BasketRepository(WebshopDBContext dbContext) : base(dbContext)
         {
-
         }
 
         public async Task<BasketEntity> GetBasketWithProductsByIDAsync(int id)
@@ -28,6 +26,13 @@ namespace Webshop_Project.API.Data.Repositories
             SaveNewBasketID(basketEntity.ID);
         }
 
+        public async Task AddBasketProduct(BasketProductEntity basketProductEntity)
+        {
+            await _dbContext.BasketProducts
+                .AddAsync(basketProductEntity);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public void SaveNewBasketID(int ID)
         {
             _newBasketID = ID;
@@ -36,6 +41,15 @@ namespace Webshop_Project.API.Data.Repositories
         public int ReturnNewBasketID()
         {
             return _newBasketID;
+        }
+
+        public virtual Task<List<SmartphoneEntity>> GetProductsInBasket(int basketID)
+        {
+            return _dbContext.BasketProducts
+                .Include(x => x.Product)
+                .Where(x => x.BasketID == basketID)
+                .Select(x => x.Product)
+                .ToListAsync();
         }
     }
 }

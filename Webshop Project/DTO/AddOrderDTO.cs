@@ -6,12 +6,6 @@ namespace Webshop_Project.DTO
     public class AddOrderDTO
     {
         [Required(ErrorMessage = "This field is required.")]
-        public double TotalPrice { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public int UserID { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public List<OrderProductEntity> ListProducts { get; set; }
+        public int BasketID { get; set; }
     }
 }
