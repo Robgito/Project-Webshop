@@ -46,28 +46,24 @@
           <div class="form-group">
             <label for="brandID">Brand</label>
             <select [(ngModel)]="phone.brandID" name="brandID" class="mx-2">
-              <option value="0" selected>Choose...</option>
+              <option id="brandID" [value]="phone.brandID">{{phone.brand}}</option>
               @for (brand of brands; track brand) {
-              <option id="brandID" [value]="brand.id" selected>{{brand.name}}</option>
+              <option id="brandID" [value]="brand.id">{{brand.name}}</option>
               }
             </select>
 
-            <!-- <input id="brandID" class="form-control" placeholder="Enter brand ID" [(ngModel)]="phone.brandID"
-              name="brandID"> -->
           </div>
 
           <div class="form-group">
             <label for="categoryID">Category</label>
 
             <select [(ngModel)]="phone.categoryID" name="brandID" class="mx-2">
-              <option value="0" selected>Choose...</option>
+              <option id="brandID" [value]="phone.categoryID">{{phone.category}}</option>
               @for (category of categories; track category) {
-              <option id="brandID" [value]="category.id" selected>{{category.name}}</option>
+              <option id="brandID" [value]="category.id">{{category.name}}</option>
               }
             </select>
 
-            <!--  <input id="categoryID" class="form-control" placeholder="Enter category ID" [(ngModel)]="phone.categoryID"
-              name="categoryID"> -->
           </div>
 
           <div align="end" class="p-2">
