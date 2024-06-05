@@ -17,5 +17,9 @@ namespace Webshop_Project.API.Business.Services
         Task UpdateBasketAsync(int id, Basket basket);
 
         Task AddBasketProductAsync(BasketProduct basketProduct);
+
+        Task<List<Smartphone>> GetAllProductsInBasketAsync(int basketID);
+
+        Task<List<BasketProduct>> GetAllBasketProductsInBasketAsync(int basketID);
     }
 }

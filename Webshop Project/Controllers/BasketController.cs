@@ -54,6 +54,23 @@ namespace Webshop_Project.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetAllProductsInBasket")]
+        public async Task<ActionResult<SmartphoneDTO>> GetAllProductsInBasketAsync(int basketID)
+        {
+            IEnumerable<BasketProduct> basketProducts = await _basketService.GetAllBasketProductsInBasketAsync(basketID);
+            IEnumerable<SmartphoneDTO> smartphoneDTOs = _mapper.Map<IEnumerable<SmartphoneDTO>>(basketProducts);
+
+            if (basketProducts == null || basketProducts.Count() == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(smartphoneDTOs);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> AddBasketAsync(AddBasketDTO addBasketDTO)
         {

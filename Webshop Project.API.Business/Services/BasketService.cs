@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Data.Entities;
 using Webshop_Project.API.Data.Repositories;
@@ -69,16 +70,73 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task AddBasketProductAsync(BasketProduct basketProduct)
         {
+            List<BasketProductEntity> basketProductEntities = await _basketRepository.GetAllBasketProductsAsync();
             BasketProductEntity basketProductEntity = _mapper.Map<BasketProductEntity>(basketProduct);
+
+            if (CheckIfProductIsAlreadyInBasket(basketProductEntities, basketProductEntity))
+            {
+                basketProductEntity = await UpdateAmountInBasket(basketProduct, basketProductEntity);
+            }
+            else
+            {
+                await AddToBasket(basketProductEntity);
+            }
+        }
+
+        private async Task AddToBasket(BasketProductEntity basketProductEntity)
+        {
             basketProductEntity.Created = DateTime.Now;
             basketProductEntity.Updated = DateTime.Now;
 
             await _basketRepository.AddBasketProductAsync(basketProductEntity);
         }
 
+        private async Task<BasketProductEntity> UpdateAmountInBasket(BasketProduct basketProduct, BasketProductEntity basketProductEntity)
+        {
+            basketProductEntity = await _basketRepository.GetBasketProductByBasketAndProductIDAsync(basketProduct.ProductID, basketProduct.BasketID);
+
+            basketProductEntity.Amount++;
+            basketProductEntity.Updated = DateTime.Now;
+
+            await _basketRepository.UpdateBasketProductAsync(basketProductEntity);
+            return basketProductEntity;
+        }
+
+        public async Task<List<Smartphone>> GetAllProductsInBasketAsync(int basketID)
+        {
+            List<SmartphoneEntity> smartphoneEntities = await _basketRepository.GetProductsInBasket(basketID);
+            List<Smartphone> smartphones = _mapper.Map<List<Smartphone>>(smartphoneEntities);
+
+            return smartphones;
+        }
+
+        public async Task<List<BasketProduct>> GetAllBasketProductsInBasketAsync(int basketID)
+        {
+            List<BasketProductEntity> basketProductEntities = await _basketRepository.GetBasketProductsInBasket(basketID);
+            List<BasketProduct> basketProducts = _mapper.Map<List<BasketProduct>>(basketProductEntities);
+
+            return basketProducts;
+        }
+
         public int SaveNewBasketID()
         {
             return _basketRepository.ReturnNewBasketID();
+        }
+
+        public bool CheckIfProductIsAlreadyInBasket(List<BasketProductEntity> basketProducts, BasketProductEntity product)
+        {
+            bool isInBasket = false;
+
+            foreach (BasketProductEntity basketProduct in basketProducts)
+            {
+                if (product.ProductID == basketProduct.ProductID && product.BasketID == basketProduct.BasketID)
+                {
+                    isInBasket = true;
+                    break;
+                }
+            }
+
+            return isInBasket;
         }
     }
 }

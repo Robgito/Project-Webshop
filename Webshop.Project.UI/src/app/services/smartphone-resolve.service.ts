@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  Resolve,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Smartphone } from '../model/smartphone.model';
 import { SmartphoneService } from './smartphone.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SmartphoneResolveService implements Resolve<Smartphone> {
+  constructor(private smartphoneservice: SmartphoneService) {}
 
-  constructor(private smartphoneservice: SmartphoneService) { }
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Smartphone> {
-    const id: any = route.paramMap.get("smartphoneId");
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<Smartphone> {
+    const id: any = route.paramMap.get('smartphoneId');
 
     if (id) {
       // Call API to fetch smartphone details from backend
@@ -25,16 +31,17 @@ export class SmartphoneResolveService implements Resolve<Smartphone> {
 
   getSmartphoneDetails() {
     return {
-      name: "",
-      description: "",
+      id: 0,
+      name: '',
+      description: '',
       price: 0,
-      image: "",
+      image: '',
       stock: 0,
       memoryCapacity: 0,
-      colour: "",
+      colour: '',
       screenSize: 0,
       brandID: 0,
-      categoryID: 0
+      categoryID: 0,
     };
   }
 }

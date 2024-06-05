@@ -3,25 +3,26 @@ import { SmartphoneService } from '../../../services/smartphone.service';
 import { BrandService } from '../../../services/brand.service';
 import { CategoryService } from '../../../services/category.service';
 import { RouterLink } from '@angular/router';
-
+import { Smartphone } from '../../../model/smartphone.model';
+import { BasketProduct } from '../../../model/smartphone.model';
 
 @Component({
   selector: 'app-smartphones',
   templateUrl: './smartphones.component.html',
-  styleUrl: './smartphones.component.css'
+  styleUrl: './smartphones.component.css',
 })
 export class SmartphonesComponent implements OnInit {
-  smartphones : any[] = []
-  brands : any[] = []
-  categories : any[] = []
-  
+  smartphones: any[] = [];
+  brands: any[] = [];
+  categories: any[] = [];
+
   /**
    *
    */
   constructor(
-    private smartphoneService : SmartphoneService,
-    private brandService : BrandService, 
-    private categoryService : CategoryService
+    private smartphoneService: SmartphoneService,
+    private brandService: BrandService,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit(): void {
@@ -56,66 +57,84 @@ export class SmartphonesComponent implements OnInit {
     );
   }
 
-  getSmartphonesByFilter(selectedBrand: number|string, selectedCategory: number|string, selectedMemory: number|string, selectedMinPrice: number|string, selectedMaxPrice: number|string){
-    this.smartphoneService.getSmartphonesByFilter(selectedBrand, selectedCategory, selectedMemory, selectedMinPrice, selectedMaxPrice).subscribe(
-      (data) => {
-        this.smartphones = data; // Handle the response data as needed
-        console.log(this.smartphones);
-      },
-      (error) => {
-        console.error('Error fetching smartphones:', error);
-      }
-  )}
+  getSmartphonesByFilter(
+    selectedBrand: number | string,
+    selectedCategory: number | string,
+    selectedMemory: number | string,
+    selectedMinPrice: number | string,
+    selectedMaxPrice: number | string
+  ) {
+    this.smartphoneService
+      .getSmartphonesByFilter(
+        selectedBrand,
+        selectedCategory,
+        selectedMemory,
+        selectedMinPrice,
+        selectedMaxPrice
+      )
+      .subscribe(
+        (data) => {
+          this.smartphones = data; // Handle the response data as needed
+          console.log(this.smartphones);
+        },
+        (error) => {
+          console.error('Error fetching smartphones:', error);
+        }
+      );
+  }
 
-  selectedBrand: number|string = "";
-  selectedCategory: number|string = "";
-  selectedMemory: number|string = "";
-  selectedMinPrice: number|string = "";
-  selectedMaxPrice: number|string = "";
+  addSmartphoneToCart(smartphone: Smartphone) {
+    const basketProduct: BasketProduct = {
+      productID: smartphone.id,
+      basketId: 1,
+      amount: 1,
+    };
 
-	onSelectedBrand(value: string): void {
-    if(value === "0"){
-      this.selectedBrand = "";
-    }
-    else{
+    this.smartphoneService.addSmartphoneToBasket(basketProduct).subscribe();
+  }
+
+  selectedBrand: number | string = '';
+  selectedCategory: number | string = '';
+  selectedMemory: number | string = '';
+  selectedMinPrice: number | string = '';
+  selectedMaxPrice: number | string = '';
+
+  onSelectedBrand(value: string): void {
+    if (value === '0') {
+      this.selectedBrand = '';
+    } else {
       this.selectedBrand = Number(value);
     }
-
-	}
+  }
 
   onSelectedCategory(value: string): void {
-    if(value === "0"){
-      this.selectedCategory = "";
-    }
-    else{
+    if (value === '0') {
+      this.selectedCategory = '';
+    } else {
       this.selectedCategory = Number(value);
     }
-
   }
 
   onSelectedMemory(value: string): void {
-    if(value === "0"){
-      this.selectedMemory = "";
-    }
-    else{
+    if (value === '0') {
+      this.selectedMemory = '';
+    } else {
       this.selectedMemory = Number(value);
     }
   }
 
   onSelectedMinPrice(value: string): void {
-    if(value === "0"){
-      this.selectedMinPrice = "";
-    }
-    else{
+    if (value === '0') {
+      this.selectedMinPrice = '';
+    } else {
       this.selectedMinPrice = Number(value);
     }
   }
 
   onSelectedMaxPrice(value: string): void {
-    if(value === "0"){
-      this.selectedMaxPrice = "";
-    }
-    else{
+    if (value === '0') {
+      this.selectedMaxPrice = '';
+    } else {
       this.selectedMaxPrice = Number(value);
     }
   }
