@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,14 +10,21 @@ import { Smartphone } from '../model/smartphone.model';
 export class SmartphoneService {
   
 
-  private API_URL = 'https://localhost:7129/api/Smartphone/GetAllSmartphones';
+  private readonly API_URL = 'https://localhost:7129/api/Smartphone/GetAllSmartphones';
 
   constructor(private httpClient : HttpClient) { }
 
   getSmartphones() : Observable<any>{
+
     return this.httpClient.get(this.API_URL);
+
   }
 
+  getSmartphonesByFilter(brandId: number|string, categoryId: number|string, memoryCapacity: number|string, minPrice: number|string, maxPrice: number|string) : Observable<any>{
+
+    return this.httpClient.get(this.API_URL  + `?enterBrandID=${brandId}&enterCategoryID=${categoryId}&enterMemoryCapacity=${memoryCapacity}&enterMinPrice=${minPrice}&enterMaxPrice=${maxPrice}&page=1&items=20`);
+
+  }
 
   getDetailedSmartphoneById(id: any) {
     return this.httpClient.get<Smartphone>(`https://localhost:7129/api/Smartphone?id=${id}`);
@@ -25,6 +33,9 @@ export class SmartphoneService {
   addSmartphone(smartphone: Smartphone) {
     return this.httpClient.post<Smartphone>("https://localhost:7129/api/Smartphone", smartphone);
   }
+
+
+
 
   deleteSmartphoneById(id: number) {
     return this.httpClient.delete(`https://localhost:7129/api/Smartphone?id=${id}`);
@@ -37,3 +48,4 @@ export class SmartphoneService {
 
  
 }
+

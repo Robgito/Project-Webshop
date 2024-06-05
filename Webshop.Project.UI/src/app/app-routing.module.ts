@@ -9,6 +9,7 @@ import { BasketComponent } from './basket/basket.component';
 import { SignInComponent } from './sign/sign-in/sign-in.component';
 import { SignUpComponent } from './sign/sign-up/sign-up.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { SmartphoneResolveService } from './services/smartphone-resolve.service';
 import { UpdateSmartphoneComponent } from './update-smartphone/update-smartphone.component';
 import { AddBrandComponent } from './add-brand/add-brand.component';
@@ -22,7 +23,7 @@ import { CategoryResolveService } from './services/category-resolve.service';
 
 
 const routes: Routes = [
-  { path: '', component: SmartphonesComponent },
+  { path: '', component: HomePageComponent },
   { path: 'smartphones', component: SmartphonesComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'smartphones/:smartphoneId', component: SmartphoneDetailsComponent },
