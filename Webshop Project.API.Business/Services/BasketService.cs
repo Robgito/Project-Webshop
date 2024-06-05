@@ -26,6 +26,7 @@ namespace Webshop_Project.API.Business.Services
             }
 
             Basket basket = _mapper.Map<Basket>(basketEntity);
+            await AddPriceAndShippingToBasket(basket);
             return basket;
         }
 
@@ -79,6 +80,24 @@ namespace Webshop_Project.API.Business.Services
         public int SaveNewBasketID()
         {
             return _basketRepository.ReturnNewBasketID();
+        }
+
+        public async Task AddPriceAndShippingToBasket(Basket basket)
+        {
+            List<SmartphoneEntity> smartphoneEntities = await _basketRepository.GetProductsInBasket(basket.ID);
+
+            basket.TotalPrice = smartphoneEntities.Sum(x => x.Price);
+
+            if (basket.TotalPrice >= 700)
+            {
+                basket.ShippingPrice = 0;
+            }
+            else
+            {
+                basket.ShippingPrice = 25;
+            }
+
+            basket.ExpectedShippingDate = DateTime.Now.AddDays(2);
         }
     }
 }

@@ -1,20 +1,21 @@
 export interface Smartphone {
-    name: string,
-    description: string,
-    price: number,
-    image: string,
-    stock: number,
-    memoryCapacity: number,
-    colour: string,
-    screenSize: number,
-    brandID: number,
-    categoryID: number
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  stock: number;
+  memoryCapacity: number;
+  colour: string;
+  screenSize: number;
+  brandID: number;
+  categoryID: number;
 }
 
 export interface Brand {
-    name: string,
+  name: string;
 }
 
 export interface Category {
-    name: string,
+  name: string;
 }
