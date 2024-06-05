@@ -8,24 +8,26 @@ import { CategoryService } from '../services/category.service';
 @Component({
   selector: 'app-add-smartphone',
   templateUrl: './add-smartphone.component.html',
-  styleUrl: './add-smartphone.component.css'
+  styleUrl: './add-smartphone.component.css',
 })
 export class AddSmartphoneComponent implements OnInit {
+
   brands: any;
   categories: any;
 
   phone: Smartphone = {
-    name: "",
-    description: "",
+    id: 0,
+    name: '',
+    description: '',
     price: 0,
-    image: "",
+    image: '',
     stock: 0,
     memoryCapacity: 0,
-    colour: "",
+    colour: '',
     screenSize: 0,
     brandID: 0,
     categoryID: 0
-  };
+  }
 
 
 
@@ -52,7 +54,6 @@ export class AddSmartphoneComponent implements OnInit {
     );
   }
 
-
   addSmartphone(smartphoneForm: NgForm) {
 
     if (smartphoneForm.invalid) {
@@ -62,13 +63,12 @@ export class AddSmartphoneComponent implements OnInit {
     this.smartphoneservice.addSmartphone(this.phone).subscribe(
       (response: Smartphone) => {
         smartphoneForm.reset();
-        alert("Smartphone successfully added!!");
+        alert('Smartphone successfully added!!');
       },
       (error) => {
         alert("An error has occurred when adding the product");
         console.log(error);
       }
     );
-
   }
 }

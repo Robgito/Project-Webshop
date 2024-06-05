@@ -1,36 +1,35 @@
 <section class="bck-c">
-    <div class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-4">
-          <div class="card text-black">
-            <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
-            <img [src]="smartphone.image"
-              class="card-img-top" alt="" />
-            <div class="card-body">
-              <div class="text-center">
-                <h5 class="card-title">{{smartphone.name}}</h5>
-                <p class="text-muted mb-4">{{smartphone.description}}</p>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <div class="card text-black">
+          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+          <img [src]="smartphone.image" class="card-img-top" alt="" />
+          <div class="card-body">
+            <div class="text-center">
+              <h5 class="card-title">{{smartphone.name}}</h5>
+              <p class="text-muted mb-4">{{smartphone.description}}</p>
+            </div>
+            <div>
+              <div class="d-flex justify-content-between">
+                <span>Brand</span><span>{{smartphone.brand}}</span>
               </div>
-              <div>
-                <div class="d-flex justify-content-between">
-                  <span>Brand</span><span>{{smartphone.brand}}</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Screen Size</span><span>{{smartphone.screenSize}}</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Category</span><span>{{smartphone.category}}</span>
-                </div>
+              <div class="d-flex justify-content-between">
+                <span>Screen Size</span><span>{{smartphone.screenSize}}</span>
               </div>
-              <div class="d-flex justify-content-between total font-weight-bold mt-4">
-                <span>Price</span><span>{{smartphone.price | currency}}</span>
+              <div class="d-flex justify-content-between">
+                <span>Category</span><span>{{smartphone.category}}</span>
               </div>
-              <div class="d-flex justify-content-between total font-weight-bold mt-4">
-                <button class="btn btn-primary mx-1" >Add to cart</button>
-              </div>
+            </div>
+            <div class="d-flex justify-content-between total font-weight-bold mt-4">
+              <span>Price</span><span>{{smartphone.price | currency}}</span>
+            </div>
+            <div class="d-flex justify-content-between total font-weight-bold mt-4">
+              <button class="btn btn-primary mx-1" (click)="addSmartphoneToCart(smartphone)">Add to cart</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

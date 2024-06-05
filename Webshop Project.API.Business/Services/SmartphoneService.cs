@@ -55,7 +55,7 @@ namespace Webshop_Project.API.Business.Services
             {
                 ID = id
             };
-            await _productRepository.DeleteItemByIDAsync(smartphoneEntity);
+            await _productRepository.DeleteItemAsync(smartphoneEntity);
         }
 
         public async Task UpdateSmartphoneAsync(int id, Smartphone smartphone)

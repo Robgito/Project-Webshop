@@ -3,7 +3,7 @@ using Webshop_Project.API.Data.Entities;
 
 namespace Webshop_Project.API.Data.Repositories
 {
-    public class GenericRepo<T> :  IGenericRepo<T> where T : class, IEntity
+    public class GenericRepo<T> : IGenericRepo<T> where T : class, IEntity
     {
         protected WebshopDBContext _dbContext;
         private DbSet<T> _dbSet;
@@ -30,7 +30,7 @@ namespace Webshop_Project.API.Data.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteItemByIDAsync(T Item)
+        public async Task DeleteItemAsync(T Item)
         {
             _dbSet.Remove(Item);
             await _dbContext.SaveChangesAsync();

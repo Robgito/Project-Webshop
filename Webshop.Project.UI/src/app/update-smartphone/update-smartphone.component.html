@@ -6,6 +6,7 @@
         <form #smartphoneForm="ngForm" (ngSubmit)="updateSmartphone(smartphoneForm)">
           <div class="form-group">
             <label for="name">Name</label>
+
             <input id="name" class="form-control" placeholder="Enter product name" [(ngModel)]="phone.name" name="name" required>
             <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['name'].invalid" class="text-danger">
               Name is required.
@@ -46,6 +47,7 @@
 
           <div class="form-group">
             <label for="memoryCapacity">Memory Capacity</label>
+
             <input id="memoryCapacity" class="form-control" placeholder="Enter memory capacity" [(ngModel)]="phone.memoryCapacity" name="memoryCapacity" type="number" min="64" required >
             <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['memoryCapacity'].invalid" class="text-danger">
               Valid memory capacity is required.Memory capacity can't go below 64GB!
@@ -54,14 +56,17 @@
 
           <div class="form-group">
             <label for="stock">Stock</label>
+
             <input id="stock" class="form-control" placeholder="Enter stock" [(ngModel)]="phone.stock" name="stock" required type="number" min="0">
             <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['stock'].invalid" class="text-danger">
               Valid stock is required.
             </div>
+
           </div>
 
           <div class="form-group">
             <label for="brandID">Brand</label>
+
             <select [(ngModel)]="phone.brandID" name="brandID" class="mx-2" required>
               <option [ngValue]="phone.brandID">{{phone.brand}}</option>
               <option *ngFor="let brand of brands" [ngValue]="brand.id">{{brand.name}}</option>
@@ -69,6 +74,7 @@
             <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['brandID'].invalid" class="text-danger">
               Brand is required.
             </div>
+
           </div>
 
           <div class="form-group">
@@ -94,3 +100,4 @@
     </div>
   </div>
 </div>
+

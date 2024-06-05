@@ -51,7 +51,7 @@ namespace Webshop_Project.API.Business.Services
             {
                 ID = id
             };
-            await _brandRepository.DeleteItemByIDAsync(item);
+            await _brandRepository.DeleteItemAsync(item);
         }
 
         public async Task UpdateBrandAsync(int id, Brand brand)

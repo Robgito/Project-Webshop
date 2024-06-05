@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Data.Entities;
 using Webshop_Project.API.Data.Repositories;
@@ -26,6 +27,7 @@ namespace Webshop_Project.API.Business.Services
             }
 
             Basket basket = _mapper.Map<Basket>(basketEntity);
+            await AddPriceAndShippingToBasket(basket);
             return basket;
         }
 
@@ -51,7 +53,7 @@ namespace Webshop_Project.API.Business.Services
             {
                 ID = id
             };
-            await _basketRepository.DeleteItemByIDAsync(basketEntity);
+            await _basketRepository.DeleteItemAsync(basketEntity);
         }
 
         public async Task UpdateBasketAsync(int id, Basket basket)
@@ -69,16 +71,141 @@ namespace Webshop_Project.API.Business.Services
 
         public async Task AddBasketProductAsync(BasketProduct basketProduct)
         {
+            List<BasketProductEntity> basketProductEntities = await _basketRepository.GetAllBasketProductsAsync();
             BasketProductEntity basketProductEntity = _mapper.Map<BasketProductEntity>(basketProduct);
+
+            if (CheckIfProductIsAlreadyInBasket(basketProductEntities, basketProductEntity))
+            {
+                basketProductEntity = await AddAmountInBasket(basketProduct, basketProductEntity);
+            }
+            else
+            {
+                await AddToBasket(basketProductEntity);
+            }
+        }
+
+        public async Task AddToBasket(BasketProductEntity basketProductEntity)
+        {
             basketProductEntity.Created = DateTime.Now;
             basketProductEntity.Updated = DateTime.Now;
 
             await _basketRepository.AddBasketProductAsync(basketProductEntity);
         }
 
+        public async Task<BasketProductEntity> AddAmountInBasket(BasketProduct basketProduct, BasketProductEntity basketProductEntity)
+        {
+            basketProductEntity = await _basketRepository.GetBasketProductByBasketAndProductIDAsync(basketProduct.ProductID, basketProduct.BasketID);
+
+            basketProductEntity.Amount++;
+            basketProductEntity.Updated = DateTime.Now;
+
+            await _basketRepository.UpdateBasketProductAsync(basketProductEntity);
+            return basketProductEntity;
+        }
+
+        public async Task AddAmountInBasketByID(int basketProductID)
+        {
+            BasketProductEntity basketProductEntity = await _basketRepository.GetBasketProductByID(basketProductID);
+
+            basketProductEntity.Amount++;
+            basketProductEntity.Updated = DateTime.Now;
+
+            await _basketRepository.UpdateBasketProductAsync(basketProductEntity);
+        }
+
+        public async Task DecreaseAmountInBasketByID(int basketProductID)
+        {
+            BasketProductEntity basketProductEntity = await _basketRepository.GetBasketProductByID(basketProductID);
+
+            basketProductEntity.Amount--;
+            basketProductEntity.Updated = DateTime.Now;
+
+            if (basketProductEntity.Amount == 0)
+            {
+                await _basketRepository.DeleteBasketProductAsync(basketProductEntity);
+            }
+            else
+            {
+                await _basketRepository.UpdateBasketProductAsync(basketProductEntity);
+            }
+        }
+
+        public async Task<List<Smartphone>> GetAllProductsInBasketAsync(int basketID)
+        {
+            List<SmartphoneEntity> smartphoneEntities = await _basketRepository.GetProductsInBasket(basketID);
+            List<Smartphone> smartphones = _mapper.Map<List<Smartphone>>(smartphoneEntities);
+
+            return smartphones;
+        }
+
+        public async Task<List<BasketProduct>> GetAllBasketProductsInBasketAsync(int basketID)
+        {
+            List<BasketProductEntity> basketProductEntities = await _basketRepository.GetBasketProductsInBasket(basketID);
+            List<BasketProduct> basketProducts = _mapper.Map<List<BasketProduct>>(basketProductEntities);
+
+            return basketProducts;
+        }
+
         public int SaveNewBasketID()
         {
             return _basketRepository.ReturnNewBasketID();
+        }
+
+        public bool CheckIfProductIsAlreadyInBasket(List<BasketProductEntity> basketProducts, BasketProductEntity product)
+        {
+            bool isInBasket = false;
+
+            foreach (BasketProductEntity basketProduct in basketProducts)
+            {
+                if (product.ProductID == basketProduct.ProductID && product.BasketID == basketProduct.BasketID)
+                {
+                    isInBasket = true;
+                    break;
+                }
+            }
+
+            return isInBasket;
+        }
+
+        public async Task AddPriceAndShippingToBasket(Basket basket)
+        {
+            List<BasketProductEntity> BasketProductEntities = await _basketRepository.GetBasketProductsInBasket(basket.ID);
+
+            basket.TotalPrice = BasketProductEntities.Sum(x => x.Product.Price * x.Amount);
+
+            if (basket.TotalPrice >= 1000)
+            {
+                basket.ShippingPrice = 0;
+            }
+            else if (basket.TotalPrice <= 0)
+            {
+                basket.ShippingPrice = 0;
+            }
+            else
+            {
+                basket.ShippingPrice = 25;
+            }
+
+            basket.ExpectedShippingDate = DateTime.Now.AddDays(2);
+            basket.PriceWithShipping = basket.ShippingPrice + basket.TotalPrice;
+        }
+
+        public async Task DeleteBasketProductAsync(int id)
+        {
+            BasketProductEntity basketProductEntity = new BasketProductEntity()
+            {
+                ID = id
+            };
+
+            await _basketRepository.DeleteBasketProductAsync(basketProductEntity);
+        }
+
+        public async Task<BasketProduct> GetBasketProductByBasketAndProductIDAsync(int productID, int basketID)
+        {
+            BasketProductEntity basketProductEntity = await _basketRepository.GetBasketProductByBasketAndProductIDAsync(productID, basketID);
+            BasketProduct basketProduct = _mapper.Map<BasketProduct>(basketProductEntity);
+
+            return basketProduct;
         }
     }
 }
