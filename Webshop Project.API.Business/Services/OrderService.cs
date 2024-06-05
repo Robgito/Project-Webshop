@@ -43,8 +43,15 @@ namespace Webshop_Project.API.Business.Services
             List<SmartphoneEntity> smartphonesInCart = await _basketRepository.GetProductsInBasket(basketID);
 
             double totalPrice = smartphonesInCart.Sum(x => x.Price);
+            double shippingPrice = 25;
 
-            return null;
+            // TODO: Complete method
+            Order order = new Order
+            {
+                TotalPrice = totalPrice + shippingPrice,
+            };
+
+            return order;
         }
 
         public async Task DeleteOrderAsync(int id)

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Smartphone } from '../model/smartphone.model';
 import { NgForm } from '@angular/forms';
 import { SmartphoneService } from '../services/smartphone.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-smartphone',
@@ -25,20 +23,19 @@ export class AddSmartphoneComponent implements OnInit {
     categoryID: 1
   };
 
-  constructor(private smartphoneservice: SmartphoneService, private activatedRoute: ActivatedRoute) { }
+  constructor(private smartphoneservice: SmartphoneService) { }
   
-  
-  ngOnInit(): void {
-   this.phone = this.activatedRoute.snapshot.data['phone'];
-  }
+  ngOnInit(): void {};
+ 
 
   addSmartphone(smartphoneForm: NgForm) {
     this.smartphoneservice.addSmartphone(this.phone).subscribe(
       (response: Smartphone) => {
-        this.ngOnInit();
         smartphoneForm.reset();
+        alert("Smartphone successfully added!!");
       },
-      (error: HttpErrorResponse) => {
+      (error) => {
+       alert("An error has occurred when adding the product");
         console.log(error);
       }
     );

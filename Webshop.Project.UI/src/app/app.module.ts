@@ -18,6 +18,15 @@ import { SignInComponent } from './sign/sign-in/sign-in.component';
 import { SignUpComponent } from './sign/sign-up/sign-up.component';
 import { FooterComponent } from './ui/footer/footer.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { UpdateSmartphoneComponent } from './update-smartphone/update-smartphone.component';
+import { AddBrandComponent } from './add-brand/add-brand.component';
+import { ShowBrandsComponent } from './show-brands/show-brands.component';
+import { UpdateBrandComponent } from './update-brand/update-brand.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { ShowCategoriesComponent } from './show-categories/show-categories.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
+
 
 
 @NgModule({
@@ -31,12 +40,19 @@ import { CheckoutComponent } from './checkout/checkout.component';
     SignInComponent,
     SignUpComponent,
     FooterComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    HomePageComponent,
     AdminComponent,
     AddSmartphoneComponent,
     ShowProductsComponent,
+    UpdateSmartphoneComponent,
+    AddBrandComponent,
+    ShowBrandsComponent,
+    UpdateBrandComponent,
+    AddCategoryComponent,
+    ShowCategoriesComponent,
+    UpdateCategoryComponent,
   
-
   ],
   imports: [
     BrowserModule,
@@ -48,6 +64,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
   ],
   providers: [
     provideAnimationsAsync()
+
   ],
   bootstrap: [AppComponent]
 })
