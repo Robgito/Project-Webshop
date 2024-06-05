@@ -4,11 +4,11 @@
       <div class="col-md-8">
         <div class="card mb-4">
           <div class="card-header py-3">
-            <h5 class="mb-0">Cart - X items</h5>
+            <h5 class="mb-0">Cart - {{basket[0].listProducts.length}} items</h5>
           </div>
           <div class="card-body">
             <!-- Single item -->
-            @for(product of productsInBasket; track product){
+            @for(product of productsInBasket; track product; let i = $index){
             <div class="row">
               <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                 <!-- Image -->
@@ -25,7 +25,7 @@
                 <!-- Data -->
                 <p><strong>{{product.name}}</strong></p>
                 <p>Color: {{product.colour}}</p>
-                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm me-1 mb-2" data-mdb-tooltip-init title="Remove item">
+                <button (click)="DeleteBasketProductByID(basket[0].listProducts[i].id)" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm me-1 mb-2" data-mdb-tooltip-init title="Remove item">
                   <i class='bx bxs-trash-alt'></i>
                 </button>
                 <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-sm mb-2" data-mdb-tooltip-init title="Move to the wish list">
@@ -37,7 +37,7 @@
               <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <!-- Quantity -->
                 <div class="d-flex mb-4" style="max-width: 300px">
-                  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" style="height: 100%;">
+                  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary px-3 me-2" (click)="DecreaseAmountToBasketProduct(basket[0].listProducts[i].id)" style="height: 100%;">
                     <i class='bx bx-minus'></i>
                   </button>
 
@@ -46,7 +46,7 @@
                     <label class="form-label" for="form1">Quantity</label>
                   </div>
 
-                  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" style="height: 100%;">
+                  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary px-3 ms-2" (click)="AddAmountToBasketProduct(basket[0].listProducts[i].id)" style="height: 100%;">
                     <i class='bx bx-plus'></i>
                   </button>
                 </div>

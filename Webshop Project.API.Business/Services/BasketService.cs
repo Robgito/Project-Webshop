@@ -76,7 +76,7 @@ namespace Webshop_Project.API.Business.Services
 
             if (CheckIfProductIsAlreadyInBasket(basketProductEntities, basketProductEntity))
             {
-                basketProductEntity = await UpdateAmountInBasket(basketProduct, basketProductEntity);
+                basketProductEntity = await AddAmountInBasket(basketProduct, basketProductEntity);
             }
             else
             {
@@ -84,7 +84,7 @@ namespace Webshop_Project.API.Business.Services
             }
         }
 
-        private async Task AddToBasket(BasketProductEntity basketProductEntity)
+        public async Task AddToBasket(BasketProductEntity basketProductEntity)
         {
             basketProductEntity.Created = DateTime.Now;
             basketProductEntity.Updated = DateTime.Now;
@@ -92,7 +92,7 @@ namespace Webshop_Project.API.Business.Services
             await _basketRepository.AddBasketProductAsync(basketProductEntity);
         }
 
-        private async Task<BasketProductEntity> UpdateAmountInBasket(BasketProduct basketProduct, BasketProductEntity basketProductEntity)
+        public async Task<BasketProductEntity> AddAmountInBasket(BasketProduct basketProduct, BasketProductEntity basketProductEntity)
         {
             basketProductEntity = await _basketRepository.GetBasketProductByBasketAndProductIDAsync(basketProduct.ProductID, basketProduct.BasketID);
 
@@ -101,6 +101,33 @@ namespace Webshop_Project.API.Business.Services
 
             await _basketRepository.UpdateBasketProductAsync(basketProductEntity);
             return basketProductEntity;
+        }
+
+        public async Task AddAmountInBasketByID(int basketProductID)
+        {
+            BasketProductEntity basketProductEntity = await _basketRepository.GetBasketProductByID(basketProductID);
+
+            basketProductEntity.Amount++;
+            basketProductEntity.Updated = DateTime.Now;
+
+            await _basketRepository.UpdateBasketProductAsync(basketProductEntity);
+        }
+
+        public async Task DecreaseAmountInBasketByID(int basketProductID)
+        {
+            BasketProductEntity basketProductEntity = await _basketRepository.GetBasketProductByID(basketProductID);
+
+            basketProductEntity.Amount--;
+            basketProductEntity.Updated = DateTime.Now;
+
+            if (basketProductEntity.Amount == 0)
+            {
+                await _basketRepository.DeleteBasketProductAsync(basketProductEntity);
+            }
+            else
+            {
+                await _basketRepository.UpdateBasketProductAsync(basketProductEntity);
+            }
         }
 
         public async Task<List<Smartphone>> GetAllProductsInBasketAsync(int basketID)
@@ -150,6 +177,10 @@ namespace Webshop_Project.API.Business.Services
             {
                 basket.ShippingPrice = 0;
             }
+            else if (basket.TotalPrice <= 0)
+            {
+                basket.ShippingPrice = 0;
+            }
             else
             {
                 basket.ShippingPrice = 25;
@@ -166,6 +197,14 @@ namespace Webshop_Project.API.Business.Services
             };
 
             await _basketRepository.DeleteBasketProductAsync(basketProductEntity);
+        }
+
+        public async Task<BasketProduct> GetBasketProductByBasketAndProductIDAsync(int productID, int basketID)
+        {
+            BasketProductEntity basketProductEntity = await _basketRepository.GetBasketProductByBasketAndProductIDAsync(productID, basketID);
+            BasketProduct basketProduct = _mapper.Map<BasketProduct>(basketProductEntity);
+
+            return basketProduct;
         }
     }
 }

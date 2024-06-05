@@ -25,5 +25,7 @@ namespace Webshop_Project.API.Data.Repositories
         Task<BasketProductEntity> GetBasketProductByBasketAndProductIDAsync(int productID, int basketID);
 
         Task DeleteBasketProductAsync(BasketProductEntity basketProductEntity);
+
+        Task<BasketProductEntity> GetBasketProductByID(int basketProductID);
     }
 }

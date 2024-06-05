@@ -51,7 +51,7 @@ namespace Webshop_Project.API.Data
                     Created = DateTime.Now,
                     Updated = DateTime.Now,
                     IsActive = true,
-                    ShippingPrice = 25,
+                    ShippingPrice = 0,
                 }
             };
         }
