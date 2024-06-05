@@ -15,5 +15,13 @@ namespace Webshop_Project.API.Data.Repositories
         int ReturnNewBasketID();
 
         void SaveNewBasketID(int ID);
+
+        Task<List<BasketProductEntity>> GetBasketProductsInBasket(int basketID);
+
+        Task<List<BasketProductEntity>> GetAllBasketProductsAsync();
+
+        Task UpdateBasketProductAsync(BasketProductEntity basketProductEntity);
+
+        Task<BasketProductEntity> GetBasketProductByBasketAndProductIDAsync(int productID, int basketID);
     }
 }
