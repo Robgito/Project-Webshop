@@ -6,39 +6,37 @@ import { SmartphoneService } from '../services/smartphone.service';
 @Component({
   selector: 'app-add-smartphone',
   templateUrl: './add-smartphone.component.html',
-  styleUrl: './add-smartphone.component.css'
+  styleUrl: './add-smartphone.component.css',
 })
 export class AddSmartphoneComponent implements OnInit {
-
   phone: Smartphone = {
-    name: "",
-    description: "",
+    id: 0,
+    name: '',
+    description: '',
     price: 0,
-    image: "",
+    image: '',
     stock: 0,
     memoryCapacity: 0,
-    colour: "",
+    colour: '',
     screenSize: 0,
     brandID: 1,
-    categoryID: 1
+    categoryID: 1,
   };
 
-  constructor(private smartphoneservice: SmartphoneService) { }
-  
-  ngOnInit(): void {};
- 
+  constructor(private smartphoneservice: SmartphoneService) {}
+
+  ngOnInit(): void {}
 
   addSmartphone(smartphoneForm: NgForm) {
     this.smartphoneservice.addSmartphone(this.phone).subscribe(
       (response: Smartphone) => {
         smartphoneForm.reset();
-        alert("Smartphone successfully added!!");
+        alert('Smartphone successfully added!!');
       },
       (error) => {
-       alert("An error has occurred when adding the product");
+        alert('An error has occurred when adding the product');
         console.log(error);
       }
     );
   }
-
 }

@@ -47,5 +47,7 @@ namespace Webshop_Project.DTO
         [Required(ErrorMessage = "This field is required.")]
         [Range(1, 4, ErrorMessage = "This Category doesn't exist!")]
         public string Category { get; set; }
+
+        public int Amount { get; set; }
     }
 }

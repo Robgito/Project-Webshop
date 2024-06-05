@@ -4,31 +4,27 @@ import { NgForm } from '@angular/forms';
 import { SmartphoneService } from '../../services/smartphone.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  styleUrl: './admin.component.css',
 })
 export class AdminComponent implements OnInit {
-
-
-
   phone: Smartphone = {
-    name: "",
-    description: "",
+    id: 0,
+    name: '',
+    description: '',
     price: 0,
-    image: "",
+    image: '',
     stock: 0,
     memoryCapacity: 0,
-    colour: "",
+    colour: '',
     screenSize: 0,
     brandID: 1,
-    categoryID: 1
-
-  }
-smartphones: any;
-  constructor(private smartphoneservice: SmartphoneService) { }
+    categoryID: 1,
+  };
+  smartphones: any;
+  constructor(private smartphoneservice: SmartphoneService) {}
 
   addSmartphone(smartphoneForm: NgForm) {
     this.smartphoneservice.addSmartphone(this.phone).subscribe(
@@ -42,7 +38,6 @@ smartphones: any;
     );
   }
 
-  
   ngOnInit(): void {
     this.smartphoneservice.getSmartphones().subscribe(
       (data) => {
@@ -64,10 +59,7 @@ smartphones: any;
         console.log(error);
       }
     );
-    }
+  }
 
-    updateSmartPhoneById(smartphoneId: number) {
-      
-    }
-} 
-
+  updateSmartPhoneById(smartphoneId: number) {}
+}
