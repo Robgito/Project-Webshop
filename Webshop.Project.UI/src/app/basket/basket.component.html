@@ -79,7 +79,7 @@
             <img class="me-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg" alt="Visa" />
             <img class="me-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg" alt="American Express" />
             <img class="me-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg" alt="Mastercard" />
-            <img class="me-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp" alt="PayPal acceptance mark" />
+            <img class="me-2" width="45px" src="https://www.paypalobjects.com/webstatic/mktg/logo-center/PP_Acceptance_Marks_for_LogoCenter_150x94.png" alt="PayPal acceptance mark" />
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@
                     <p class="mb-0">(including VAT)</p>
                   </strong>
                 </div>
-                <span><strong>{{basket[0].totalPrice | currency}}</strong></span>
+                <span><strong>{{basket[0].priceWithShipping | currency}}</strong></span>
               </li>
             </ul>
             <button class="btn btn-primary btn-lg" routerLink="/checkout">Go to checkout</button>

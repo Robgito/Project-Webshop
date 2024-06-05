@@ -3,5 +3,6 @@ export interface Basket {
   totalPrice: number;
   shippingPrice: number;
   expectedShippingDate: Date;
+  priceWithShipping: number;
   listProducts: any[];
 }

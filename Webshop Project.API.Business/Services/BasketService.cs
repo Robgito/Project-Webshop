@@ -173,7 +173,7 @@ namespace Webshop_Project.API.Business.Services
 
             basket.TotalPrice = BasketProductEntities.Sum(x => x.Product.Price * x.Amount);
 
-            if (basket.TotalPrice >= 700)
+            if (basket.TotalPrice >= 1000)
             {
                 basket.ShippingPrice = 0;
             }
@@ -187,6 +187,7 @@ namespace Webshop_Project.API.Business.Services
             }
 
             basket.ExpectedShippingDate = DateTime.Now.AddDays(2);
+            basket.PriceWithShipping = basket.ShippingPrice + basket.TotalPrice;
         }
 
         public async Task DeleteBasketProductAsync(int id)
