@@ -19,6 +19,11 @@ export class AddBrandComponent implements OnInit {
   ngOnInit(): void { };
 
   addBrand(brandForm: NgForm) {
+
+    if (brandForm.invalid) {
+      return;
+    }
+    
     this.brandservice.addBrand(this.brand).subscribe(
       (data: Brand) => {
         brandForm.reset();

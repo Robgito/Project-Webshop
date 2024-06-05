@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UpdateBrandComponent implements OnInit {
   brand: any;
-  
+
   constructor(private brandService: BrandService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -18,6 +18,10 @@ export class UpdateBrandComponent implements OnInit {
   }
 
   updateBrand(brandForm: NgForm) {
+
+    if (brandForm.invalid) {
+      return;
+    }
     this.brandService.updateBrand(this.brand.id, this.brand).subscribe(
       (response) => {
         console.log(response);

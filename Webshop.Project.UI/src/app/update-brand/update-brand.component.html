@@ -6,19 +6,19 @@
                 <form #brandForm="ngForm" (ngSubmit)="updateBrand(brandForm)">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input id="name" class="form-control" placeholder="Enter Brand name" [(ngModel)]="brand.name"
-                            name="name">
+                        <input id="name" class="form-control" placeholder="Enter Brand name" [(ngModel)]="brand.name" name="name" required>
+                        <div *ngIf="brandForm.submitted && brandForm.controls['name'].invalid" class="text-danger">
+                            Name is required.
+                        </div>
                     </div>
-                    <div align="end">
+                    <div align="end" class="p-2">
                         <button type="reset" class="btn btn-primary mr-3">Clear</button>
                         <button type="submit" class="btn btn-primary">Update Brand</button>
-
                     </div>
                 </form>
-
             </div>
             <div class="col-6">
-
+                <!-- Optional content -->
             </div>
         </div>
     </div>

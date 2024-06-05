@@ -54,6 +54,11 @@ export class AddSmartphoneComponent implements OnInit {
 
 
   addSmartphone(smartphoneForm: NgForm) {
+
+    if (smartphoneForm.invalid) {
+      return;
+    }
+
     this.smartphoneservice.addSmartphone(this.phone).subscribe(
       (response: Smartphone) => {
         smartphoneForm.reset();

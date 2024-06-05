@@ -45,6 +45,11 @@ export class UpdateSmartphoneComponent implements OnInit {
 
 
   updateSmartphone(smartphoneForm: NgForm) {
+
+    if (smartphoneForm.invalid) {
+      return;
+    }
+    
     this.smartphoneservice.updatesmartphone(this.phone.id, this.phone).subscribe(
       (response) => {
         console.log(response);

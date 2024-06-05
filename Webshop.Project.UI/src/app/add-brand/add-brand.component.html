@@ -6,19 +6,19 @@
                 <form #brandForm="ngForm" (ngSubmit)="addBrand(brandForm)">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input id="name" class="form-control" placeholder="Enter Brand name" [(ngModel)]="brand.name"
-                            name="name">
+                        <input id="name" class="form-control" placeholder="Enter Brand name" [(ngModel)]="brand.name" name="name" minlength="1" maxlength="100" required>
+                        <div *ngIf="brandForm.submitted && !brand.name" class="text-danger">
+                            Name is required min. one letter & max. 100 letters!!
+                        </div>
                     </div>
                     <div class="p-2" align="end">
                         <button type="reset" class="btn btn-primary mr-3">Clear</button>
                         <button type="submit" class="btn btn-primary">Add Brand</button>
-
                     </div>
                 </form>
-
             </div>
             <div class="col-6">
-
+                <!-- Optional content -->
             </div>
         </div>
     </div>
