@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, min } from 'rxjs';
 import { Smartphone } from '../model/smartphone.model';
 
 @Injectable({
@@ -24,6 +23,10 @@ export class SmartphoneService {
 
     return this.httpClient.get(this.API_URL  + `?enterBrandID=${brandId}&enterCategoryID=${categoryId}&enterMemoryCapacity=${memoryCapacity}&enterMinPrice=${minPrice}&enterMaxPrice=${maxPrice}&page=1&items=20`);
 
+  }
+
+  getSmartphoneBySearch(userSearch: number|string) : Observable<any>{
+    return this.httpClient.get(this.API_URL  + `?userSearch=${userSearch}&page=1&items=20`);
   }
 
   getDetailedSmartphoneById(id: any) {
