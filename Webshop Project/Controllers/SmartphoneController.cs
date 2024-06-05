@@ -37,7 +37,7 @@ namespace Webshop_Project.Controllers
 
         [HttpGet]
         [Route("GetAllSmartphones")]
-        public async Task<ActionResult<SmartphoneDTO>> GetAllSmartphonesAsync(int? enterBrandID, int? enterCategoryID, int? enterMemoryCapacity, int? enterMinPrice, int? enterMaxPrice, string? userSearch, int page = 1, int items = 20)
+        public async Task<ActionResult<SmartphoneDTO>> GetAllSmartphonesAsync(int? enterBrandID, int? enterCategoryID, int? enterMemoryCapacity, int? enterMinPrice, int? enterMaxPrice, string? userSearch, int page = 1, int items = 40)
         {
             IEnumerable<Smartphone> smartphones = await _smartphoneService.GetSmartphonesAsync(page, items, enterBrandID, enterCategoryID, enterMemoryCapacity, enterMinPrice, enterMaxPrice, userSearch);
             IEnumerable<SmartphoneDTO> smartphoneDTOs = _mapper.Map<IEnumerable<SmartphoneDTO>>(smartphones);

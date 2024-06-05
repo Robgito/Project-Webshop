@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Smartphone } from '../model/smartphone.model';
 import { NgForm } from '@angular/forms';
 import { SmartphoneService } from '../services/smartphone.service';
+import { BrandService } from '../services/brand.service';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-add-smartphone',
@@ -9,6 +11,8 @@ import { SmartphoneService } from '../services/smartphone.service';
   styleUrl: './add-smartphone.component.css'
 })
 export class AddSmartphoneComponent implements OnInit {
+  brands: any;
+  categories: any;
 
   phone: Smartphone = {
     name: "",
@@ -19,14 +23,35 @@ export class AddSmartphoneComponent implements OnInit {
     memoryCapacity: 0,
     colour: "",
     screenSize: 0,
-    brandID: 1,
-    categoryID: 1
+    brandID: 0,
+    categoryID: 0
   };
 
-  constructor(private smartphoneservice: SmartphoneService) { }
-  
-  ngOnInit(): void {};
- 
+
+
+  constructor(private smartphoneservice: SmartphoneService, private brandService: BrandService, private categoryService: CategoryService) { }
+
+  ngOnInit(): void {
+    this.brandService.getBrands().subscribe(
+      (data) => {
+        this.brands = data;
+        console.log(this.brands);
+      },
+      (error) => {
+        console.error('Error fetching brands:', error);
+      }
+    );
+    this.categoryService.getCategories().subscribe(
+      (data) => {
+        this.categories = data;
+        console.log(this.categories);
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
+  }
+
 
   addSmartphone(smartphoneForm: NgForm) {
     this.smartphoneservice.addSmartphone(this.phone).subscribe(
@@ -35,10 +60,10 @@ export class AddSmartphoneComponent implements OnInit {
         alert("Smartphone successfully added!!");
       },
       (error) => {
-       alert("An error has occurred when adding the product");
+        alert("An error has occurred when adding the product");
         console.log(error);
       }
     );
-  }
 
+  }
 }
