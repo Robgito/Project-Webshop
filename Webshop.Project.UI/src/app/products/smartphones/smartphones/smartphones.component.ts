@@ -5,6 +5,7 @@ import { CategoryService } from '../../../services/category.service';
 import { RouterLink } from '@angular/router';
 import { Smartphone } from '../../../model/smartphone.model';
 import { BasketProduct } from '../../../model/smartphone.model';
+import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
 
 @Component({
   selector: 'app-smartphones',
@@ -26,7 +27,7 @@ export class SmartphonesComponent implements OnInit {
     private smartphoneService: SmartphoneService,
     private brandService: BrandService,
     private categoryService: CategoryService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.smartphoneService.getSmartphones(this.currentPage).subscribe(
@@ -107,6 +108,7 @@ export class SmartphonesComponent implements OnInit {
     };
 
     this.smartphoneService.addSmartphoneToBasket(basketProduct).subscribe();
+    alert(`Added ${smartphone.name} to cart!`);
   }
 
   selectedBrand: number | string = '';

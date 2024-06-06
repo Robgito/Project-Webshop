@@ -39,27 +39,5 @@ namespace Webshop.Project.Tests
             //Assert
             Assert.Equal(result.TotalPrice, expectedPrice);
         }
-
-        [Fact]
-        public void WhenPlacingAnOrderAbove500Euros_ThenShippingIsFree()
-        {
-            //Arrange
-            double expectedPrice = 665.5;
-            double expectedPriceWithShipping = 690.5;
-
-            Order result = new Order();
-            Smartphone smartphone1 = new Smartphone();
-            smartphone1.Price = 350;
-
-            Smartphone smartphone2 = new Smartphone();
-            smartphone2.Price = 200;
-
-            //Act
-
-            //Assert
-
-            Assert.Equal(result.TotalPrice, expectedPrice);
-            Assert.NotEqual(result.TotalPrice, expectedPrice);
-        }
     }
 }

@@ -36,5 +36,6 @@ export class SmartphoneDetailsComponent {
     };
 
     this.smartphoneService.addSmartphoneToBasket(basketProduct).subscribe();
+    alert(`Added ${smartphone.name} to cart!`);
   }
 }

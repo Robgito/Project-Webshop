@@ -16,7 +16,7 @@ export class BasketComponent {
   basket: Basket[] = [];
   basketproductSelected: any[] = [];
 
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService) {}
 
   ngOnInit(): void {
     this.basketService.GetProductsInBasket(1).subscribe(
@@ -41,9 +41,17 @@ export class BasketComponent {
   }
 
   DeleteBasketProductByID(basketproductID: number) {
-    this.basketService
-      .DeleteBasketProductID(basketproductID)
-      .subscribe(() => this.LoadBasket());
+    let answer = window.confirm(
+      'Are you sure you want to remove this item from the cart?'
+    );
+    if (answer) {
+      this.basketService
+        .DeleteBasketProductID(basketproductID)
+        .subscribe(() => this.LoadBasket());
+      alert(`Removed item from cart!`);
+    } else {
+      alert(`Didn't remove item from`);
+    }
   }
 
   AddAmountToBasketProduct(basketproductID: number) {
@@ -52,10 +60,24 @@ export class BasketComponent {
       .subscribe(() => this.LoadBasket());
   }
 
-  DecreaseAmountToBasketProduct(basketproductID: number) {
-    this.basketService
-      .DecreaseAmountInBasketByID(basketproductID)
-      .subscribe(() => this.LoadBasket());
+  DecreaseAmountToBasketProduct(basketproductID: number, amount: number) {
+    if (amount === 1) {
+      let answer = window.confirm(
+        'Are you sure you want to remove this item from the cart?'
+      );
+      if (answer) {
+        this.basketService
+          .DecreaseAmountInBasketByID(basketproductID)
+          .subscribe(() => this.LoadBasket());
+        alert(`Removed item from cart!`);
+      } else {
+        alert(`Didn't remove item from`);
+      }
+    } else {
+      this.basketService
+        .DecreaseAmountInBasketByID(basketproductID)
+        .subscribe(() => this.LoadBasket());
+    }
   }
 
   LoadBasket(): void {

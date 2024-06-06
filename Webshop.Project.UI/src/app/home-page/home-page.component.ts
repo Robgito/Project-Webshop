@@ -14,7 +14,7 @@ export class HomePageComponent {
   /**
    *
    */
-  constructor(private smartphoneService: SmartphoneService) { }
+  constructor(private smartphoneService: SmartphoneService) {}
   ngOnInit(): void {
     this.smartphoneService.getSmartphones().subscribe(
       (data) => {
@@ -35,5 +35,6 @@ export class HomePageComponent {
     };
 
     this.smartphoneService.addSmartphoneToBasket(basketProduct).subscribe();
+    alert(`Added ${smartphone.name} to cart!`);
   }
 }
