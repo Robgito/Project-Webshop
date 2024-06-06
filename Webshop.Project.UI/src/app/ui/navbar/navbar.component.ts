@@ -7,12 +7,11 @@ import { SmartphoneService } from '../../services/smartphone.service';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
-  smartphones : any[] = []
-/**
- *
- */
-constructor(private smartphoneService : SmartphoneService) { }
+  smartphones: any[] = []
+  /**
+   *
+   */
+  constructor(private smartphoneService: SmartphoneService) { }
 
   ngOnInit(): void {
     this.smartphoneService.getSmartphones().subscribe(
@@ -26,7 +25,7 @@ constructor(private smartphoneService : SmartphoneService) { }
     );
   }
 
-  getSmartphonesBySearch(userSearch : number|string){
+  getSmartphonesBySearch(userSearch: number | string) {
     this.smartphoneService.getSmartphoneBySearch(userSearch).subscribe(
       (data) => {
         this.smartphones = data; // Handle the response data as needed
@@ -35,17 +34,17 @@ constructor(private smartphoneService : SmartphoneService) { }
       (error) => {
         console.error('Error fetching smartphones:', error);
       }
-  )}
+    )
+  }
 
-  userSearch: number|string = "";
+  userSearch: number | string = "";
 
   onSelectedSearch(value: string): void {
-    if(value === "0"){
+    if (value === "0") {
       this.userSearch = "";
     }
-    else{
+    else {
       this.userSearch = Number(value);
     }
-
-	}
+  }
 }

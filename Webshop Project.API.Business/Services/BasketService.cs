@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using System.Collections.Generic;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Data.Entities;
 using Webshop_Project.API.Data.Repositories;

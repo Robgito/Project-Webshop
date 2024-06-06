@@ -65,6 +65,5 @@ namespace Webshop_Project.API.Business.Services
 
             await _brandRepository.UpdateItemAsync(brandDB);
         }
-
     }
 }

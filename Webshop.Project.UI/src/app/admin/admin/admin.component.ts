@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
     categoryID: 1,
   };
   smartphones: any;
-  constructor(private smartphoneservice: SmartphoneService) {}
+  constructor(private smartphoneservice: SmartphoneService) { }
 
   addSmartphone(smartphoneForm: NgForm) {
     this.smartphoneservice.addSmartphone(this.phone).subscribe(
@@ -61,5 +61,5 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  updateSmartPhoneById(smartphoneId: number) {}
+  updateSmartPhoneById(smartphoneId: number) { }
 }

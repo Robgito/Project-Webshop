@@ -20,7 +20,7 @@ export class BasketService {
   private readonly API_DECREASE_AMOUNT_IN_BASKET =
     'https://localhost:7129/api/Basket/DecreaseAmountToBasketProduct';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   GetProductsInBasket(basketID: number): Observable<any> {
     return this.httpClient.get(this.API_URL_PRODUCTS + `?basketID=${basketID}`);
@@ -33,7 +33,7 @@ export class BasketService {
   GetBasketProductByProductIDAndBasketID(basketId: number, productId: number) {
     return this.httpClient.get(
       this.API_GET_BASKETPRODUCT +
-        `?productID=${productId}&basketID=${basketId}`
+      `?productID=${productId}&basketID=${basketId}`
     );
   }
 

@@ -14,7 +14,7 @@ export class HomePageComponent {
   /**
    *
    */
-  constructor(private smartphoneService: SmartphoneService) {}
+  constructor(private smartphoneService: SmartphoneService) { }
   ngOnInit(): void {
     this.smartphoneService.getSmartphones().subscribe(
       (data) => {

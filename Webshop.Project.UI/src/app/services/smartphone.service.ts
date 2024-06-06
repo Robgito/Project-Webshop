@@ -17,7 +17,6 @@ export class SmartphoneService {
     return this.httpClient.get(this.API_URL + `?page=${page}&items=9`);
   }
 
-
   private baseUrl = 'https://localhost:7129/api/Smartphone';
 
   getSmartphonesPerpage(page: number, itemsPerPage: number): Observable<any> {

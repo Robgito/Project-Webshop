@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrl: './show-products.component.css',
 })
 export class ShowProductsComponent implements OnInit {
-
   smartphones: any;
   currentPage: number = 1;
   itemsPerPage: number = 9;
@@ -17,7 +16,7 @@ export class ShowProductsComponent implements OnInit {
   constructor(
     private smartphoneService: SmartphoneService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadSmartPhonesInarray(this.currentPage);
@@ -74,7 +73,6 @@ export class ShowProductsComponent implements OnInit {
     this.currentPage = page;
     this.loadSmartPhonesInarray(this.currentPage);
   }
-
 
   checkHasMorePages(): void {
     this.smartphoneService.getSmartphones(this.currentPage + 1).subscribe(

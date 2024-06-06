@@ -10,8 +10,8 @@ describe('UpdateBrandComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UpdateBrandComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(UpdateBrandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

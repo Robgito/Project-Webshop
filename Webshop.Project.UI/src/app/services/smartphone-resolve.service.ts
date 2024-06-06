@@ -12,7 +12,7 @@ import { SmartphoneService } from './smartphone.service';
   providedIn: 'root',
 })
 export class SmartphoneResolveService implements Resolve<Smartphone> {
-  constructor(private smartphoneservice: SmartphoneService) {}
+  constructor(private smartphoneservice: SmartphoneService) { }
 
   resolve(
     route: ActivatedRouteSnapshot,

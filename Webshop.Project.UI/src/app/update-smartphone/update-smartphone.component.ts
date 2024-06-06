@@ -11,16 +11,13 @@ import { CategoryService } from '../services/category.service';
   styleUrl: './update-smartphone.component.css'
 })
 export class UpdateSmartphoneComponent implements OnInit {
-
   phone: any;
   brands: any;
   categories: any;
 
-
-  constructor(private smartphoneservice: SmartphoneService, private brandService: BrandService, private categoryService: CategoryService ,private activatedRoute: ActivatedRoute) { }
+  constructor(private smartphoneservice: SmartphoneService, private brandService: BrandService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
     this.phone = this.activatedRoute.snapshot.data['phone'];
-
 
     this.brandService.getBrands().subscribe(
       (data) => {
@@ -43,13 +40,11 @@ export class UpdateSmartphoneComponent implements OnInit {
     );
   }
 
-
   updateSmartphone(smartphoneForm: NgForm) {
-
     if (smartphoneForm.invalid) {
       return;
     }
-    
+
     this.smartphoneservice.updatesmartphone(this.phone.id, this.phone).subscribe(
       (response) => {
         console.log(response);

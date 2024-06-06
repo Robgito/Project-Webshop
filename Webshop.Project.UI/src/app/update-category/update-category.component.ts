@@ -17,7 +17,6 @@ export class UpdateCategoryComponent implements OnInit {
   }
 
   updateCategory(categoryForm: NgForm) {
-
     if (categoryForm.invalid) {
       return;
     }

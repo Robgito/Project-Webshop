@@ -3,17 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../model/smartphone.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-
   private readonly API_URL = 'https://localhost:7129/api/Category/GetAllCategories';
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getCategories() : Observable<any>{
+  getCategories(): Observable<any> {
     return this.httpClient.get(this.API_URL);
   }
 
@@ -31,6 +29,5 @@ export class CategoryService {
 
   updateCategory(id: number, category: Category) {
     return this.httpClient.put(`https://localhost:7129/api/Category/UpdateCategory?id=${id}`, category);
-
   }
 }

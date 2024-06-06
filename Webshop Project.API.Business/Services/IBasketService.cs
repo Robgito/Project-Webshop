@@ -1,6 +1,5 @@
 ﻿using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Data.Entities;
-using Webshop_Project.API.Data.Repositories;
 
 namespace Webshop_Project.API.Business.Services
 {

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Business.Services;
@@ -94,7 +93,5 @@ namespace Webshop_Project.Controllers
                 return BadRequest(ModelState);
             }
         }
-
-
     }
 }

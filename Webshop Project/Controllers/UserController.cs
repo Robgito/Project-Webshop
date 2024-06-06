@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Webshop_Project.API.Business.Models;
 using Webshop_Project.API.Business.Services;
-using Webshop_Project.API.Data.Entities;
 using Webshop_Project.DTO;
 
 namespace Webshop_Project.Controllers
@@ -29,7 +27,7 @@ namespace Webshop_Project.Controllers
             User user = await _userService.GetUserAsync(id);
             UserDTO userDTO = _mapper.Map<UserDTO>(user);
 
-            if(user == null)
+            if (user == null)
             {
                 return NotFound();
             }
@@ -46,7 +44,7 @@ namespace Webshop_Project.Controllers
             IEnumerable<User> users = await _userService.GetUsersAsync();
             IEnumerable<UserDTO> userDTOs = _mapper.Map<IEnumerable<UserDTO>>(users);
 
-            if(users == null || users.Count() == 0)
+            if (users == null || users.Count() == 0)
             {
                 return NotFound();
             }
@@ -66,7 +64,7 @@ namespace Webshop_Project.Controllers
 
                 User user = _mapper.Map<User>(addUserDTO);
                 user.BasketID = _basketService.SaveNewBasketID();
-                await _userService.AddUserAsync(user);                
+                await _userService.AddUserAsync(user);
                 return Created();
             }
             else

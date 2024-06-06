@@ -9,9 +9,8 @@ import { Router } from '@angular/router';
   styleUrl: './show-brands.component.css'
 })
 export class ShowBrandsComponent implements OnInit {
-
   brands: any;
-constructor(private brandService: BrandService, private router: Router) { }
+  constructor(private brandService: BrandService, private router: Router) { }
 
   ngOnInit(): void {
     this.brandService.getBrands().subscribe(
@@ -26,20 +25,19 @@ constructor(private brandService: BrandService, private router: Router) { }
   }
 
   deleteBrandById(brandId: number) {
-  this.brandService.deleteBrandById(brandId).subscribe(
-    (response) => {
-      alert("Brand successfully deleted!!");
-      this.ngOnInit();
-    },
-    (error) => {
-      alert("An error has occurred when deleting the brand");
-      console.log(error);     
-    }
-  );
+    this.brandService.deleteBrandById(brandId).subscribe(
+      (response) => {
+        alert("Brand successfully deleted!!");
+        this.ngOnInit();
+      },
+      (error) => {
+        alert("An error has occurred when deleting the brand");
+        console.log(error);
+      }
+    );
   }
 
   updateBrandById(brandId: number) {
-    this.router.navigate(['/update-brand', {brandId: brandId}]);
+    this.router.navigate(['/update-brand', { brandId: brandId }]);
   }
-
 }

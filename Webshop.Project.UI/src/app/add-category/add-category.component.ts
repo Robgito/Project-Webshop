@@ -9,7 +9,6 @@ import { CategoryService } from '../services/category.service';
   styleUrl: './add-category.component.css'
 })
 export class AddCategoryComponent implements OnInit {
-
 category: Category = {
   name: "",
 };
@@ -19,7 +18,6 @@ constructor(private categoryservice: CategoryService) {}
 ngOnInit(): void { };
 
 addCategory(categoryForm: NgForm) {
-
   if (categoryForm.invalid) {
     return;
   }
@@ -32,8 +30,7 @@ addCategory(categoryForm: NgForm) {
       (error) => {
         alert("An error has occurred when adding the category");
         console.log(error);
-      } 
+      }
   );
   }
-
 }

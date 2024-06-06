@@ -11,7 +11,7 @@ describe('AddSmartphoneComponent', () => {
       declarations: [AddSmartphoneComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AddSmartphoneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

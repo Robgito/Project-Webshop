@@ -10,8 +10,8 @@ describe('UpdateCategoryComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UpdateCategoryComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(UpdateCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -61,4 +61,4 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

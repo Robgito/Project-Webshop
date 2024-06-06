@@ -21,25 +21,24 @@ import { ShowCategoriesComponent } from './show-categories/show-categories.compo
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { CategoryResolveService } from './services/category-resolve.service';
 
-
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'smartphones', component: SmartphonesComponent },
-  { path: 'admin', component: AdminComponent},
+  { path: 'admin', component: AdminComponent },
   { path: 'smartphones/:smartphoneId', component: SmartphoneDetailsComponent },
-  { path: 'basket', component: BasketComponent},
-  { path: 'signin', component: SignInComponent},
-  { path: 'signup', component: SignUpComponent},
-  { path: 'checkout', component: CheckoutComponent},
-  {path: 'add-smartphone', component: AddSmartphoneComponent },
-  {path: 'show-products', component: ShowProductsComponent},
-  {path: 'update-smartphone', component: UpdateSmartphoneComponent,resolve: {phone: SmartphoneResolveService}},
-  {path: 'add-brand', component: AddBrandComponent},
-  {path: 'show-brands', component: ShowBrandsComponent},
-  {path: 'update-brand', component: UpdateBrandComponent, resolve: {brand: BrandResolveService}},
-  {path: 'add-category', component: AddCategoryComponent},
-  {path: 'show-categories', component: ShowCategoriesComponent},
-  {path: 'update-category', component: UpdateCategoryComponent, resolve: {category: CategoryResolveService}}
+  { path: 'basket', component: BasketComponent },
+  { path: 'signin', component: SignInComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'add-smartphone', component: AddSmartphoneComponent },
+  { path: 'show-products', component: ShowProductsComponent },
+  { path: 'update-smartphone', component: UpdateSmartphoneComponent, resolve: { phone: SmartphoneResolveService } },
+  { path: 'add-brand', component: AddBrandComponent },
+  { path: 'show-brands', component: ShowBrandsComponent },
+  { path: 'update-brand', component: UpdateBrandComponent, resolve: { brand: BrandResolveService } },
+  { path: 'add-category', component: AddCategoryComponent },
+  { path: 'show-categories', component: ShowCategoriesComponent },
+  { path: 'update-category', component: UpdateCategoryComponent, resolve: { category: CategoryResolveService } }
 
 ];
 

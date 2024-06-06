@@ -39,7 +39,7 @@
 
           <div class="form-group">
             <label for="price">Price</label>
-            <input id="price" class="form-control" placeholder="Enter price" [(ngModel)]="phone.price" name="price"  type="number" min="0" required>
+            <input id="price" class="form-control" placeholder="Enter price" [(ngModel)]="phone.price" name="price" type="number" min="0" required>
             <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['price'].invalid" class="text-danger">
               Valid price is required.
             </div>
@@ -48,7 +48,7 @@
           <div class="form-group">
             <label for="memoryCapacity">Memory Capacity</label>
 
-            <input id="memoryCapacity" class="form-control" placeholder="Enter memory capacity" [(ngModel)]="phone.memoryCapacity" name="memoryCapacity" type="number" min="64" required >
+            <input id="memoryCapacity" class="form-control" placeholder="Enter memory capacity" [(ngModel)]="phone.memoryCapacity" name="memoryCapacity" type="number" min="64" required>
             <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['memoryCapacity'].invalid" class="text-danger">
               Valid memory capacity is required.Memory capacity can't go below 64GB!
             </div>
@@ -61,7 +61,6 @@
             <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['stock'].invalid" class="text-danger">
               Valid stock is required.
             </div>
-
           </div>
 
           <div class="form-group">
@@ -74,7 +73,6 @@
             <div *ngIf="smartphoneForm.submitted && smartphoneForm.controls['brandID'].invalid" class="text-danger">
               Brand is required.
             </div>
-
           </div>
 
           <div class="form-group">
@@ -100,4 +98,3 @@
     </div>
   </div>
 </div>
-

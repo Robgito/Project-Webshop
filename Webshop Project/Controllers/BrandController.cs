@@ -20,7 +20,6 @@ namespace Webshop_Project.Controllers
         }
 
         [HttpGet]
-
         public async Task<ActionResult> GetSpecificBrandAsync(int id)
         {
             Brand brand = await _brandService.GetBrandAsync(id);

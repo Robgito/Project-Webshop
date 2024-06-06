@@ -11,7 +11,7 @@ describe('AddCategoryComponent', () => {
       declarations: [AddCategoryComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AddCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

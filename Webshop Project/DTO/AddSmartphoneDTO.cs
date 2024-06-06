@@ -15,7 +15,7 @@ namespace Webshop_Project.DTO
         public string? Description { get; set; }
 
         [Required(ErrorMessage = "This field is required.")]
-        [Range(1,9999, ErrorMessage = "The price can't go below 0!")]
+        [Range(1, 9999, ErrorMessage = "The price can't go below 0!")]
         public double Price { get; set; }
 
         public string Image { get; set; }

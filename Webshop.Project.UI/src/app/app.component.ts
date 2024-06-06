@@ -9,7 +9,6 @@ import { from } from 'rxjs';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
- 
 })
 export class AppComponent {
   title = 'Webshop.Project.UI';

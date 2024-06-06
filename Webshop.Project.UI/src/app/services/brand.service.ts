@@ -3,17 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Brand } from '../model/smartphone.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class BrandService {
-
   private readonly API_URL = 'https://localhost:7129/api/Brand/GetAllBrands';
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getBrands() : Observable<any>{
+  getBrands(): Observable<any> {
     return this.httpClient.get(this.API_URL);
   }
 
@@ -31,7 +29,5 @@ export class BrandService {
 
   updateBrand(id: number, brand: Brand) {
     return this.httpClient.put(`https://localhost:7129/api/Brand?id=${id}`, brand);
-
   }
 }
-

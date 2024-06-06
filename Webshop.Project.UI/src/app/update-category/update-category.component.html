@@ -1,29 +1,26 @@
 <!--Update category-->
 <div class="container mt-5">
-    <div class="card p-2">
-        <div class="row">
-            <div class="col-6">
-                <form #categoryForm="ngForm" (ngSubmit)="updateCategory(categoryForm)">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input id="name" class="form-control" placeholder="Enter category name"
-                            [(ngModel)]="category.name" name="name" required>
-                        <div *ngIf="categoryForm.submitted && categoryForm.controls['name'].invalid"
-                            class="text-danger">
-                            Name is required.
-                        </div>
-                    </div>
-                    <div align="end" class="p-2">
-                        <button type="reset" class="btn btn-primary mr-3">Clear</button>
-                        <button type="submit" class="btn btn-primary">Update Category</button>
-
-                    </div>
-                </form>
-
+  <div class="card p-2">
+    <div class="row">
+      <div class="col-6">
+        <form #categoryForm="ngForm" (ngSubmit)="updateCategory(categoryForm)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" class="form-control" placeholder="Enter category name"
+                   [(ngModel)]="category.name" name="name" required>
+            <div *ngIf="categoryForm.submitted && categoryForm.controls['name'].invalid"
+                 class="text-danger">
+              Name is required.
             </div>
-            <div class="col-6">
-
-            </div>
-        </div>
+          </div>
+          <div align="end" class="p-2">
+            <button type="reset" class="btn btn-primary mr-3">Clear</button>
+            <button type="submit" class="btn btn-primary">Update Category</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-6">
+      </div>
     </div>
+  </div>
 </div>

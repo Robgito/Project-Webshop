@@ -8,7 +8,6 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class BrandResolveService implements Resolve<Brand> {
-
   constructor(private brandservice: BrandService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Brand> {

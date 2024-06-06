@@ -8,7 +8,6 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryResolveService implements Resolve<Category> {
-
   constructor(private categoryservice: CategoryService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Category> {

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Webshop_Project.API.Data.Entities;
 
 namespace Webshop_Project.DTO
 {

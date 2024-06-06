@@ -10,8 +10,8 @@ describe('PaginationComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PaginationComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(PaginationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

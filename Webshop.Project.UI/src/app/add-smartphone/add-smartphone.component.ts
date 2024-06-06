@@ -11,7 +11,6 @@ import { CategoryService } from '../services/category.service';
   styleUrl: './add-smartphone.component.css',
 })
 export class AddSmartphoneComponent implements OnInit {
-
   brands: any;
   categories: any;
 
@@ -28,8 +27,6 @@ export class AddSmartphoneComponent implements OnInit {
     brandID: 0,
     categoryID: 0
   }
-
-
 
   constructor(private smartphoneservice: SmartphoneService, private brandService: BrandService, private categoryService: CategoryService) { }
 
@@ -55,7 +52,6 @@ export class AddSmartphoneComponent implements OnInit {
   }
 
   addSmartphone(smartphoneForm: NgForm) {
-
     if (smartphoneForm.invalid) {
       return;
     }

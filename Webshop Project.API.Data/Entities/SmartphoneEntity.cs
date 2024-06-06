@@ -12,16 +12,21 @@ namespace Webshop_Project.API.Data.Entities
 
         public int CategoryID { get; set; }
 
+        [MinLength(1)]
+        [MaxLength(100)]
         public string Colour { get; set; }
 
         public DateTime Created { get; set; }
 
+        [MinLength(1)]
         [MaxLength(500)]
         public string? Description { get; set; }
 
         [Key] //Primary Key
         public int ID { get; set; }
 
+        [MinLength(1)]
+        [MaxLength(1000)]
         public string? Image { get; set; }
 
         [Required]
@@ -30,6 +35,8 @@ namespace Webshop_Project.API.Data.Entities
         public int MemoryCapacity { get; set; }
 
         [Required]
+        [MinLength(1)]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         [Required]

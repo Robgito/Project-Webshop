@@ -18,7 +18,6 @@ export class UpdateBrandComponent implements OnInit {
   }
 
   updateBrand(brandForm: NgForm) {
-
     if (brandForm.invalid) {
       return;
     }
