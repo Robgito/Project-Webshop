@@ -27,7 +27,7 @@ export class SmartphonesComponent implements OnInit {
     private smartphoneService: SmartphoneService,
     private brandService: BrandService,
     private categoryService: CategoryService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.smartphoneService.getSmartphones(this.currentPage).subscribe(

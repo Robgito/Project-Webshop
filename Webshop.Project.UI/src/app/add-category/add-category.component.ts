@@ -9,28 +9,28 @@ import { CategoryService } from '../services/category.service';
   styleUrl: './add-category.component.css'
 })
 export class AddCategoryComponent implements OnInit {
-category: Category = {
-  name: "",
-};
+  category: Category = {
+    name: "",
+  };
 
-constructor(private categoryservice: CategoryService) {}
+  constructor(private categoryservice: CategoryService) { }
 
-ngOnInit(): void { };
+  ngOnInit(): void { };
 
-addCategory(categoryForm: NgForm) {
-  if (categoryForm.invalid) {
-    return;
-  }
+  addCategory(categoryForm: NgForm) {
+    if (categoryForm.invalid) {
+      return;
+    }
 
-  this.categoryservice.addCategory(this.category).subscribe(
-    (data: Category) => {
-      categoryForm.reset();
-      alert("Category successfully added!!");
+    this.categoryservice.addCategory(this.category).subscribe(
+      (data: Category) => {
+        categoryForm.reset();
+        alert("Category successfully added!!");
       },
       (error) => {
         alert("An error has occurred when adding the category");
         console.log(error);
       }
-  );
+    );
   }
 }

@@ -16,7 +16,7 @@ export class BasketComponent {
   basket: Basket[] = [];
   basketproductSelected: any[] = [];
 
-  constructor(private basketService: BasketService) {}
+  constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
     this.basketService.GetProductsInBasket(1).subscribe(

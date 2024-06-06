@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Numerics;
-using Webshop_Project.API.Data.Entities;
-
-namespace Webshop_Project.DTO
+﻿namespace Webshop_Project.DTO
 {
     public class BasketDTO
     {

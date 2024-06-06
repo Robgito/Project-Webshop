@@ -11,7 +11,7 @@ export class SmartphoneService {
   private readonly API_URL =
     'https://localhost:7129/api/Smartphone/GetAllSmartphones';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getSmartphones(page: number = 1): Observable<any> {
     return this.httpClient.get(this.API_URL + `?page=${page}&items=9`);
@@ -34,7 +34,7 @@ export class SmartphoneService {
   ): Observable<any> {
     return this.httpClient.get(
       this.API_URL +
-        `?enterBrandID=${brandId}&enterCategoryID=${categoryId}&enterMemoryCapacity=${memoryCapacity}&enterMinPrice=${minPrice}&enterMaxPrice=${maxPrice}&page=1&items=20`
+      `?enterBrandID=${brandId}&enterCategoryID=${categoryId}&enterMemoryCapacity=${memoryCapacity}&enterMinPrice=${minPrice}&enterMaxPrice=${maxPrice}&page=1&items=20`
     );
   }
 
